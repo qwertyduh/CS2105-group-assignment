@@ -41,6 +41,20 @@ python3 -m roster.rules
 python3 -m unittest -v
 ```
 
+### Greedy solver and run CLI — A4
+
+- Added `roster/solvers/greedy.py`: hard-first slot ordering (required / group size, peak day, Night, seeded random tie-break) and one-person-at-a-time filling.
+- Candidates are ranked by marginal overwork, streak and rest cost using the same pricing helpers as the evaluator, with sub-unit fairness and preference tie-breakers.
+- A slot is left unfilled only when the cheapest candidate costs more than `penalty_unfilled_slot`; rosters are never overstaffed and use only own-group members.
+- Added `roster/run.py` (`python3 -m roster.run greedy <case> --seed N`) which writes `results/<case>_greedy.roster.csv` and `.report.json` and prints cost, hard pass, unfilled count and runtime.
+- Added 8 tests in `tests/test_greedy.py`; the full suite passes 69 tests.
+- Baseline costs (`results/greedy_baseline.txt`, seed 1): case_01 0.0308, case_02 64.0430, case_03 328.0462, case_04 0.0287. All four pass the hard rules.
+
+```sh
+python3 -m roster.run greedy test/case_01_balanced_20d --seed 1
+python3 -m unittest discover -s tests -v
+```
+
 ## Validation follow-ups
 
 - Reject invalid numeric inputs consistently: negative weekly caps and rolling-window lengths currently pass validation, as do `NaN` shift hours.
