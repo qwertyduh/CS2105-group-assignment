@@ -1,149 +1,112 @@
 {
   "hard_pass": true,
   "hard_breaches": [],
-  "unfilled_total": 51,
+  "unfilled_total": 145,
   "unfilled_by_group": {
-    "MPR": 12,
-    "CND": 17,
-    "Hospitality": 16,
-    "SPONS": 6
+    "MPR": 30,
+    "CND": 43,
+    "Hospitality": 43,
+    "SPONS": 29
   },
   "cost_components": {
-    "unfilled": 153.0,
-    "overwork": 122.0,
+    "unfilled": 435.0,
+    "overwork": 92.0,
     "streak": 0.0,
-    "rest": 53.0,
-    "preference": 0.024843,
-    "fairness": 0.010625,
-    "isolated": 0.010714
+    "rest": 44.0,
+    "preference": 0.022642,
+    "fairness": 0.01375,
+    "isolated": 0.01127
   },
-  "total_cost": 328.046182,
-  "preference_satisfaction_pct": 50.3145,
+  "total_cost": 571.047661,
+  "preference_satisfaction_pct": 54.717,
   "workload_spread_by_group": {
     "MPR": 12.0,
     "CND": 24.0,
-    "Hospitality": 16.0,
-    "SPONS": 16.0
+    "Hospitality": 24.0,
+    "SPONS": 28.0
   },
-  "isolated_dayoffs": 270,
+  "isolated_dayoffs": 284,
   "per_student_hours": {
-    "22CB15": 60.0,
-    "22CE19": 68.0,
-    "22CE60": 60.0,
+    "22CB15": 52.0,
+    "22CE19": 56.0,
+    "22CE60": 56.0,
     "22CS21": 60.0,
     "22CS34": 52.0,
-    "22CS37": 64.0,
-    "22CS40": 64.0,
-    "22CS49": 64.0,
-    "22CS59": 64.0,
-    "22EC01": 64.0,
+    "22CS37": 56.0,
+    "22CS40": 60.0,
+    "22CS49": 56.0,
+    "22CS59": 52.0,
+    "22EC01": 60.0,
     "22EC25": 60.0,
-    "22EC42": 64.0,
-    "22EC48": 60.0,
-    "22EC52": 60.0,
-    "22EE51": 64.0,
-    "22EE55": 60.0,
-    "22ME18": 44.0,
-    "22ME23": 60.0,
+    "22EC42": 56.0,
+    "22EC48": 56.0,
+    "22EC52": 56.0,
+    "22EE51": 56.0,
+    "22EE55": 56.0,
+    "22ME18": 36.0,
+    "22ME23": 56.0,
     "22ME31": 60.0,
-    "22ME54": 60.0,
+    "22ME54": 56.0,
     "22ME66": 60.0,
     "23CB14": 60.0,
-    "23CE38": 64.0,
-    "23CE69": 60.0,
-    "23CS56": 60.0,
+    "23CE38": 56.0,
+    "23CE69": 56.0,
+    "23CS56": 56.0,
     "23EC06": 60.0,
-    "23EC39": 64.0,
-    "23EE04": 64.0,
-    "23EE45": 60.0,
-    "23ME10": 60.0,
-    "23ME26": 64.0,
-    "23ME36": 60.0,
+    "23EC39": 60.0,
+    "23EE04": 60.0,
+    "23EE45": 56.0,
+    "23ME10": 48.0,
+    "23ME26": 56.0,
+    "23ME36": 56.0,
     "23ME41": 60.0,
-    "24CB13": 60.0,
-    "24CB30": 60.0,
-    "24CB68": 48.0,
-    "24CE07": 68.0,
-    "24CE11": 64.0,
-    "24CE29": 64.0,
+    "24CB13": 52.0,
+    "24CB30": 56.0,
+    "24CB68": 32.0,
+    "24CE07": 56.0,
+    "24CE11": 56.0,
+    "24CE29": 60.0,
     "24CE63": 60.0,
-    "24CS27": 64.0,
-    "24EC02": 64.0,
-    "24EC12": 56.0,
-    "24EC20": 60.0,
-    "24EC33": 60.0,
+    "24CS27": 56.0,
+    "24EC02": 60.0,
+    "24EC12": 52.0,
+    "24EC20": 56.0,
+    "24EC33": 56.0,
     "24EC35": 60.0,
-    "24EC43": 64.0,
+    "24EC43": 52.0,
     "24EC47": 60.0,
-    "24EC70": 60.0,
-    "24EE32": 64.0,
-    "24EE53": 48.0,
-    "24ME16": 64.0,
-    "25CB05": 64.0,
+    "24EC70": 52.0,
+    "24EE32": 56.0,
+    "24EE53": 36.0,
+    "24ME16": 56.0,
+    "25CB05": 60.0,
     "25CB08": 60.0,
-    "25CB65": 56.0,
-    "25CB67": 60.0,
-    "25CE24": 60.0,
-    "25CS17": 64.0,
+    "25CB65": 44.0,
+    "25CB67": 56.0,
+    "25CE24": 56.0,
+    "25CS17": 56.0,
     "25CS57": 56.0,
-    "25CS58": 60.0,
-    "25CS64": 64.0,
-    "25EC03": 64.0,
-    "25EC28": 64.0,
-    "25EC46": 64.0,
-    "25EC50": 60.0,
-    "25EC62": 60.0,
+    "25CS58": 56.0,
+    "25CS64": 56.0,
+    "25EC03": 60.0,
+    "25EC28": 60.0,
+    "25EC46": 60.0,
+    "25EC50": 56.0,
+    "25EC62": 48.0,
     "25EE09": 56.0,
-    "25ME22": 48.0,
-    "25ME44": 60.0,
-    "25ME61": 64.0
+    "25ME22": 36.0,
+    "25ME44": 56.0,
+    "25ME61": 56.0
   },
-  "overwork_accounting": "Overwork is charged on non-overlapping accounting windows of rolling_window_days starting at day 1 (days 1-7, 8-14, 15-21, 22-28 by default; the last window may be shorter). In each window, shifts are taken in day order and every shift that takes the student's hours above their cap is one extra shift (with 4 h shifts and a 20 h cap: extra = shifts - floor(20/4)). Extra shifts in a window are priced by the tier table (2, 4, then 6 each) and the student is charged the sum over their windows. The worst rolling window per student is reported for information only and is not charged.",
+  "overwork_accounting": "Overwork is charged on every rolling window of rolling_window_days (days 1-7, 2-8, 3-9, ... by default; the last window ends at the horizon). In each window, shifts are taken in day order and every shift that takes the student's hours above their cap is one extra shift (with 4 h shifts and a 20 h cap: extra = shifts - floor(20/4)). Extra shifts in a window are priced by the tier table (2, 4, then 6 each) and the student is charged the sum over all their windows. The worst rolling window per student is also reported for information.",
   "overwork_by_student": {
     "22CB15": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        3,
-        9
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22CE19": {
-      "cap_hours": 20.0,
       "charged_windows": [
         {
           "days": [
-            1,
-            7
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 4.0,
-      "worst_rolling_window": [
-        1,
-        7
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22CE60": {
-      "cap_hours": 20.0,
-      "charged_windows": [
-        {
-          "days": [
-            8,
-            14
+            3,
+            9
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -156,23 +119,30 @@
       ],
       "worst_rolling_extra_shifts": 1
     },
-    "22CS21": {
+    "22CE60": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        13,
-        19
+      "charged_windows": [
+        {
+          "days": [
+            3,
+            9
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        },
+        {
+          "days": [
+            11,
+            17
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
       ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22CS34": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
+      "cost": 4.0,
       "worst_rolling_window": [
-        4,
-        10
+        3,
+        9
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -181,8 +151,8 @@
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            3,
+            9
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -200,8 +170,8 @@
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            13,
+            19
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -209,8 +179,8 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        4,
-        10
+        13,
+        19
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -219,8 +189,8 @@
       "charged_windows": [
         {
           "days": [
-            1,
-            7
+            7,
+            13
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -228,66 +198,18 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        1,
-        7
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22CS59": {
-      "cap_hours": 20.0,
-      "charged_windows": [
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 2.0,
-      "worst_rolling_window": [
-        2,
-        8
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22EC01": {
-      "cap_hours": 20.0,
-      "charged_windows": [
-        {
-          "days": [
-            1,
-            7
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 2.0,
-      "worst_rolling_window": [
-        1,
-        7
+        7,
+        13
       ],
       "worst_rolling_extra_shifts": 1
     },
     "22EC25": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22EC42": {
-      "cap_hours": 20.0,
       "charged_windows": [
         {
           "days": [
-            1,
-            7
+            9,
+            15
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -295,37 +217,8 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        1,
-        7
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22EC48": {
-      "cap_hours": 20.0,
-      "charged_windows": [
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 2.0,
-      "worst_rolling_window": [
-        3,
-        9
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22EC52": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        2,
-        8
+        9,
+        15
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -334,8 +227,8 @@
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            3,
+            9
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -348,31 +241,21 @@
       ],
       "worst_rolling_extra_shifts": 1
     },
-    "22EE55": {
+    "22ME31": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        3,
-        9
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22ME18": {
-      "cap_hours": 12.0,
       "charged_windows": [
         {
           "days": [
-            1,
-            7
+            9,
+            15
           ],
           "extra_shifts": 1,
           "cost": 2.0
         },
         {
           "days": [
-            8,
-            14
+            14,
+            20
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -380,67 +263,18 @@
       ],
       "cost": 4.0,
       "worst_rolling_window": [
-        3,
-        9
-      ],
-      "worst_rolling_extra_shifts": 2
-    },
-    "22ME23": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        11,
-        17
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22ME31": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22ME54": {
-      "cap_hours": 20.0,
-      "charged_windows": [
-        {
-          "days": [
-            1,
-            7
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 2.0,
-      "worst_rolling_window": [
-        1,
-        7
+        9,
+        15
       ],
       "worst_rolling_extra_shifts": 1
     },
     "22ME66": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23CB14": {
-      "cap_hours": 20.0,
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            13,
+            19
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -448,8 +282,8 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        8,
-        14
+        13,
+        19
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -458,8 +292,8 @@
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            5,
+            11
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -467,8 +301,8 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        3,
-        9
+        5,
+        11
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -477,8 +311,8 @@
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            9,
+            15
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -486,12 +320,12 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        4,
-        10
+        9,
+        15
       ],
       "worst_rolling_extra_shifts": 1
     },
-    "23CS56": {
+    "23EC06": {
       "cap_hours": 20.0,
       "charged_windows": [
         {
@@ -510,23 +344,13 @@
       ],
       "worst_rolling_extra_shifts": 1
     },
-    "23EC06": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        9,
-        15
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
     "23EC39": {
       "cap_hours": 20.0,
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            14,
+            20
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -534,8 +358,8 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        4,
-        10
+        14,
+        20
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -558,58 +382,13 @@
       ],
       "worst_rolling_extra_shifts": 1
     },
-    "23EE45": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        11,
-        17
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23ME10": {
-      "cap_hours": 16.0,
-      "charged_windows": [
-        {
-          "days": [
-            1,
-            7
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            15,
-            20
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 6.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 2
-    },
     "23ME26": {
       "cap_hours": 20.0,
       "charged_windows": [
         {
           "days": [
-            1,
-            7
+            13,
+            19
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -617,85 +396,48 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        1,
-        7
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23ME36": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
         13,
         19
       ],
       "worst_rolling_extra_shifts": 1
     },
-    "23ME41": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
     "24CB13": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        2,
-        8
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24CB30": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24CB68": {
-      "cap_hours": 12.0,
       "charged_windows": [
         {
           "days": [
-            1,
-            7
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            15,
-            20
+            12,
+            18
           ],
           "extra_shifts": 1,
           "cost": 2.0
         }
       ],
-      "cost": 6.0,
+      "cost": 2.0,
       "worst_rolling_window": [
-        3,
-        9
+        12,
+        18
       ],
-      "worst_rolling_extra_shifts": 2
+      "worst_rolling_extra_shifts": 1
+    },
+    "24CB30": {
+      "cap_hours": 20.0,
+      "charged_windows": [
+        {
+          "days": [
+            9,
+            15
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
+      "worst_rolling_window": [
+        9,
+        15
+      ],
+      "worst_rolling_extra_shifts": 1
     },
     "24CE07": {
       "cap_hours": 20.0,
@@ -707,17 +449,9 @@
           ],
           "extra_shifts": 1,
           "cost": 2.0
-        },
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
         }
       ],
-      "cost": 4.0,
+      "cost": 2.0,
       "worst_rolling_window": [
         1,
         7
@@ -729,8 +463,8 @@
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            14,
+            20
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -738,8 +472,8 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        2,
-        8
+        14,
+        20
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -756,8 +490,8 @@
         },
         {
           "days": [
-            8,
-            14
+            9,
+            15
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -770,81 +504,41 @@
       ],
       "worst_rolling_extra_shifts": 1
     },
-    "24CS27": {
+    "24EC20": {
       "cap_hours": 20.0,
       "charged_windows": [
         {
           "days": [
-            1,
-            7
+            3,
+            9
           ],
           "extra_shifts": 1,
           "cost": 2.0
         }
       ],
       "cost": 2.0,
-      "worst_rolling_window": [
-        1,
-        7
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24EC02": {
-      "cap_hours": 20.0,
-      "charged_windows": [
-        {
-          "days": [
-            1,
-            7
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 2.0,
-      "worst_rolling_window": [
-        1,
-        7
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24EC12": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
       "worst_rolling_window": [
         3,
         9
       ],
       "worst_rolling_extra_shifts": 1
     },
-    "24EC20": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        9,
-        15
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
     "24EC33": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        2,
-        8
+      "charged_windows": [
+        {
+          "days": [
+            12,
+            18
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
       ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24EC35": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
+      "cost": 2.0,
       "worst_rolling_window": [
-        10,
-        16
+        12,
+        18
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -853,17 +547,25 @@
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            3,
+            9
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        },
+        {
+          "days": [
+            5,
+            11
           ],
           "extra_shifts": 1,
           "cost": 2.0
         }
       ],
-      "cost": 2.0,
+      "cost": 4.0,
       "worst_rolling_window": [
-        2,
-        8
+        3,
+        9
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -880,44 +582,17 @@
         },
         {
           "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            15,
+            14,
             20
           ],
           "extra_shifts": 1,
           "cost": 2.0
         }
       ],
-      "cost": 6.0,
+      "cost": 4.0,
       "worst_rolling_window": [
-        6,
-        12
-      ],
-      "worst_rolling_extra_shifts": 2
-    },
-    "24EE32": {
-      "cap_hours": 20.0,
-      "charged_windows": [
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 2.0,
-      "worst_rolling_window": [
-        2,
-        8
+        1,
+        7
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -926,43 +601,8 @@
       "charged_windows": [
         {
           "days": [
-            1,
-            7
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            15,
+            14,
             20
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 6.0,
-      "worst_rolling_window": [
-        2,
-        8
-      ],
-      "worst_rolling_extra_shifts": 2
-    },
-    "24ME16": {
-      "cap_hours": 20.0,
-      "charged_windows": [
-        {
-          "days": [
-            1,
-            7
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -970,8 +610,8 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        1,
-        7
+        14,
+        20
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -996,43 +636,6 @@
     },
     "25CB08": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        9,
-        15
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25CB65": {
-      "cap_hours": 16.0,
-      "charged_windows": [
-        {
-          "days": [
-            1,
-            7
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 4.0,
-      "worst_rolling_window": [
-        6,
-        12
-      ],
-      "worst_rolling_extra_shifts": 2
-    },
-    "25CB67": {
-      "cap_hours": 20.0,
       "charged_windows": [
         {
           "days": [
@@ -1050,13 +653,13 @@
       ],
       "worst_rolling_extra_shifts": 1
     },
-    "25CE24": {
-      "cap_hours": 20.0,
+    "25CB65": {
+      "cap_hours": 16.0,
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            4,
+            10
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -1064,34 +667,24 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        8,
-        14
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25CS17": {
-      "cap_hours": 20.0,
-      "charged_windows": [
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 2.0,
-      "worst_rolling_window": [
-        8,
-        14
+        4,
+        10
       ],
       "worst_rolling_extra_shifts": 1
     },
     "25CS57": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
+      "charged_windows": [
+        {
+          "days": [
+            4,
+            10
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
       "worst_rolling_window": [
         4,
         10
@@ -1100,30 +693,36 @@
     },
     "25CS58": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        2,
-        8
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25CS64": {
-      "cap_hours": 20.0,
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            4,
+            10
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        },
+        {
+          "days": [
+            7,
+            13
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        },
+        {
+          "days": [
+            12,
+            18
           ],
           "extra_shifts": 1,
           "cost": 2.0
         }
       ],
-      "cost": 2.0,
+      "cost": 6.0,
       "worst_rolling_window": [
-        3,
-        9
+        4,
+        10
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -1132,14 +731,22 @@
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            4,
+            10
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        },
+        {
+          "days": [
+            14,
+            20
           ],
           "extra_shifts": 1,
           "cost": 2.0
         }
       ],
-      "cost": 2.0,
+      "cost": 4.0,
       "worst_rolling_window": [
         4,
         10
@@ -1151,17 +758,25 @@
       "charged_windows": [
         {
           "days": [
-            1,
-            7
+            9,
+            15
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        },
+        {
+          "days": [
+            14,
+            20
           ],
           "extra_shifts": 1,
           "cost": 2.0
         }
       ],
-      "cost": 2.0,
+      "cost": 4.0,
       "worst_rolling_window": [
-        1,
-        7
+        9,
+        15
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -1170,8 +785,8 @@
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            6,
+            12
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -1179,8 +794,8 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        4,
-        10
+        6,
+        12
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -1189,8 +804,8 @@
       "charged_windows": [
         {
           "days": [
-            1,
-            7
+            4,
+            10
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -1198,8 +813,8 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        1,
-        7
+        4,
+        10
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -1208,88 +823,36 @@
       "charged_windows": [
         {
           "days": [
-            1,
-            7
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            15,
+            14,
             20
           ],
           "extra_shifts": 1,
           "cost": 2.0
         }
       ],
-      "cost": 6.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 2
-    },
-    "25EE09": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25ME22": {
-      "cap_hours": 12.0,
-      "charged_windows": [
-        {
-          "days": [
-            1,
-            7
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            8,
-            14
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        },
-        {
-          "days": [
-            15,
-            20
-          ],
-          "extra_shifts": 1,
-          "cost": 2.0
-        }
-      ],
-      "cost": 6.0,
+      "cost": 2.0,
       "worst_rolling_window": [
         14,
         20
       ],
-      "worst_rolling_extra_shifts": 2
+      "worst_rolling_extra_shifts": 1
     },
-    "25ME44": {
+    "25EE09": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
+      "charged_windows": [
+        {
+          "days": [
+            14,
+            20
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
       "worst_rolling_window": [
-        6,
-        12
+        14,
+        20
       ],
       "worst_rolling_extra_shifts": 1
     },
@@ -1298,8 +861,8 @@
       "charged_windows": [
         {
           "days": [
-            8,
-            14
+            7,
+            13
           ],
           "extra_shifts": 1,
           "cost": 2.0
@@ -1307,8 +870,8 @@
       ],
       "cost": 2.0,
       "worst_rolling_window": [
-        3,
-        9
+        7,
+        13
       ],
       "worst_rolling_extra_shifts": 1
     }
@@ -1330,52 +893,10 @@
       "cost": 2.0
     },
     {
-      "roll_no": "22CB15",
-      "days": [
-        17,
-        18
-      ],
-      "shifts": [
-        "N",
-        "M"
-      ],
-      "gap_hours": 10.0,
-      "chain_index": 1,
-      "cost": 2.0
-    },
-    {
-      "roll_no": "22CB15",
-      "days": [
-        19,
-        20
-      ],
-      "shifts": [
-        "N",
-        "M"
-      ],
-      "gap_hours": 10.0,
-      "chain_index": 2,
-      "cost": 3.0
-    },
-    {
       "roll_no": "22CS21",
       "days": [
         2,
         3
-      ],
-      "shifts": [
-        "N",
-        "M"
-      ],
-      "gap_hours": 10.0,
-      "chain_index": 1,
-      "cost": 2.0
-    },
-    {
-      "roll_no": "22CS21",
-      "days": [
-        13,
-        14
       ],
       "shifts": [
         "N",
@@ -1414,6 +935,34 @@
       "cost": 2.0
     },
     {
+      "roll_no": "22EC42",
+      "days": [
+        1,
+        2
+      ],
+      "shifts": [
+        "N",
+        "M"
+      ],
+      "gap_hours": 10.0,
+      "chain_index": 1,
+      "cost": 2.0
+    },
+    {
+      "roll_no": "22EC48",
+      "days": [
+        1,
+        2
+      ],
+      "shifts": [
+        "N",
+        "M"
+      ],
+      "gap_hours": 10.0,
+      "chain_index": 1,
+      "cost": 2.0
+    },
+    {
       "roll_no": "22EE51",
       "days": [
         15,
@@ -1428,10 +977,10 @@
       "cost": 2.0
     },
     {
-      "roll_no": "22ME23",
+      "roll_no": "23CE38",
       "days": [
-        2,
-        3
+        1,
+        2
       ],
       "shifts": [
         "N",
@@ -1442,10 +991,10 @@
       "cost": 2.0
     },
     {
-      "roll_no": "22ME23",
+      "roll_no": "23CS56",
       "days": [
-        13,
-        14
+        1,
+        2
       ],
       "shifts": [
         "N",
@@ -1456,7 +1005,7 @@
       "cost": 2.0
     },
     {
-      "roll_no": "22ME31",
+      "roll_no": "23EC39",
       "days": [
         15,
         16
@@ -1470,52 +1019,10 @@
       "cost": 2.0
     },
     {
-      "roll_no": "23EC06",
+      "roll_no": "23ME36",
       "days": [
-        11,
-        12
-      ],
-      "shifts": [
-        "N",
-        "M"
-      ],
-      "gap_hours": 10.0,
-      "chain_index": 1,
-      "cost": 2.0
-    },
-    {
-      "roll_no": "23EE04",
-      "days": [
-        15,
-        16
-      ],
-      "shifts": [
-        "N",
-        "M"
-      ],
-      "gap_hours": 10.0,
-      "chain_index": 1,
-      "cost": 2.0
-    },
-    {
-      "roll_no": "23EE45",
-      "days": [
-        11,
-        12
-      ],
-      "shifts": [
-        "N",
-        "M"
-      ],
-      "gap_hours": 10.0,
-      "chain_index": 1,
-      "cost": 2.0
-    },
-    {
-      "roll_no": "23ME26",
-      "days": [
-        11,
-        12
+        18,
+        19
       ],
       "shifts": [
         "N",
@@ -1540,10 +1047,52 @@
       "cost": 2.0
     },
     {
+      "roll_no": "24CE63",
+      "days": [
+        5,
+        6
+      ],
+      "shifts": [
+        "N",
+        "M"
+      ],
+      "gap_hours": 10.0,
+      "chain_index": 1,
+      "cost": 2.0
+    },
+    {
+      "roll_no": "24CE63",
+      "days": [
+        18,
+        19
+      ],
+      "shifts": [
+        "N",
+        "M"
+      ],
+      "gap_hours": 10.0,
+      "chain_index": 1,
+      "cost": 2.0
+    },
+    {
       "roll_no": "24EC12",
       "days": [
         14,
         15
+      ],
+      "shifts": [
+        "N",
+        "M"
+      ],
+      "gap_hours": 10.0,
+      "chain_index": 1,
+      "cost": 2.0
+    },
+    {
+      "roll_no": "24EC33",
+      "days": [
+        4,
+        5
       ],
       "shifts": [
         "N",
@@ -1568,10 +1117,10 @@
       "cost": 2.0
     },
     {
-      "roll_no": "25CB05",
+      "roll_no": "25CB67",
       "days": [
-        15,
-        16
+        18,
+        19
       ],
       "shifts": [
         "N",
@@ -1582,7 +1131,7 @@
       "cost": 2.0
     },
     {
-      "roll_no": "25CS57",
+      "roll_no": "25CS17",
       "days": [
         5,
         6
@@ -1610,38 +1159,10 @@
       "cost": 2.0
     },
     {
-      "roll_no": "25EC03",
+      "roll_no": "25EC50",
       "days": [
-        7,
-        8
-      ],
-      "shifts": [
-        "N",
-        "M"
-      ],
-      "gap_hours": 10.0,
-      "chain_index": 1,
-      "cost": 2.0
-    },
-    {
-      "roll_no": "25EC28",
-      "days": [
-        15,
-        16
-      ],
-      "shifts": [
-        "N",
-        "M"
-      ],
-      "gap_hours": 10.0,
-      "chain_index": 1,
-      "cost": 2.0
-    },
-    {
-      "roll_no": "25EC46",
-      "days": [
-        16,
-        17
+        5,
+        6
       ],
       "shifts": [
         "N",
@@ -1664,31 +1185,9 @@
       "gap_hours": 10.0,
       "chain_index": 1,
       "cost": 2.0
-    },
-    {
-      "roll_no": "25ME44",
-      "days": [
-        11,
-        12
-      ],
-      "shifts": [
-        "N",
-        "M"
-      ],
-      "gap_hours": 10.0,
-      "chain_index": 1,
-      "cost": 2.0
     }
   ],
   "unfilled_slots": [
-    {
-      "day": 2,
-      "shift_id": "M",
-      "group": "Hospitality",
-      "required": 4,
-      "assigned": 2,
-      "missing": 2
-    },
     {
       "day": 3,
       "shift_id": "E",
@@ -1708,18 +1207,10 @@
     {
       "day": 3,
       "shift_id": "M",
-      "group": "CND",
-      "required": 5,
-      "assigned": 2,
-      "missing": 3
-    },
-    {
-      "day": 3,
-      "shift_id": "M",
       "group": "Hospitality",
       "required": 4,
-      "assigned": 1,
-      "missing": 3
+      "assigned": 0,
+      "missing": 4
     },
     {
       "day": 3,
@@ -1730,6 +1221,46 @@
       "missing": 2
     },
     {
+      "day": 5,
+      "shift_id": "E",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 2,
+      "missing": 3
+    },
+    {
+      "day": 5,
+      "shift_id": "E",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 5,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 1,
+      "missing": 2
+    },
+    {
+      "day": 5,
+      "shift_id": "M",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 6,
+      "shift_id": "E",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 4,
+      "missing": 1
+    },
+    {
       "day": 6,
       "shift_id": "M",
       "group": "MPR",
@@ -1738,8 +1269,8 @@
       "missing": 3
     },
     {
-      "day": 7,
-      "shift_id": "E",
+      "day": 6,
+      "shift_id": "M",
       "group": "SPONS",
       "required": 3,
       "assigned": 2,
@@ -1747,6 +1278,166 @@
     },
     {
       "day": 7,
+      "shift_id": "E",
+      "group": "CND",
+      "required": 5,
+      "assigned": 0,
+      "missing": 5
+    },
+    {
+      "day": 7,
+      "shift_id": "E",
+      "group": "MPR",
+      "required": 4,
+      "assigned": 2,
+      "missing": 2
+    },
+    {
+      "day": 7,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 7,
+      "shift_id": "M",
+      "group": "CND",
+      "required": 5,
+      "assigned": 0,
+      "missing": 5
+    },
+    {
+      "day": 7,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 0,
+      "missing": 5
+    },
+    {
+      "day": 7,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 7,
+      "shift_id": "M",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 1,
+      "missing": 2
+    },
+    {
+      "day": 7,
+      "shift_id": "N",
+      "group": "CND",
+      "required": 5,
+      "assigned": 3,
+      "missing": 2
+    },
+    {
+      "day": 7,
+      "shift_id": "N",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 1,
+      "missing": 4
+    },
+    {
+      "day": 8,
+      "shift_id": "M",
+      "group": "CND",
+      "required": 4,
+      "assigned": 0,
+      "missing": 4
+    },
+    {
+      "day": 8,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 8,
+      "shift_id": "M",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 10,
+      "shift_id": "E",
+      "group": "Hospitality",
+      "required": 4,
+      "assigned": 0,
+      "missing": 4
+    },
+    {
+      "day": 10,
+      "shift_id": "M",
+      "group": "CND",
+      "required": 4,
+      "assigned": 2,
+      "missing": 2
+    },
+    {
+      "day": 10,
+      "shift_id": "M",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 1,
+      "missing": 2
+    },
+    {
+      "day": 11,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 1,
+      "missing": 2
+    },
+    {
+      "day": 12,
+      "shift_id": "E",
+      "group": "CND",
+      "required": 4,
+      "assigned": 1,
+      "missing": 3
+    },
+    {
+      "day": 12,
+      "shift_id": "E",
+      "group": "Hospitality",
+      "required": 4,
+      "assigned": 1,
+      "missing": 3
+    },
+    {
+      "day": 12,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 12,
+      "shift_id": "M",
+      "group": "CND",
+      "required": 5,
+      "assigned": 1,
+      "missing": 4
+    },
+    {
+      "day": 12,
       "shift_id": "M",
       "group": "Hospitality",
       "required": 5,
@@ -1754,107 +1445,91 @@
       "missing": 4
     },
     {
-      "day": 7,
-      "shift_id": "M",
-      "group": "MPR",
-      "required": 3,
-      "assigned": 0,
-      "missing": 3
-    },
-    {
-      "day": 8,
-      "shift_id": "M",
-      "group": "CND",
-      "required": 4,
-      "assigned": 2,
-      "missing": 2
-    },
-    {
-      "day": 8,
-      "shift_id": "M",
-      "group": "MPR",
-      "required": 3,
-      "assigned": 2,
-      "missing": 1
-    },
-    {
-      "day": 10,
-      "shift_id": "E",
-      "group": "Hospitality",
-      "required": 4,
-      "assigned": 3,
-      "missing": 1
-    },
-    {
-      "day": 10,
-      "shift_id": "M",
-      "group": "CND",
-      "required": 4,
-      "assigned": 2,
-      "missing": 2
-    },
-    {
       "day": 12,
-      "shift_id": "E",
-      "group": "CND",
+      "shift_id": "M",
+      "group": "MPR",
       "required": 4,
       "assigned": 0,
       "missing": 4
     },
     {
       "day": 12,
-      "shift_id": "E",
-      "group": "Hospitality",
-      "required": 4,
-      "assigned": 2,
-      "missing": 2
-    },
-    {
-      "day": 12,
-      "shift_id": "E",
+      "shift_id": "M",
       "group": "SPONS",
       "required": 3,
-      "assigned": 2,
-      "missing": 1
+      "assigned": 0,
+      "missing": 3
     },
     {
-      "day": 12,
+      "day": 13,
       "shift_id": "M",
-      "group": "MPR",
-      "required": 4,
-      "assigned": 3,
-      "missing": 1
-    },
-    {
-      "day": 14,
-      "shift_id": "E",
       "group": "MPR",
       "required": 3,
-      "assigned": 1,
-      "missing": 2
-    },
-    {
-      "day": 14,
-      "shift_id": "M",
-      "group": "Hospitality",
-      "required": 4,
-      "assigned": 1,
+      "assigned": 0,
       "missing": 3
     },
     {
       "day": 14,
+      "shift_id": "E",
+      "group": "Hospitality",
+      "required": 4,
+      "assigned": 0,
+      "missing": 4
+    },
+    {
+      "day": 14,
+      "shift_id": "E",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 14,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 1,
+      "missing": 2
+    },
+    {
+      "day": 14,
+      "shift_id": "M",
+      "group": "CND",
+      "required": 5,
+      "assigned": 0,
+      "missing": 5
+    },
+    {
+      "day": 14,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 4,
+      "assigned": 0,
+      "missing": 4
+    },
+    {
+      "day": 14,
       "shift_id": "M",
       "group": "MPR",
       "required": 3,
-      "assigned": 2,
-      "missing": 1
+      "assigned": 1,
+      "missing": 2
     },
     {
       "day": 14,
       "shift_id": "M",
       "group": "SPONS",
       "required": 3,
-      "assigned": 2,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 14,
+      "shift_id": "N",
+      "group": "CND",
+      "required": 5,
+      "assigned": 4,
       "missing": 1
     },
     {
@@ -1867,8 +1542,24 @@
     },
     {
       "day": 16,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 16,
       "shift_id": "M",
       "group": "CND",
+      "required": 5,
+      "assigned": 0,
+      "missing": 5
+    },
+    {
+      "day": 16,
+      "shift_id": "M",
+      "group": "Hospitality",
       "required": 5,
       "assigned": 3,
       "missing": 2
@@ -1878,8 +1569,48 @@
       "shift_id": "M",
       "group": "MPR",
       "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 17,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 4,
+      "assigned": 3,
+      "missing": 1
+    },
+    {
+      "day": 18,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 3,
       "assigned": 2,
       "missing": 1
+    },
+    {
+      "day": 19,
+      "shift_id": "E",
+      "group": "CND",
+      "required": 4,
+      "assigned": 1,
+      "missing": 3
+    },
+    {
+      "day": 19,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 1,
+      "missing": 2
+    },
+    {
+      "day": 19,
+      "shift_id": "N",
+      "group": "Hospitality",
+      "required": 4,
+      "assigned": 1,
+      "missing": 3
     }
   ]
 }

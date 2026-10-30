@@ -95,7 +95,7 @@
     "25EE49": 16.0,
     "25ME55": 16.0
   },
-  "overwork_accounting": "Overwork is charged on non-overlapping accounting windows of rolling_window_days starting at day 1 (days 1-7, 8-14, 15-21, 22-28 by default; the last window may be shorter). In each window, shifts are taken in day order and every shift that takes the student's hours above their cap is one extra shift (with 4 h shifts and a 20 h cap: extra = shifts - floor(20/4)). Extra shifts in a window are priced by the tier table (2, 4, then 6 each) and the student is charged the sum over their windows. The worst rolling window per student is reported for information only and is not charged.",
+  "overwork_accounting": "Overwork is charged on every rolling window of rolling_window_days (days 1-7, 2-8, 3-9, ... by default; the last window ends at the horizon). In each window, shifts are taken in day order and every shift that takes the student's hours above their cap is one extra shift (with 4 h shifts and a 20 h cap: extra = shifts - floor(20/4)). Extra shifts in a window are priced by the tier table (2, 4, then 6 each) and the student is charged the sum over all their windows. The worst rolling window per student is also reported for information.",
   "overwork_by_student": {},
   "streak_by_student": {},
   "rest_violations": [],

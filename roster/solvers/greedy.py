@@ -7,8 +7,9 @@ Algorithm
    busiest peak days, then Night shifts. Ties use a seeded RNG so a run is
    reproducible for a given seed.
 3. Fill each slot one headcount at a time. A candidate is any member of the
-   slot's group who is not already working that day. Candidates are ranked by
-   the *marginal* rule cost they would add (overwork, streak and rest, priced
+   slot's group who is not already working that day and who would not push any
+   rolling window above the enabled hard ceiling. Candidates are ranked by the
+   *marginal* rule cost they would add (overwork, streak and rest, priced
    exactly like ``evaluator.py``), with small tie-breakers for fairness and
    preferences. The cheapest candidate is taken.
 4. If the cheapest candidate still adds more rule cost than leaving the slot
@@ -27,7 +28,7 @@ import random
 import time
 from typing import TYPE_CHECKING
 
-from ..evaluator import accounting_windows, extra_shifts, rest_gap
+from ..evaluator import extra_shifts, rest_gap, rolling_windows
 from ..rules import Rules, overwork_penalty, rest_chain_penalty
 from .base import Roster
 
@@ -48,15 +49,15 @@ def _rule_totals(
 ) -> tuple[float, float, float]:
     """Return (overwork, streak, rest) cost for one student's worked days.
 
-    Mirrors the pricing in ``roster.evaluator``: non-overlapping accounting
-    windows for overwork, runs of worked days for streak days, and numbered
-    short-rest pairs within one unbroken run for rest.
+    Mirrors the pricing in ``roster.evaluator``: every rolling window for
+    overwork, runs of worked days for streak days, and numbered short-rest pairs
+    within one unbroken run for rest.
     """
     horizon = case.horizon_days
     hours_on = {day: float(case.shifts[shift_id].hours) for day, shift_id in worked.items()}
 
     overwork = 0.0
-    for start, end in accounting_windows(horizon, rules.rolling_window_days):
+    for start, end in rolling_windows(horizon, rules.rolling_window_days):
         extra = extra_shifts(
             [hours_on[day] for day in range(start, end + 1) if day in hours_on], cap
         )
@@ -94,6 +95,23 @@ def _rule_totals(
                     increment=rules.penalty_rest_chain_increment,
                 )
     return overwork, streak, rest
+
+
+def _exceeds_hard_ceiling(
+    case: "Case",
+    rules: Rules,
+    worked: dict[int, str],
+    ceiling: float,
+) -> bool:
+    """True if any rolling window in ``worked`` is above the enabled ceiling."""
+    if ceiling <= 0:
+        return False
+    hours_on = {day: float(case.shifts[shift_id].hours) for day, shift_id in worked.items()}
+    for start, end in rolling_windows(case.horizon_days, rules.rolling_window_days):
+        total = sum(hours_on[day] for day in range(start, end + 1) if day in hours_on)
+        if total > ceiling + 1e-9:
+            return True
+    return False
 
 
 def _preference_term(case: "Case", roll_no: str, day: int, shift_id: str) -> float:
@@ -157,6 +175,7 @@ def solve(case: "Case", time_limit_s: float = 90.0, seed: int = 0) -> Roster:
         roll: float(student.max_weekly_hours or rules.weekly_cap_default_hours)
         for roll, student in case.students.items()
     }
+    ceiling = float(rules.hard_ceiling_hours_per_window)
     deadline = time.monotonic() + max(0.0, float(time_limit_s))
 
     for day, shift_id, group, required in _ordered_slots(case, seed):
@@ -180,6 +199,8 @@ def solve(case: "Case", time_limit_s: float = 90.0, seed: int = 0) -> Roster:
                 old_days = worked[roll_no]
                 new_days = dict(old_days)
                 new_days[day] = shift_id
+                if _exceeds_hard_ceiling(case, rules, new_days, ceiling):
+                    continue
 
                 base = rule_cost.get(roll_no)
                 if base is None:

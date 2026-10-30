@@ -6,7 +6,7 @@ import time
 import unittest
 from pathlib import Path
 
-from roster.case_io import load_case
+from roster.case_io import Case, Shift, Student, load_case
 from roster.evaluator import evaluate
 from roster.rules import Rules
 from roster.solvers.greedy import solve
@@ -18,6 +18,22 @@ CASES = {
     "case_03": ROOT / "test" / "case_03_overloaded_20d",
     "case_04": ROOT / "test" / "case_04_small_7d",
 }
+
+
+def one_student_case(horizon, demand_days, config=None):
+    """A tiny MPR case with one 20 h student and 4 h Morning shifts."""
+    student = Student("S1", "Solo", "MPR", 20.0)
+    shift = Shift("M", "Morning", "11:00", "15:00", 4.0, False)
+    return Case(
+        horizon_days=horizon,
+        students={student.roll_no: student},
+        by_group={"MPR": [student.roll_no]},
+        shifts={shift.shift_id: shift},
+        shift_order=[shift.shift_id],
+        demand={(day, "M", "MPR"): 1 for day in demand_days},
+        prefs={},
+        config={"horizon_days": horizon, **(config or {})},
+    )
 
 
 class GreedySolverTests(unittest.TestCase):
@@ -56,6 +72,37 @@ class GreedySolverTests(unittest.TestCase):
             for cell, assigned in counts.items():
                 self.assertLessEqual(assigned, case.demand[cell])
 
+    def test_hard_ceiling_blocks_a_candidate(self):
+        case = one_student_case(
+            2, (1, 2), {"hard_ceiling_hours_per_window": 4}
+        )
+        rules = Rules.from_case(case)
+        roster = solve(case, 90.0, seed=1)
+        self.assertEqual(len(roster), 1)
+        report = evaluate(case, rules, roster)
+        self.assertTrue(report.hard_pass, report.hard_breaches)
+        self.assertEqual(report.unfilled_total, 1)
+
+    def test_disabled_hard_ceiling_allows_both_days(self):
+        case = one_student_case(2, (1, 2))
+        rules = Rules.from_case(case)
+        self.assertEqual(rules.hard_ceiling_hours_per_window, 0)
+        roster = solve(case, 90.0, seed=1)
+        self.assertEqual(len(roster), 2)
+        self.assertTrue(evaluate(case, rules, roster).hard_pass)
+
+    def test_overwork_is_priced_across_a_week_boundary(self):
+        days = (3, 4, 5, 7, 8, 9)
+        case = one_student_case(9, days, {"rolling_window_days": 7})
+        rules = Rules.from_case(case)
+        roster = solve(case, 90.0, seed=1)
+        self.assertEqual(len(roster), 6)
+        report = evaluate(case, rules, roster)
+        self.assertEqual(report.cost_components["overwork"], 2)
+        info = report.overwork_by_student["S1"]
+        self.assertEqual(info["worst_rolling_extra_shifts"], 1)
+        self.assertIn([3, 9], [window["days"] for window in info["charged_windows"]])
+
     def test_one_shift_per_day_by_construction(self):
         roster = self.rosters["case_01"]
         seen = set()
@@ -68,7 +115,7 @@ class GreedySolverTests(unittest.TestCase):
             with self.subTest(case=name):
                 cost = self.reports[name].total_cost
                 self.assertTrue(cost == cost)  # not NaN
-                self.assertLess(cost, 1.0)
+                self.assertLess(cost, 5.0)
 
     def test_overloaded_case_leaves_gaps_instead_of_failing(self):
         report = self.reports["case_03"]

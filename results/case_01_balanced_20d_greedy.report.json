@@ -10,67 +10,67 @@
   },
   "cost_components": {
     "unfilled": 0.0,
-    "overwork": 0.0,
+    "overwork": 2.0,
     "streak": 0.0,
     "rest": 0.0,
-    "preference": 0.014159,
-    "fairness": 0.006875,
-    "isolated": 0.009739
+    "preference": 0.012832,
+    "fairness": 0.008125,
+    "isolated": 0.010141
   },
-  "total_cost": 0.030773,
-  "preference_satisfaction_pct": 71.6814,
+  "total_cost": 2.031097,
+  "preference_satisfaction_pct": 74.3363,
   "workload_spread_by_group": {
-    "MPR": 4.0,
+    "MPR": 8.0,
     "CND": 16.0,
-    "Hospitality": 16.0,
+    "Hospitality": 20.0,
     "SPONS": 8.0
   },
-  "isolated_dayoffs": 291,
+  "isolated_dayoffs": 303,
   "per_student_hours": {
-    "22CB03": 52.0,
+    "22CB03": 48.0,
     "22CE20": 48.0,
-    "22CE37": 48.0,
-    "22CE48": 48.0,
-    "22CE58": 48.0,
+    "22CE37": 52.0,
+    "22CE48": 44.0,
+    "22CE58": 52.0,
     "22CS05": 48.0,
-    "22CS60": 48.0,
+    "22CS60": 44.0,
     "22CS65": 48.0,
     "22CS76": 48.0,
     "22EC41": 48.0,
-    "22EC78": 44.0,
+    "22EC78": 48.0,
     "22EE10": 48.0,
-    "22EE15": 48.0,
-    "22EE50": 44.0,
+    "22EE15": 52.0,
+    "22EE50": 48.0,
     "22EE74": 48.0,
-    "22ME31": 48.0,
-    "22ME39": 52.0,
-    "22ME54": 48.0,
+    "22ME31": 52.0,
+    "22ME39": 48.0,
+    "22ME54": 44.0,
     "22ME57": 48.0,
     "22ME68": 48.0,
     "22ME82": 48.0,
     "23CB08": 48.0,
-    "23CB36": 48.0,
+    "23CB36": 52.0,
     "23CB42": 48.0,
-    "23CE07": 48.0,
+    "23CE07": 44.0,
     "23CE21": 48.0,
-    "23CE40": 48.0,
+    "23CE40": 44.0,
     "23CE72": 48.0,
     "23CS34": 48.0,
     "23EC04": 48.0,
-    "23EC18": 48.0,
-    "23EC22": 48.0,
+    "23EC18": 44.0,
+    "23EC22": 44.0,
     "23EC25": 52.0,
     "23EC33": 44.0,
     "23EC53": 44.0,
-    "23EE17": 48.0,
+    "23EE17": 44.0,
     "23EE62": 48.0,
-    "23EE79": 48.0,
+    "23EE79": 44.0,
     "23EE83": 52.0,
     "23ME28": 48.0,
     "23ME32": 48.0,
     "23ME47": 48.0,
     "23ME51": 48.0,
-    "23ME55": 36.0,
+    "23ME55": 32.0,
     "23ME70": 44.0,
     "24CB66": 48.0,
     "24CE24": 44.0,
@@ -79,18 +79,18 @@
     "24CE77": 48.0,
     "24CS09": 48.0,
     "24CS26": 48.0,
-    "24CS43": 36.0,
+    "24CS43": 32.0,
     "24CS46": 44.0,
-    "24CS59": 44.0,
-    "24EC14": 48.0,
+    "24CS59": 48.0,
+    "24EC14": 52.0,
     "24EC19": 48.0,
     "24EC29": 48.0,
     "24EC73": 52.0,
     "24EE81": 48.0,
     "24ME52": 44.0,
     "24ME80": 52.0,
-    "25CB06": 48.0,
-    "25CB16": 48.0,
+    "25CB06": 52.0,
+    "25CB16": 52.0,
     "25CB35": 36.0,
     "25CB69": 48.0,
     "25CE01": 48.0,
@@ -99,417 +99,36 @@
     "25CS38": 48.0,
     "25CS56": 48.0,
     "25CS71": 48.0,
-    "25CS75": 44.0,
+    "25CS75": 48.0,
     "25EC11": 48.0,
     "25EC12": 48.0,
     "25EC44": 48.0,
     "25EC49": 48.0,
-    "25EC63": 48.0,
+    "25EC63": 44.0,
     "25EE13": 48.0,
-    "25EE61": 48.0,
+    "25EE61": 52.0,
     "25ME23": 48.0,
-    "25ME45": 44.0,
+    "25ME45": 48.0,
     "25ME64": 48.0
   },
-  "overwork_accounting": "Overwork is charged on non-overlapping accounting windows of rolling_window_days starting at day 1 (days 1-7, 8-14, 15-21, 22-28 by default; the last window may be shorter). In each window, shifts are taken in day order and every shift that takes the student's hours above their cap is one extra shift (with 4 h shifts and a 20 h cap: extra = shifts - floor(20/4)). Extra shifts in a window are priced by the tier table (2, 4, then 6 each) and the student is charged the sum over their windows. The worst rolling window per student is reported for information only and is not charged.",
+  "overwork_accounting": "Overwork is charged on every rolling window of rolling_window_days (days 1-7, 2-8, 3-9, ... by default; the last window ends at the horizon). In each window, shifts are taken in day order and every shift that takes the student's hours above their cap is one extra shift (with 4 h shifts and a 20 h cap: extra = shifts - floor(20/4)). Extra shifts in a window are priced by the tier table (2, 4, then 6 each) and the student is charged the sum over all their windows. The worst rolling window per student is also reported for information.",
   "overwork_by_student": {
-    "22CB03": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        7,
-        13
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22CE20": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        5,
-        11
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22CE48": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22CS05": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        5,
-        11
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22CS60": {
-      "cap_hours": 16.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        9,
-        15
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22EC41": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        12,
-        18
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22EE74": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        14,
-        20
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22ME39": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22ME57": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        14,
-        20
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "22ME82": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        14,
-        20
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23CB42": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        5,
-        11
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23CE07": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23CE21": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        3,
-        9
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23CE40": {
-      "cap_hours": 16.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        12,
-        18
-      ],
-      "worst_rolling_extra_shifts": 2
-    },
-    "23CE72": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        10,
-        16
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23EC04": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        6,
-        12
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23EC22": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        13,
-        19
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23EE17": {
-      "cap_hours": 16.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        13,
-        19
-      ],
-      "worst_rolling_extra_shifts": 2
-    },
-    "23EE62": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        9,
-        15
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23EE79": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        7,
-        13
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23ME32": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        9,
-        15
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23ME47": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        5,
-        11
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23ME55": {
-      "cap_hours": 12.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        2,
-        8
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "23ME70": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        10,
-        16
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24CE24": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        6,
-        12
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24CE67": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        13,
-        19
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
     "24CS09": {
       "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        3,
-        9
+      "charged_windows": [
+        {
+          "days": [
+            8,
+            14
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
       ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24CS43": {
-      "cap_hours": 12.0,
-      "charged_windows": [],
-      "cost": 0.0,
+      "cost": 2.0,
       "worst_rolling_window": [
-        2,
-        8
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24CS46": {
-      "cap_hours": 16.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        5,
-        11
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24EC19": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24EC73": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        13,
-        19
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "24ME52": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        11,
-        17
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25CB06": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        2,
-        8
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25CB35": {
-      "cap_hours": 12.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        9,
-        15
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25CB69": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        13,
-        19
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25CS38": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        2,
-        8
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25EC11": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        9,
-        15
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25EC63": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        5,
-        11
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25ME45": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        2,
-        8
-      ],
-      "worst_rolling_extra_shifts": 1
-    },
-    "25ME64": {
-      "cap_hours": 20.0,
-      "charged_windows": [],
-      "cost": 0.0,
-      "worst_rolling_window": [
-        4,
-        10
+        8,
+        14
       ],
       "worst_rolling_extra_shifts": 1
     }

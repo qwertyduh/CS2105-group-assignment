@@ -1,11 +1,11 @@
 Greedy baseline - run.py, seed 1, 90 s limit
-Evaluated by roster/evaluator.py on 2026-10-30.
+Evaluated by roster/evaluator.py on 2026-10-31.
 Format: case  total_cost  hard_pass  unfilled  runtime  (components)
 
-case_01_balanced_20d    total_cost=0.0308  hard_pass=True  unfilled=0  runtime=0.169s  (unfilled=0, overwork=0, streak=0, rest=0, preference=0.0141593, fairness=0.006875, isolated=0.00973896)
-case_02_tight_28d       total_cost=64.0430 hard_pass=True  unfilled=2  runtime=0.159s  (unfilled=6, overwork=52, streak=0, rest=6, preference=0.0245902, fairness=0.00758929, isolated=0.0108392)
-case_03_overloaded_20d  total_cost=328.0462 hard_pass=True unfilled=51 runtime=0.170s  (unfilled=153, overwork=122, streak=0, rest=53, preference=0.0248428, fairness=0.010625, isolated=0.0107143)
-case_04_small_7d        total_cost=0.0287  hard_pass=True  unfilled=0  runtime=0.030s  (unfilled=0, overwork=0, streak=0, rest=0, preference=0.00958333, fairness=0.0107143, isolated=0.00835821)
+case_01_balanced_20d    total_cost=2.0311  hard_pass=True  unfilled=0  runtime=0.125s  (unfilled=0, overwork=2, streak=0, rest=0, preference=0.0128319, fairness=0.008125, isolated=0.0101406)
+case_02_tight_28d       total_cost=299.0456 hard_pass=True  unfilled=59 runtime=0.127s  (unfilled=177, overwork=94, streak=0, rest=28, preference=0.0241803, fairness=0.0111607, isolated=0.0102448)
+case_03_overloaded_20d  total_cost=571.0477 hard_pass=True unfilled=145 runtime=0.107s  (unfilled=435, overwork=92, streak=0, rest=44, preference=0.0226415, fairness=0.01375, isolated=0.0112698)
+case_04_small_7d        total_cost=0.0287  hard_pass=True  unfilled=0  runtime=0.012s  (unfilled=0, overwork=0, streak=0, rest=0, preference=0.00958333, fairness=0.0107143, isolated=0.00835821)
 
 All four cases pass the hard rules. Results written to results/<case>_greedy.roster.csv and
 results/<case>_greedy.report.json. Regenerate with:
