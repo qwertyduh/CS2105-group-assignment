@@ -47,13 +47,13 @@ from .solvers.base import Roster, read_roster
 GROUPS = ("MPR", "CND", "Hospitality", "SPONS")
 
 OVERWORK_ACCOUNTING = (
-    "Overwork is charged on non-overlapping accounting windows of rolling_window_days "
-    "starting at day 1 (days 1-7, 8-14, 15-21, 22-28 by default; the last window may be "
-    "shorter). In each window, shifts are taken in day order and every shift that takes "
-    "the student's hours above their cap is one extra shift (with 4 h shifts and a 20 h "
-    "cap: extra = shifts - floor(20/4)). Extra shifts in a window are priced by the tier "
-    "table (2, 4, then 6 each) and the student is charged the sum over their windows. "
-    "The worst rolling window per student is reported for information only and is not charged."
+    "Overwork is charged on every rolling window of rolling_window_days (days 1-7, 2-8, "
+    "3-9, ... by default; the last window ends at the horizon). In each window, shifts are "
+    "taken in day order and every shift that takes the student's hours above their cap is "
+    "one extra shift (with 4 h shifts and a 20 h cap: extra = shifts - floor(20/4)). Extra "
+    "shifts in a window are priced by the tier table (2, 4, then 6 each) and the student is "
+    "charged the sum over all their windows. The worst rolling window per student is also "
+    "reported for information."
 )
 
 
@@ -73,10 +73,6 @@ def rest_gap(case: Case, shift_a: str, shift_b: str, day_gap: int = 1) -> float:
     end_a = _hours_of(a.start) + float(a.hours)
     start_b = 24 * day_gap + _hours_of(b.start)
     return start_b - end_a
-
-
-def accounting_windows(horizon: int, length: int) -> list[tuple[int, int]]:
-    return [(start, min(start + length - 1, horizon)) for start in range(1, horizon + 1, length)]
 
 
 def rolling_windows(horizon: int, length: int) -> list[tuple[int, int]]:
@@ -192,7 +188,6 @@ def evaluate(case: Case, rules: Rules, roster: Roster, load_breaches: list[str] 
     report.unfilled_total = sum(unfilled_by_group.values())
 
     window = rules.rolling_window_days
-    acc_windows = accounting_windows(horizon, window)
     roll_windows = rolling_windows(horizon, window)
     ceiling = rules.hard_ceiling_hours_per_window
 
@@ -208,8 +203,10 @@ def evaluate(case: Case, rules: Rules, roster: Roster, load_breaches: list[str] 
 
         charged = []
         cost = 0.0
-        for start, end in acc_windows:
-            extra = extra_shifts([hours_on[d] for d in range(start, end + 1) if d in hours_on], cap)
+        worst_extra, worst_window = 0, None
+        for start, end in roll_windows:
+            win_hours = [hours_on[d] for d in range(start, end + 1) if d in hours_on]
+            extra = extra_shifts(win_hours, cap)
             if extra:
                 penalty = overwork_penalty(
                     extra,
@@ -219,10 +216,6 @@ def evaluate(case: Case, rules: Rules, roster: Roster, load_breaches: list[str] 
                 )
                 charged.append({"days": [start, end], "extra_shifts": extra, "cost": penalty})
                 cost += penalty
-        worst_extra, worst_window = 0, None
-        for start, end in roll_windows:
-            win_hours = [hours_on[d] for d in range(start, end + 1) if d in hours_on]
-            extra = extra_shifts(win_hours, cap)
             if extra > worst_extra:
                 worst_extra, worst_window = extra, [start, end]
             if ceiling and sum(win_hours) > ceiling + 1e-9:

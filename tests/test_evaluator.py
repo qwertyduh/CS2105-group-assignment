@@ -234,7 +234,8 @@ class EvaluatorCase04(unittest.TestCase):
             {"unfilled", "overwork", "streak", "rest", "preference", "fairness", "isolated"},
         )
         self.assertAlmostEqual(data["total_cost"], sum(data["cost_components"].values()), places=5)
-        self.assertIn("non-overlapping", data["overwork_accounting"])
+        self.assertIn("rolling window", data["overwork_accounting"])
+        self.assertNotIn("non-overlapping", data["overwork_accounting"])
         json.dumps(data)
 
 
