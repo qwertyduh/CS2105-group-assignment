@@ -1,0 +1,1 @@
+"""Festival shift roster optimizer."""
