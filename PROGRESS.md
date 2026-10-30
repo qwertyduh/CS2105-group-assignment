@@ -27,6 +27,20 @@ python3 -m unittest -v
 python3 -m roster.case_io test/case_01_balanced_20d
 ```
 
+### Rules and penalty helpers — A2
+
+- Added `roster/rules.py` with a frozen `Rules` dataclass typed to the config keys, the documented defaults, and `Rules.from_case` for per-case overrides.
+- Unknown config keys, non-numeric values and fractional integer fields raise `RulesError`; they are never silently ignored.
+- Recorded the two hard rules as module docstring text and as `HARD_ONE_SHIFT_PER_DAY`, `HARD_SKILL_MATCHING` and `HARD_RULES` constants, each with its reason.
+- Added pure helpers: `rest_gap_hours` (including Night-to-next-day wraparound), `short_rest`, `overwork_penalty` and `rest_chain_penalty`. The last three accept the configured rule values as optional arguments.
+- Added `python3 -m roster.rules`, which prints every rule, its default value and description, followed by the hard rules.
+- Added 22 unit tests in `tests/test_rules.py`; the full suite now passes 37 tests.
+
+```sh
+python3 -m roster.rules
+python3 -m unittest -v
+```
+
 ## Validation follow-ups
 
 - Reject invalid numeric inputs consistently: negative weekly caps and rolling-window lengths currently pass validation, as do `NaN` shift hours.
