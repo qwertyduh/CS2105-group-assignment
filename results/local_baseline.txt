@@ -1,0 +1,13 @@
+Local search baseline - run.py, seed 1, 60 s limit
+Evaluated by roster/evaluator.py on 2026-10-31.
+Format: case  total_cost  hard_pass  unfilled  improvement_vs_greedy  runtime  (components)
+
+case_01_balanced_20d    total_cost=0.0366  hard_pass=True  unfilled=0    improvement=98.196%  runtime=47.609s  (unfilled=0, overwork=0, streak=0, rest=0, preference=0.0163717, fairness=0.010625, isolated=0.00963855)
+case_02_tight_28d       total_cost=127.0555 hard_pass=True  unfilled=27   improvement=57.513%  runtime=51.913s  (unfilled=81, overwork=46, streak=0, rest=0, preference=0.0331967, fairness=0.0102679, isolated=0.012028)
+case_03_overloaded_20d  total_cost=427.0491 hard_pass=True  unfilled=131  improvement=25.217%  runtime=42.859s  (unfilled=393, overwork=34, streak=0, rest=0, preference=0.0238994, fairness=0.01375, isolated=0.0114286)
+case_04_small_7d        total_cost=0.0113  hard_pass=True  unfilled=0    improvement=60.697%  runtime=22.125s  (unfilled=0, overwork=0, streak=0, rest=0, preference=0.000416667, fairness=0.0107143, isolated=0.000149254)
+
+All four cases pass the hard rules and improve on the greedy baseline.
+Results written to results/<case>_local.roster.csv and
+results/<case>_local.report.json. Regenerate with:
+  python -m roster.run local test/<case> --seed 1 --time 60
