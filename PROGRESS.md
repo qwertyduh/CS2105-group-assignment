@@ -1,6 +1,6 @@
 # Festival Shift Roster Optimizer Progress
 
-Updated: 30 October 2026
+Updated: 31 October 2026
 
 ## Completed
 
@@ -48,6 +48,7 @@ python3 -m unittest -v
 - A slot is left unfilled only when the cheapest candidate costs more than `penalty_unfilled_slot`; rosters are never overstaffed and use only own-group members.
 - Added `roster/run.py` (`python3 -m roster.run greedy <case> --seed N`) which writes `results/<case>_greedy.roster.csv` and `.report.json` and prints cost, hard pass, unfilled count and runtime.
 - Added 11 tests in `tests/test_greedy.py`; the full suite passes 72 tests.
+- Review correction (PR #3, approved and merged): overwork is now priced on every rolling window in both the evaluator and solver, and an enabled hard ceiling is enforced before accepting a candidate. Regression tests cover the ceiling and a cross-boundary overwork case.
 - Baseline costs (`results/greedy_baseline.txt`, seed 1): case_01 2.0311, case_02 299.0456, case_03 571.0477, case_04 0.0287. All four pass the hard rules.
 
 ```sh
