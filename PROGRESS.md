@@ -56,6 +56,20 @@ python3 -m roster.run greedy test/case_01_balanced_20d --seed 1
 python3 -m unittest discover -s tests -v
 ```
 
+### Local search solver — A5
+
+- Added `roster/solvers/local_search.py`: simulated annealing over the greedy roster with reassign, swap, fill, drop and shift-change moves.
+- Maintains per-student worked days, rule costs, preferences, isolated days and hours, plus per-cell coverage and group spreads, so each move's delta only recomputes the affected students, days, cells and group.
+- Starting temperature is calibrated on sampled worsening moves to accept about 30% of them; cooling is geometric, with one reheat after a long stagnation. The best roster seen is always returned.
+- `--debug` (or `ROSTER_LOCAL_DEBUG=1`) cross-checks the incremental total against `evaluator.evaluate` every 1000 accepted moves and at the end.
+- Added 6 tests in `tests/test_local_search.py`; the full suite passes 78 tests.
+- Baseline costs (`results/local_baseline.txt`, seed 1, 60 s): case_01 0.0366 (−98.20%), case_02 127.0555 (−57.51%), case_03 427.0491 (−25.22%), case_04 0.0113 (−60.70%). All four pass the hard rules.
+
+```sh
+python3 -m roster.run local test/case_01_balanced_20d --seed 1 --time 60
+python3 -m unittest -v tests.test_local_search
+```
+
 ## Validation follow-ups
 
 - Reject invalid numeric inputs consistently: negative weekly caps and rolling-window lengths currently pass validation, as do `NaN` shift hours.

@@ -3,13 +3,16 @@
 Examples::
 
     python -m roster.run greedy test/case_01_balanced_20d --seed 1
-    python -m roster.run greedy test/case_02_tight_28d --seed 1 --time 30
+    python -m roster.run local test/case_01_balanced_20d --seed 1 --time 60
+    python -m roster.run local test/case_04_small_7d --seed 1 --time 5 --debug
 
 The roster is written to ``results/<case>_<solver>.roster.csv`` and the
 evaluator report beside it as ``results/<case>_<solver>.report.json``. The
-command prints the total cost and runtime. Only the greedy solver exists at
-the moment; ``local`` and ``cpsat`` are wired up so later phases can drop in
-their modules without changing this CLI.
+command prints the total cost and runtime. Greedy and local search are
+implemented; ``cpsat`` is wired up so a later phase can drop in its module
+without changing this CLI. ``--debug`` makes local search cross-check its
+incremental cost against the evaluator every 1000 accepted moves and at the
+end.
 """
 
 from __future__ import annotations
@@ -26,14 +29,19 @@ from .rules import Rules, RulesError
 from .solvers.base import Roster, save_roster
 
 
-def _run_solver(name: str, case: Case, time_limit_s: float, seed: int) -> Roster:
+def _run_solver(
+    name: str,
+    case: Case,
+    time_limit_s: float,
+    seed: int,
+    debug: bool = False,
+) -> Roster:
     if name == "greedy":
         from .solvers.greedy import solve
     elif name == "local":
-        try:
-            from .solvers.local_search import solve
-        except ImportError as exc:
-            raise SystemExit(f"solver 'local' is not implemented yet ({exc})") from exc
+        from .solvers.local_search import solve
+
+        return solve(case, time_limit_s, seed, debug=debug)
     elif name == "cpsat":
         try:
             from .solvers.cpsat import solve
@@ -88,6 +96,11 @@ def build_parser() -> argparse.ArgumentParser:
         run_parser.add_argument("--seed", type=int, default=1)
         run_parser.add_argument("--time", dest="time_limit_s", type=float, default=90.0)
         run_parser.add_argument("--out-dir", default="results")
+        run_parser.add_argument(
+            "--debug",
+            action="store_true",
+            help="cross-check local search's incremental cost against the evaluator",
+        )
 
     repair_parser = subparsers.add_parser("repair", help="re-optimize after a sick call")
     repair_parser.add_argument("case_folder")
@@ -131,7 +144,13 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     started = time.perf_counter()
-    roster = _run_solver(args.command, case, args.time_limit_s, args.seed)
+    roster = _run_solver(
+        args.command,
+        case,
+        args.time_limit_s,
+        args.seed,
+        debug=getattr(args, "debug", False),
+    )
     runtime = time.perf_counter() - started
 
     report = evaluate(case, rules, roster)
