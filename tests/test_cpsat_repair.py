@@ -1,13 +1,18 @@
 import csv
+from itertools import product
+from unittest.mock import patch
 import random
 import time
 import unittest
 from pathlib import Path
 
-from roster.case_io import load_case
+from ortools.sat.python import cp_model
+
+from roster.case_io import Case, Shift, Student, load_case
 from roster.evaluator import evaluate
 from roster.rules import Rules
-from roster.solvers.cpsat import solve
+from roster.solvers.base import load_roster
+from roster.solvers.greedy import solve as greedy_solve
 from roster.repair.local_repair import repair as local_repair
 from roster.repair.cpsat_repair import repair as cpsat_repair
 
@@ -18,8 +23,8 @@ class TestCPSATRepair(unittest.TestCase):
         cls.case_01 = load_case("test/case_01_balanced_20d")
         cls.case_03 = load_case("test/case_03_overloaded_20d")
         
-        cls.roster_01 = solve(cls.case_01, time_limit_s=10, seed=1)
-        cls.roster_03 = solve(cls.case_03, time_limit_s=10, seed=1)
+        cls.roster_01 = load_roster("results/case_01_balanced_20d_cpsat.roster.csv")
+        cls.roster_03 = load_roster("results/case_03_overloaded_20d_cpsat.roster.csv")
 
     def test_balanced_repair(self):
         sick_roll, sick_day, sick_sh = None, None, None
@@ -55,8 +60,18 @@ class TestCPSATRepair(unittest.TestCase):
         )
         
         self.assertIsNotNone(res.reason)
-        self.assertIn("left day 5", res.reason)
         self.assertIn("unfilled penalty", res.reason)
+        group = self.case_03.students[sick_roll].group
+        shortages = []
+        for day in (sick_day, sick_day + 1):
+            for sh in self.case_03.shift_order:
+                assigned = sum(res.roster.get((s, day)) == sh
+                               for s in self.case_03.by_group[group])
+                if assigned < self.case_03.demand.get((day, sh, group), 0):
+                    shortages.append((day, sh))
+        self.assertTrue(shortages)
+        for day, sh in shortages:
+            self.assertIn(f"day {day} {sh}", res.reason)
 
     def test_unavailable_D1(self):
         sick_roll, sick_day, sick_sh = None, None, None
@@ -77,12 +92,12 @@ class TestCPSATRepair(unittest.TestCase):
         rules = Rules.from_case(self.case_01)
         assignments = [a for a in self.roster_01.items() if a[0][1] < self.case_01.horizon_days]
         
-        random.seed(42)
-        sampled = random.sample(assignments, 20)
+        rng = random.Random(42)
+        sampled = rng.sample(assignments, 20)
         
         results = []
         for idx, ((roll_no, day), sh) in enumerate(sampled):
-            unavailable = [day + 1] if random.random() > 0.5 else None
+            unavailable = [day + 1] if rng.random() > 0.5 else None
             
             t0 = time.perf_counter()
             loc_res = local_repair(
@@ -102,6 +117,22 @@ class TestCPSATRepair(unittest.TestCase):
             loc_cost = loc_rep.total_cost + 0.5 * len(loc_res.diff)
             
             cp_rep = evaluate(self.case_01, rules, cp_res.roster)
+            self.assertTrue(loc_rep.hard_pass, loc_rep.hard_breaches)
+            self.assertTrue(cp_rep.hard_pass, cp_rep.hard_breaches)
+            for result in (loc_res, cp_res):
+                self.assertNotIn((roll_no, day), result.roster)
+                if unavailable:
+                    self.assertNotIn((roll_no, day + 1), result.roster)
+                expected_diff = [
+                    (r, d, self.roster_01.get((r, d)), result.roster.get((r, d)))
+                    for r, d in sorted(set(self.roster_01) | set(result.roster))
+                    if self.roster_01.get((r, d)) != result.roster.get((r, d))
+                ]
+                self.assertEqual(result.diff, expected_diff)
+                for r, d, _old, _new in result.diff:
+                    self.assertIn(d, (day, day + 1))
+                    self.assertEqual(self.case_01.students[r].group,
+                                     self.case_01.students[roll_no].group)
             cp_cost = cp_rep.total_cost + 0.5 * len(cp_res.diff)
             
             cost_winner = 'tie'
@@ -136,6 +167,110 @@ class TestCPSATRepair(unittest.TestCase):
                 'local', 
                 "CP-SAT found a worse optimal solution than local search"
             )
+
+
+def tiny_case(horizon=1, **config):
+    students = {s: Student(s, s, "MPR", 8) for s in ("a", "b", "c")}
+    students["other"] = Student("other", "other", "CND", 20)
+    return Case(
+        horizon_days=horizon,
+        students=students,
+        by_group={"MPR": ["a", "b", "c"], "CND": ["other"]},
+        shifts={
+            "M": Shift("M", "Morning", "08:00", "12:00", 4, False),
+            "N": Shift("N", "Night", "23:00", "03:00", 4, True),
+        },
+        shift_order=["M", "N"],
+        demand={(d, sh, group): 1 for d in range(1, horizon + 1)
+                for sh in ("M", "N") for group in ("MPR", "CND")},
+        prefs={},
+        config={"weight_preference": 0, "weight_fairness": 0,
+                "weight_isolated_day_off": 0, **config},
+    )
+
+
+def repair_cost(case, result):
+    return evaluate(case, Rules.from_case(case), result.roster).total_cost + 0.5 * len(result.diff)
+
+
+class CPSATRepairRegressions(unittest.TestCase):
+    def test_unknown_reports_shortage_and_both_forced_removals(self):
+        case = tiny_case(2)
+        original = {("a", 1): "M", ("a", 2): "N", ("other", 1): "M"}
+        with patch.object(cp_model.CpSolver, "solve", return_value=cp_model.UNKNOWN):
+            result = cpsat_repair(case, original, "a", 1, "M", unavailable_days=[2])
+        self.assertEqual(result.roster, {("other", 1): "M"})
+        self.assertEqual(result.diff, [("a", 1, "M", None), ("a", 2, "N", None)])
+        self.assertIn("UNKNOWN", result.reason)
+        self.assertIn("day 1 M", result.reason)
+        self.assertIn("day 2 N", result.reason)
+        self.assertEqual(original[("a", 1)], "M")
+        self.assertTrue(evaluate(case, Rules.from_case(case), result.roster).hard_pass)
+
+    def test_feasible_solution_cannot_worsen_forced_removal_incumbent(self):
+        case = tiny_case()
+        original = {("a", 1): "M", ("b", 1): "N"}
+        # An empty group roster is feasible (coverage is soft), but needlessly
+        # drops b's shift. A time-limited first incumbent need not be optimal.
+        with patch.object(cp_model.CpSolver, "solve", return_value=cp_model.FEASIBLE), \
+             patch.object(cp_model.CpSolver, "boolean_value", return_value=False):
+            result = cpsat_repair(case, original, "a", 1, "M")
+        self.assertEqual(result.roster, {("b", 1): "N"})
+        self.assertEqual(result.diff, [("a", 1, "M", None)])
+
+    def test_reason_reports_shortage_moved_to_another_shift(self):
+        case = tiny_case()
+
+        def assignment(var):
+            return var.Name() == "x_b_1_M"
+        with patch.object(cp_model.CpSolver, "solve", return_value=cp_model.FEASIBLE), \
+             patch.object(cp_model.CpSolver, "boolean_value", side_effect=assignment):
+            # With an empty incumbent, this feasible repair is an improvement.
+            result = cpsat_repair(case, {("a", 1): "M"}, "a", 1, "M")
+        self.assertEqual(result.roster, {("b", 1): "M"})
+        self.assertIn("day 1 N", result.reason)
+        self.assertNotIn("day 1 M", result.reason)
+        self.assertIn("FEASIBLE", result.reason)
+
+    def test_final_day_and_unavailability_outside_window(self):
+        case = tiny_case(3)
+        original = {("a", 1): "N", ("a", 3): "M", ("other", 3): "M"}
+        result = cpsat_repair(case, original, "a", 3, "N", 2, 1, unavailable_days=[1, 4])
+        self.assertNotIn(("a", 3), result.roster)
+        self.assertEqual(result.roster[("a", 1)], "N")
+        self.assertEqual(result.roster[("other", 3)], "M")
+        self.assertEqual(original[("a", 3)], "M")
+        self.assertTrue(evaluate(case, Rules.from_case(case), result.roster).hard_pass)
+
+    def test_matches_exhaustive_window_optimum_with_frozen_rules(self):
+        # Every allowed two-day schedule is independently scored, including
+        # rolling caps/ceilings, short rest, streaks and frozen boundary days.
+        for ceiling, unavailable_next in product((0, 8), (False, True)):
+            with self.subTest(ceiling=ceiling, unavailable_next=unavailable_next):
+                case = tiny_case(4, rolling_window_days=3, max_consecutive_days=2,
+                                 hard_ceiling_hours_per_window=ceiling)
+                original = greedy_solve(case, 2, 1)
+                sick = next(s for s in case.by_group["MPR"] if (s, 2) in original)
+                result = cpsat_repair(case, original, sick, 2, original[(sick, 2)],
+                                      2, 1, unavailable_days=[3] if unavailable_next else None)
+                frozen = {(s, d): sh for (s, d), sh in original.items()
+                          if d not in (2, 3) or case.students[s].group != "MPR"}
+                self.assertEqual(frozen, {(s, d): sh for (s, d), sh in result.roster.items()
+                                         if d not in (2, 3) or case.students[s].group != "MPR"})
+                keys = [(s, d) for s in case.by_group["MPR"] for d in (2, 3)]
+                optimum = float("inf")
+                for values in product((None, "M", "N"), repeat=len(keys)):
+                    candidate = dict(frozen)
+                    candidate.update({k: v for k, v in zip(keys, values) if v is not None})
+                    if (sick, 2) in candidate or (unavailable_next and (sick, 3) in candidate):
+                        continue
+                    report = evaluate(case, Rules.from_case(case), candidate)
+                    if report.hard_pass:
+                        changes = sum(original.get(k) != candidate.get(k)
+                                      for k in set(original) | set(candidate))
+                        optimum = min(optimum, report.total_cost + 0.5 * changes)
+                self.assertTrue(evaluate(case, Rules.from_case(case), result.roster).hard_pass)
+                self.assertAlmostEqual(repair_cost(case, result), optimum)
 
 
 if __name__ == "__main__":
