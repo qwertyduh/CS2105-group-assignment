@@ -1,0 +1,22 @@
+CP-SAT baseline (seed=1, time_limit_s=90)
+========================================================================================
+case_01_balanced_20d: cost=0.0198 greedy_cost=2.0311 beat_greedy=True hard_pass=True unfilled=0 wall_time=4.82s gap=0.0000 (0.00%)
+  MPR          status=OPTIMAL   obj=0.0048 bound=0.0048 gap=0.0000 (0.00%) time_limit=23.80s workers=2 wall=1.94s
+  CND          status=OPTIMAL   obj=0.0052 bound=0.0052 gap=0.0000 (0.00%) time_limit=22.68s workers=2 wall=2.11s
+  Hospitality  status=OPTIMAL   obj=0.0051 bound=0.0051 gap=0.0000 (0.00%) time_limit=21.62s workers=2 wall=1.88s
+  SPONS        status=OPTIMAL   obj=0.0047 bound=0.0047 gap=0.0000 (0.00%) time_limit=21.90s workers=2 wall=4.71s
+case_02_tight_28d: cost=94.0412 greedy_cost=299.0456 beat_greedy=True hard_pass=True unfilled=18 wall_time=24.63s gap=4.0021 (4.26%)
+  MPR          status=FEASIBLE  obj=26.0110 bound=24.0098 gap=2.0012 (7.69%) time_limit=24.18s workers=2 wall=24.21s
+  CND          status=OPTIMAL   obj=20.0094 bound=20.0094 gap=0.0000 (0.00%) time_limit=21.94s workers=2 wall=16.45s
+  Hospitality  status=FEASIBLE  obj=28.0115 bound=26.0106 gap=2.0009 (7.14%) time_limit=22.76s workers=2 wall=22.80s
+  SPONS        status=OPTIMAL   obj=20.0093 bound=20.0093 gap=0.0000 (0.00%) time_limit=21.12s workers=2 wall=14.12s
+case_03_overloaded_20d: cost=389.0384 greedy_cost=571.0477 beat_greedy=True hard_pass=True unfilled=119 wall_time=23.91s gap=2.0008 (0.51%)
+  MPR          status=OPTIMAL   obj=98.0096 bound=98.0096 gap=0.0000 (0.00%) time_limit=23.45s workers=2 wall=11.30s
+  CND          status=FEASIBLE  obj=105.0102 bound=103.0094 gap=2.0008 (1.91%) time_limit=23.72s workers=2 wall=23.76s
+  Hospitality  status=OPTIMAL   obj=92.0091 bound=92.0091 gap=0.0000 (0.00%) time_limit=21.48s workers=2 wall=9.84s
+  SPONS        status=OPTIMAL   obj=94.0095 bound=94.0095 gap=0.0000 (0.00%) time_limit=21.35s workers=2 wall=8.62s
+case_04_small_7d: cost=0.0098 greedy_cost=0.0287 beat_greedy=True hard_pass=True unfilled=0 wall_time=0.74s gap=0.0000 (0.00%)
+  MPR          status=OPTIMAL   obj=0.0024 bound=0.0024 gap=0.0000 (0.00%) time_limit=23.15s workers=2 wall=0.49s
+  CND          status=OPTIMAL   obj=0.0026 bound=0.0026 gap=0.0000 (0.00%) time_limit=22.85s workers=2 wall=0.52s
+  Hospitality  status=OPTIMAL   obj=0.0025 bound=0.0025 gap=0.0000 (0.00%) time_limit=22.10s workers=2 wall=0.46s
+  SPONS        status=OPTIMAL   obj=0.0023 bound=0.0023 gap=0.0000 (0.00%) time_limit=21.90s workers=2 wall=0.51s

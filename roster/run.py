@@ -4,17 +4,16 @@ Examples::
 
     python -m roster.run greedy test/case_01_balanced_20d --seed 1
     python -m roster.run local test/case_01_balanced_20d --seed 1 --time 60
+    python -m roster.run cpsat test/case_01_balanced_20d --seed 1 --time 60
     python -m roster.run local test/case_04_small_7d --seed 1 --time 5 --debug
-    python -m roster.run repair test/case_04_small_7d \\
+    python -m roster.run repair test/case_04_small_7d \
         results/case_04_small_7d_greedy.roster.csv --sick 22CS01 --day 5
 
 The roster is written to ``results/<case>_<solver>.roster.csv`` and the
 evaluator report beside it as ``results/<case>_<solver>.report.json``. The
-command prints the total cost and runtime. Greedy and local search are
-implemented; ``cpsat`` is wired up so a later phase can drop in its module
-without changing this CLI. ``--debug`` makes local search cross-check its
-incremental cost against the evaluator every 1000 accepted moves and at the
-end.
+command prints the total cost and runtime. When running ``cpsat``, it also
+prints whether the CP-SAT objective beat the greedy warm start and the
+per-group status and optimality gap.
 """
 
 from __future__ import annotations
@@ -24,6 +23,7 @@ import json
 import sys
 import time
 from pathlib import Path
+from typing import Any
 
 from .case_io import Case, CaseError, load_case
 from .evaluator import evaluate
@@ -37,6 +37,7 @@ def _run_solver(
     time_limit_s: float,
     seed: int,
     debug: bool = False,
+    side: dict[str, Any] | None = None,
 ) -> Roster:
     if name == "greedy":
         from .solvers.greedy import solve
@@ -49,6 +50,7 @@ def _run_solver(
             from .solvers.cpsat import solve
         except ImportError as exc:
             raise SystemExit(f"solver 'cpsat' is not implemented yet ({exc})") from exc
+        return solve(case, time_limit_s, seed, side=side)
     else:  # pragma: no cover - argparse already constrains this
         raise SystemExit(f"unknown solver {name!r}")
     return solve(case, time_limit_s, seed)
@@ -188,6 +190,7 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 0
 
+    side: dict[str, Any] = {}
     started = time.perf_counter()
     roster = _run_solver(
         args.command,
@@ -195,6 +198,7 @@ def main(argv: list[str] | None = None) -> int:
         args.time_limit_s,
         args.seed,
         debug=getattr(args, "debug", False),
+        side=side,
     )
     runtime = time.perf_counter() - started
 
@@ -216,6 +220,29 @@ def main(argv: list[str] | None = None) -> int:
         f"runtime={runtime:.3f}s"
     )
     print(f"  components: {components}")
+    if args.command == "cpsat" and side:
+        greedy_cost = side.get("greedy_cost")
+        beat_greedy = side.get("beat_greedy")
+        if greedy_cost is not None:
+            print(
+                f"  warm_start: greedy_cost={greedy_cost:.4f} "
+                f"cpsat_cost={report.total_cost:.4f} "
+                f"beat_greedy={beat_greedy}"
+            )
+        for group_name, ginfo in side.get("groups", {}).items():
+            status = ginfo.get("status", "UNKNOWN")
+            gap = float(ginfo.get("gap", 0.0))
+            rel_gap_pct = float(ginfo.get("rel_gap", 0.0)) * 100.0
+            obj = ginfo.get("objective")
+            bound = ginfo.get("best_bound")
+            obj_text = f"{obj:.4f}" if obj is not None else "n/a"
+            bound_text = f"{bound:.4f}" if bound is not None else "n/a"
+            print(
+                f"  group {group_name}: status={status} gap={gap:.4f} "
+                f"({rel_gap_pct:.2f}%) objective={obj_text} bound={bound_text} "
+                f"time_limit={ginfo.get('time_limit_s', 0.0):.2f}s "
+                f"workers={ginfo.get('workers', 1)}"
+            )
     print(f"  wrote: {roster_path}")
     print(f"  wrote: {report_path}")
     return 0
