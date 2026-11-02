@@ -1,0 +1,598 @@
+{
+  "hard_pass": true,
+  "hard_breaches": [],
+  "unfilled_total": 111,
+  "unfilled_by_group": {
+    "MPR": 23,
+    "CND": 33,
+    "Hospitality": 33,
+    "SPONS": 22
+  },
+  "cost_components": {
+    "unfilled": 333.0,
+    "overwork": 14.0,
+    "streak": 0.0,
+    "rest": 0.0,
+    "preference": 0.000314,
+    "fairness": 0.011875,
+    "isolated": 0.005714
+  },
+  "total_cost": 347.017904,
+  "preference_satisfaction_pct": 99.3711,
+  "workload_spread_by_group": {
+    "MPR": 8.0,
+    "CND": 24.0,
+    "Hospitality": 24.0,
+    "SPONS": 20.0
+  },
+  "isolated_dayoffs": 144,
+  "per_student_hours": {
+    "22CB15": 60.0,
+    "22CE19": 56.0,
+    "22CE60": 60.0,
+    "22CS21": 60.0,
+    "22CS34": 60.0,
+    "22CS37": 60.0,
+    "22CS40": 60.0,
+    "22CS49": 56.0,
+    "22CS59": 60.0,
+    "22EC01": 60.0,
+    "22EC25": 60.0,
+    "22EC42": 60.0,
+    "22EC48": 60.0,
+    "22EC52": 60.0,
+    "22EE51": 60.0,
+    "22EE55": 60.0,
+    "22ME18": 36.0,
+    "22ME23": 60.0,
+    "22ME31": 60.0,
+    "22ME54": 60.0,
+    "22ME66": 60.0,
+    "23CB14": 60.0,
+    "23CE38": 60.0,
+    "23CE69": 60.0,
+    "23CS56": 56.0,
+    "23EC06": 56.0,
+    "23EC39": 60.0,
+    "23EE04": 60.0,
+    "23EE45": 60.0,
+    "23ME10": 52.0,
+    "23ME26": 60.0,
+    "23ME36": 60.0,
+    "23ME41": 60.0,
+    "24CB13": 56.0,
+    "24CB30": 56.0,
+    "24CB68": 40.0,
+    "24CE07": 60.0,
+    "24CE11": 60.0,
+    "24CE29": 60.0,
+    "24CE63": 60.0,
+    "24CS27": 56.0,
+    "24EC02": 60.0,
+    "24EC12": 60.0,
+    "24EC20": 60.0,
+    "24EC33": 60.0,
+    "24EC35": 60.0,
+    "24EC43": 56.0,
+    "24EC47": 60.0,
+    "24EC70": 48.0,
+    "24EE32": 60.0,
+    "24EE53": 36.0,
+    "24ME16": 60.0,
+    "25CB05": 60.0,
+    "25CB08": 56.0,
+    "25CB65": 48.0,
+    "25CB67": 56.0,
+    "25CE24": 60.0,
+    "25CS17": 60.0,
+    "25CS57": 56.0,
+    "25CS58": 56.0,
+    "25CS64": 60.0,
+    "25EC03": 60.0,
+    "25EC28": 56.0,
+    "25EC46": 60.0,
+    "25EC50": 56.0,
+    "25EC62": 48.0,
+    "25EE09": 60.0,
+    "25ME22": 36.0,
+    "25ME44": 56.0,
+    "25ME61": 56.0
+  },
+  "overwork_accounting": "Overwork is charged on every rolling window of rolling_window_days (days 1-7, 2-8, 3-9, ... by default; the last window ends at the horizon). In each window, shifts are taken in day order and every shift that takes the student's hours above their cap is one extra shift (with 4 h shifts and a 20 h cap: extra = shifts - floor(20/4)). Extra shifts in a window are priced by the tier table (2, 4, then 6 each) and the student is charged the sum over all their windows. The worst rolling window per student is also reported for information.",
+  "overwork_by_student": {
+    "22EC52": {
+      "cap_hours": 20.0,
+      "charged_windows": [
+        {
+          "days": [
+            4,
+            10
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
+      "worst_rolling_window": [
+        4,
+        10
+      ],
+      "worst_rolling_extra_shifts": 1
+    },
+    "23ME10": {
+      "cap_hours": 16.0,
+      "charged_windows": [
+        {
+          "days": [
+            1,
+            7
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        },
+        {
+          "days": [
+            9,
+            15
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 4.0,
+      "worst_rolling_window": [
+        1,
+        7
+      ],
+      "worst_rolling_extra_shifts": 1
+    },
+    "24CB68": {
+      "cap_hours": 12.0,
+      "charged_windows": [
+        {
+          "days": [
+            14,
+            20
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
+      "worst_rolling_window": [
+        14,
+        20
+      ],
+      "worst_rolling_extra_shifts": 1
+    },
+    "25CB67": {
+      "cap_hours": 20.0,
+      "charged_windows": [
+        {
+          "days": [
+            4,
+            10
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
+      "worst_rolling_window": [
+        4,
+        10
+      ],
+      "worst_rolling_extra_shifts": 1
+    },
+    "25EC03": {
+      "cap_hours": 20.0,
+      "charged_windows": [
+        {
+          "days": [
+            9,
+            15
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
+      "worst_rolling_window": [
+        9,
+        15
+      ],
+      "worst_rolling_extra_shifts": 1
+    },
+    "25EC50": {
+      "cap_hours": 20.0,
+      "charged_windows": [
+        {
+          "days": [
+            11,
+            17
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
+      "worst_rolling_window": [
+        11,
+        17
+      ],
+      "worst_rolling_extra_shifts": 1
+    }
+  },
+  "streak_by_student": {},
+  "rest_violations": [],
+  "unfilled_slots": [
+    {
+      "day": 4,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 5,
+      "assigned": 3,
+      "missing": 2
+    },
+    {
+      "day": 6,
+      "shift_id": "E",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 4,
+      "missing": 1
+    },
+    {
+      "day": 6,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 4,
+      "assigned": 3,
+      "missing": 1
+    },
+    {
+      "day": 6,
+      "shift_id": "M",
+      "group": "CND",
+      "required": 5,
+      "assigned": 3,
+      "missing": 2
+    },
+    {
+      "day": 6,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 3,
+      "missing": 2
+    },
+    {
+      "day": 6,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 6,
+      "shift_id": "M",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 6,
+      "shift_id": "N",
+      "group": "CND",
+      "required": 5,
+      "assigned": 4,
+      "missing": 1
+    },
+    {
+      "day": 6,
+      "shift_id": "N",
+      "group": "Hospitality",
+      "required": 6,
+      "assigned": 5,
+      "missing": 1
+    },
+    {
+      "day": 7,
+      "shift_id": "E",
+      "group": "CND",
+      "required": 5,
+      "assigned": 2,
+      "missing": 3
+    },
+    {
+      "day": 7,
+      "shift_id": "E",
+      "group": "Hospitality",
+      "required": 6,
+      "assigned": 5,
+      "missing": 1
+    },
+    {
+      "day": 7,
+      "shift_id": "E",
+      "group": "MPR",
+      "required": 4,
+      "assigned": 3,
+      "missing": 1
+    },
+    {
+      "day": 7,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 1,
+      "missing": 2
+    },
+    {
+      "day": 7,
+      "shift_id": "M",
+      "group": "CND",
+      "required": 5,
+      "assigned": 1,
+      "missing": 4
+    },
+    {
+      "day": 7,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 0,
+      "missing": 5
+    },
+    {
+      "day": 7,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 7,
+      "shift_id": "M",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 7,
+      "shift_id": "N",
+      "group": "CND",
+      "required": 5,
+      "assigned": 0,
+      "missing": 5
+    },
+    {
+      "day": 7,
+      "shift_id": "N",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 0,
+      "missing": 5
+    },
+    {
+      "day": 7,
+      "shift_id": "N",
+      "group": "MPR",
+      "required": 4,
+      "assigned": 0,
+      "missing": 4
+    },
+    {
+      "day": 7,
+      "shift_id": "N",
+      "group": "SPONS",
+      "required": 4,
+      "assigned": 2,
+      "missing": 2
+    },
+    {
+      "day": 9,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 4,
+      "assigned": 3,
+      "missing": 1
+    },
+    {
+      "day": 9,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 3,
+      "missing": 2
+    },
+    {
+      "day": 9,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 4,
+      "assigned": 2,
+      "missing": 2
+    },
+    {
+      "day": 9,
+      "shift_id": "M",
+      "group": "SPONS",
+      "required": 4,
+      "assigned": 0,
+      "missing": 4
+    },
+    {
+      "day": 9,
+      "shift_id": "N",
+      "group": "CND",
+      "required": 8,
+      "assigned": 6,
+      "missing": 2
+    },
+    {
+      "day": 13,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 4,
+      "missing": 1
+    },
+    {
+      "day": 13,
+      "shift_id": "N",
+      "group": "CND",
+      "required": 6,
+      "assigned": 5,
+      "missing": 1
+    },
+    {
+      "day": 14,
+      "shift_id": "E",
+      "group": "CND",
+      "required": 6,
+      "assigned": 1,
+      "missing": 5
+    },
+    {
+      "day": 14,
+      "shift_id": "E",
+      "group": "Hospitality",
+      "required": 4,
+      "assigned": 3,
+      "missing": 1
+    },
+    {
+      "day": 14,
+      "shift_id": "E",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 14,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 1,
+      "missing": 2
+    },
+    {
+      "day": 14,
+      "shift_id": "M",
+      "group": "CND",
+      "required": 5,
+      "assigned": 0,
+      "missing": 5
+    },
+    {
+      "day": 14,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 4,
+      "assigned": 0,
+      "missing": 4
+    },
+    {
+      "day": 14,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 14,
+      "shift_id": "M",
+      "group": "SPONS",
+      "required": 3,
+      "assigned": 0,
+      "missing": 3
+    },
+    {
+      "day": 14,
+      "shift_id": "N",
+      "group": "CND",
+      "required": 5,
+      "assigned": 2,
+      "missing": 3
+    },
+    {
+      "day": 14,
+      "shift_id": "N",
+      "group": "Hospitality",
+      "required": 7,
+      "assigned": 2,
+      "missing": 5
+    },
+    {
+      "day": 14,
+      "shift_id": "N",
+      "group": "MPR",
+      "required": 5,
+      "assigned": 3,
+      "missing": 2
+    },
+    {
+      "day": 14,
+      "shift_id": "N",
+      "group": "SPONS",
+      "required": 4,
+      "assigned": 2,
+      "missing": 2
+    },
+    {
+      "day": 15,
+      "shift_id": "E",
+      "group": "Hospitality",
+      "required": 6,
+      "assigned": 5,
+      "missing": 1
+    },
+    {
+      "day": 15,
+      "shift_id": "M",
+      "group": "CND",
+      "required": 6,
+      "assigned": 4,
+      "missing": 2
+    },
+    {
+      "day": 15,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 6,
+      "assigned": 3,
+      "missing": 3
+    },
+    {
+      "day": 15,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 4,
+      "assigned": 2,
+      "missing": 2
+    },
+    {
+      "day": 15,
+      "shift_id": "M",
+      "group": "SPONS",
+      "required": 4,
+      "assigned": 3,
+      "missing": 1
+    },
+    {
+      "day": 15,
+      "shift_id": "N",
+      "group": "Hospitality",
+      "required": 9,
+      "assigned": 8,
+      "missing": 1
+    }
+  ]
+}

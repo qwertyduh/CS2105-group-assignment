@@ -1,0 +1,281 @@
+{
+  "hard_pass": true,
+  "hard_breaches": [],
+  "unfilled_total": 18,
+  "unfilled_by_group": {
+    "MPR": 5,
+    "CND": 3,
+    "Hospitality": 5,
+    "SPONS": 5
+  },
+  "cost_components": {
+    "unfilled": 54.0,
+    "overwork": 8.0,
+    "streak": 0.0,
+    "rest": 0.0,
+    "preference": 0.0,
+    "fairness": 0.008929,
+    "isolated": 0.003287
+  },
+  "total_cost": 62.012215,
+  "preference_satisfaction_pct": 100.0,
+  "workload_spread_by_group": {
+    "MPR": 4.0,
+    "CND": 32.0,
+    "Hospitality": 32.0,
+    "SPONS": 12.0
+  },
+  "isolated_dayoffs": 94,
+  "per_student_hours": {
+    "22CE49": 80.0,
+    "22CS04": 76.0,
+    "22CS18": 80.0,
+    "22CS21": 80.0,
+    "22CS22": 80.0,
+    "22CS48": 80.0,
+    "22EC19": 48.0,
+    "22EC39": 80.0,
+    "22EC46": 76.0,
+    "22EE35": 76.0,
+    "22EE38": 80.0,
+    "22EE40": 76.0,
+    "22ME17": 80.0,
+    "22ME26": 80.0,
+    "22ME27": 60.0,
+    "22ME51": 68.0,
+    "23CB33": 80.0,
+    "23CB42": 80.0,
+    "23CE02": 76.0,
+    "23CE08": 80.0,
+    "23CE11": 80.0,
+    "23CE28": 80.0,
+    "23CE52": 76.0,
+    "23CS20": 76.0,
+    "23CS34": 48.0,
+    "23EC07": 80.0,
+    "23EC24": 80.0,
+    "23EC30": 76.0,
+    "23EE06": 76.0,
+    "23EE25": 76.0,
+    "23ME14": 76.0,
+    "24CB12": 80.0,
+    "24CB55": 76.0,
+    "24CE15": 80.0,
+    "24CS29": 76.0,
+    "24CS36": 80.0,
+    "24EC03": 80.0,
+    "24EC09": 76.0,
+    "24EC13": 80.0,
+    "24EE31": 76.0,
+    "24ME01": 80.0,
+    "24ME23": 48.0,
+    "24ME37": 80.0,
+    "24ME47": 76.0,
+    "25CB32": 80.0,
+    "25CB53": 80.0,
+    "25CE05": 80.0,
+    "25CE41": 76.0,
+    "25CS54": 80.0,
+    "25EC43": 80.0,
+    "25EC44": 80.0,
+    "25EE10": 76.0,
+    "25EE50": 80.0,
+    "25ME16": 80.0,
+    "25ME45": 80.0
+  },
+  "overwork_accounting": "Overwork is charged on every rolling window of rolling_window_days (days 1-7, 2-8, 3-9, ... by default; the last window ends at the horizon). In each window, shifts are taken in day order and every shift that takes the student's hours above their cap is one extra shift (with 4 h shifts and a 20 h cap: extra = shifts - floor(20/4)). Extra shifts in a window are priced by the tier table (2, 4, then 6 each) and the student is charged the sum over all their windows. The worst rolling window per student is also reported for information.",
+  "overwork_by_student": {
+    "22CS22": {
+      "cap_hours": 20.0,
+      "charged_windows": [
+        {
+          "days": [
+            12,
+            18
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
+      "worst_rolling_window": [
+        12,
+        18
+      ],
+      "worst_rolling_extra_shifts": 1
+    },
+    "22EC19": {
+      "cap_hours": 12.0,
+      "charged_windows": [
+        {
+          "days": [
+            1,
+            7
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
+      "worst_rolling_window": [
+        1,
+        7
+      ],
+      "worst_rolling_extra_shifts": 1
+    },
+    "22ME51": {
+      "cap_hours": 16.0,
+      "charged_windows": [
+        {
+          "days": [
+            1,
+            7
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
+      "worst_rolling_window": [
+        1,
+        7
+      ],
+      "worst_rolling_extra_shifts": 1
+    },
+    "23EE06": {
+      "cap_hours": 20.0,
+      "charged_windows": [
+        {
+          "days": [
+            2,
+            8
+          ],
+          "extra_shifts": 1,
+          "cost": 2.0
+        }
+      ],
+      "cost": 2.0,
+      "worst_rolling_window": [
+        2,
+        8
+      ],
+      "worst_rolling_extra_shifts": 1
+    }
+  },
+  "streak_by_student": {},
+  "rest_violations": [],
+  "unfilled_slots": [
+    {
+      "day": 4,
+      "shift_id": "N",
+      "group": "Hospitality",
+      "required": 5,
+      "assigned": 4,
+      "missing": 1
+    },
+    {
+      "day": 6,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 7,
+      "shift_id": "E",
+      "group": "CND",
+      "required": 3,
+      "assigned": 1,
+      "missing": 2
+    },
+    {
+      "day": 7,
+      "shift_id": "E",
+      "group": "Hospitality",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 7,
+      "shift_id": "E",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 7,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 7,
+      "shift_id": "N",
+      "group": "Hospitality",
+      "required": 4,
+      "assigned": 3,
+      "missing": 1
+    },
+    {
+      "day": 7,
+      "shift_id": "N",
+      "group": "SPONS",
+      "required": 6,
+      "assigned": 2,
+      "missing": 4
+    },
+    {
+      "day": 8,
+      "shift_id": "M",
+      "group": "Hospitality",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 13,
+      "shift_id": "E",
+      "group": "MPR",
+      "required": 4,
+      "assigned": 3,
+      "missing": 1
+    },
+    {
+      "day": 13,
+      "shift_id": "M",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 14,
+      "shift_id": "E",
+      "group": "CND",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    },
+    {
+      "day": 20,
+      "shift_id": "E",
+      "group": "SPONS",
+      "required": 5,
+      "assigned": 4,
+      "missing": 1
+    },
+    {
+      "day": 21,
+      "shift_id": "N",
+      "group": "MPR",
+      "required": 3,
+      "assigned": 2,
+      "missing": 1
+    }
+  ]
+}

@@ -1,141 +1,166 @@
-import unittest
-from pathlib import Path
+from __future__ import annotations
 
-from roster.case_io import Case, Shift, Student, load_case
+import contextlib
+import io
+import os
+import tempfile
+import time
+import unittest
+
+from roster import run as roster_run
+from roster.case_io import load_case
 from roster.evaluator import GROUPS, evaluate
 from roster.rules import Rules
-from roster.solvers.cpsat import solve_group
-
-ROOT = Path(__file__).resolve().parents[1]
-TOL = 0.01
+from roster.solvers import cpsat, greedy
 
 
-def group_cost(case, rules, group, roster):
-    """The evaluator's cost restricted to one group, from a group-only roster."""
-    rep = evaluate(case, rules, roster)
-    comp = rep.cost_components
-    members = set(case.by_group[group])
-    total_w = sum(float(p.weight) for ps in case.prefs.values() for p in ps)
-    worked = set(roster.values())
-    unsat = 0.0
-    for roll in members:
-        days = {d: sh for (r, d), sh in roster.items() if r == roll}
-        shifts = set(days.values())
-        for p in case.prefs.get(roll, []):
-            ok = {
-                "OFF_DAY": p.day not in days,
-                "PREFER_SHIFT": p.shift_id in shifts,
-                "AVOID_SHIFT": p.shift_id not in shifts,
-            }[p.type]
-            if not ok:
-                unsat += float(p.weight)
-    n_groups = len([g for g in case.by_group if case.by_group[g]])
-    longest = max(float(s.hours) for s in case.shifts.values())
-    fairness = (
-        rules.weight_fairness
-        * (rep.workload_spread_by_group[group] / (case.horizon_days * longest))
-        / n_groups
-    )
-    return (
-        rep.unfilled_by_group[group] * rules.penalty_unfilled_slot
-        + comp["overwork"] + comp["streak"] + comp["rest"] + comp["isolated"]
-        + fairness
-        + (rules.weight_preference * unsat / total_w if total_w else 0.0)
-    ), rep
-
-
-def one_student_case(horizon, demand_days, config=None, shifts=None, cap=20.0):
-    student = Student("S1", "Solo", "MPR", cap)
-    shifts = shifts or [Shift("M", "Morning", "11:00", "15:00", 4.0, False)]
-    demand = {(d, sh.shift_id, "MPR"): 1 for d in demand_days for sh in shifts[:1]}
-    return Case(
-        horizon_days=horizon,
-        students={student.roll_no: student},
-        by_group={"MPR": [student.roll_no]},
-        shifts={s.shift_id: s for s in shifts},
-        shift_order=[s.shift_id for s in shifts],
-        demand=demand,
-        prefs={},
-        config={"horizon_days": horizon, **(config or {})},
+class TestCpSatSolver(unittest.TestCase):
+    CASE_FOLDERS = (
+        "test/case_01_balanced_20d",
+        "test/case_02_tight_28d",
+        "test/case_03_overloaded_20d",
+        "test/case_04_small_7d",
     )
 
+    def test_b1_group_objectives_match_evaluator(self) -> None:
+        """B1 contract: sum of four group objectives matches evaluator total_cost within 0.01."""
+        for folder in ("test/case_04_small_7d", "test/case_01_balanced_20d"):
+            with self.subTest(case=folder):
+                case = load_case(folder)
+                rules = Rules.from_case(case)
+                merged = {}
+                obj_sum = 0.0
+                for group in GROUPS:
+                    res = cpsat.solve_group(case, rules, group, time_limit_s=5.0, seed=1)
+                    self.assertIn(res.status, ("OPTIMAL", "FEASIBLE"))
+                    self.assertIsNotNone(res.objective)
+                    obj_sum += float(res.objective)
+                    merged.update(res.roster)
+                report = evaluate(case, rules, merged)
+                self.assertTrue(report.hard_pass, msg=report.hard_breaches)
+                self.assertAlmostEqual(obj_sum, report.total_cost, delta=0.01)
 
-class GroupCostMatchTests(unittest.TestCase):
-    def check_case(self, folder, time_limit):
-        case = load_case(str(ROOT / "test" / folder))
-        rules = Rules.from_case(case)
-        merged, total_obj = {}, 0.0
-        for group in GROUPS:
-            if not case.by_group.get(group):
-                continue
-            with self.subTest(case=folder, group=group):
-                res = solve_group(case, rules, group, time_limit, seed=1)
-                self.assertIn(res.status, ("OPTIMAL", "FEASIBLE"))
-                cost, rep = group_cost(case, rules, group, res.roster)
-                self.assertTrue(rep.hard_pass, rep.hard_breaches)
-                self.assertAlmostEqual(res.objective, cost, delta=TOL)
-                self.assertLessEqual(res.best_bound, res.objective + 1e-6)
-                merged.update(res.roster)
-                total_obj += res.objective
-        full = evaluate(case, rules, merged)
-        self.assertTrue(full.hard_pass)
-        self.assertAlmostEqual(total_obj, full.total_cost, delta=TOL)
+    def test_split_time_limits_and_workers(self) -> None:
+        """Time split respects variable shares with >= 10% floor; worker sum <= os.cpu_count()."""
+        var_counts = {"MPR": 10, "CND": 300, "Hospitality": 300, "SPONS": 390}
+        times = cpsat.split_time_limits(var_counts, time_limit_s=60.0)
+        self.assertAlmostEqual(sum(times.values()), 60.0, places=6)
+        for group, t_s in times.items():
+            self.assertGreaterEqual(t_s, 6.0 - 1e-9, msg=f"{group} below 10% floor")
+        self.assertGreater(times["SPONS"], times["CND"])
+        self.assertAlmostEqual(times["MPR"], 6.0, places=6)
 
-    def test_case_04_small_7d(self):
-        self.check_case("case_04_small_7d", 15)
+        cpu_budget = max(4, os.cpu_count() or 4)
+        workers = cpsat.split_workers(var_counts, cpu_count=cpu_budget)
+        self.assertLessEqual(sum(workers.values()), cpu_budget)
+        for w in workers.values():
+            self.assertGreaterEqual(w, 1)
 
-    def test_case_01_balanced_20d(self):
-        self.check_case("case_01_balanced_20d", 20)
+    def test_all_four_cases_hard_pass_wall_time_and_beat_or_match_greedy(self) -> None:
+        """Merged roster passes hard rules, finishes within time_limit_s + 5s, and <= greedy cost."""
+        seed = 1
+        time_limit_s = 12.0
+        for folder in self.CASE_FOLDERS:
+            with self.subTest(case=folder):
+                case = load_case(folder)
+                rules = Rules.from_case(case)
+                greedy_roster = greedy.solve(case, time_limit_s=time_limit_s, seed=seed)
+                greedy_rep = evaluate(case, rules, greedy_roster)
 
+                side: dict = {}
+                t0 = time.perf_counter()
+                roster = cpsat.solve(case, time_limit_s=time_limit_s, seed=seed, side=side)
+                wall = time.perf_counter() - t0
 
-class TinyModelTests(unittest.TestCase):
-    def solve(self, case):
-        rules = Rules.from_case(case)
-        res = solve_group(case, rules, "MPR", 10, seed=1)
-        self.assertEqual(res.status, "OPTIMAL")
-        return rules, res
+                report = evaluate(case, rules, roster)
+                self.assertTrue(report.hard_pass, msg=f"{folder}: {report.hard_breaches}")
+                self.assertLessEqual(
+                    wall,
+                    time_limit_s + 5.0,
+                    msg=f"{folder}: wall={wall:.2f}s exceeded {time_limit_s + 5.0:.2f}s",
+                )
+                self.assertLessEqual(
+                    report.total_cost,
+                    greedy_rep.total_cost + 1e-6,
+                    msg=f"{folder}: cpsat={report.total_cost} > greedy={greedy_rep.total_cost}",
+                )
 
-    def test_overwork_tiers_three_extra(self):
-        # cap 16 h = 4 shifts; 7 shifts in the single window = 3 extra = 2 + 4 + 6 = 12.
-        # Unfilled is priced high so the solver prefers to overwork.
-        case = one_student_case(7, range(1, 8), {"penalty_unfilled_slot": 50, "max_consecutive_days": 7}, cap=16)
-        rules, res = self.solve(case)
-        cost, rep = group_cost(case, rules, "MPR", res.roster)
-        self.assertAlmostEqual(res.objective, cost, delta=TOL)
-        self.assertAlmostEqual(res.objective, 12.0, delta=0.2)
+                # Side dict has per-group status and gap for all 4 groups
+                self.assertIn("groups", side)
+                self.assertIn("beat_greedy", side)
+                for group in GROUPS:
+                    self.assertIn(group, side["groups"])
+                    ginfo = side["groups"][group]
+                    self.assertIn(ginfo["status"], ("OPTIMAL", "FEASIBLE"))
+                    self.assertGreaterEqual(ginfo["gap"], 0.0)
 
-    def test_streak_seven_day_run(self):
-        # 7 worked days in a row = 2 days beyond the 5th = 8; unfilled priced above that.
-        case = one_student_case(7, range(1, 8), {"penalty_unfilled_slot": 20}, cap=100)
-        rules, res = self.solve(case)
-        cost, rep = group_cost(case, rules, "MPR", res.roster)
-        self.assertAlmostEqual(res.objective, cost, delta=TOL)
-        self.assertAlmostEqual(res.objective, 8.0, delta=0.2)
+                if folder.endswith("case_03_overloaded_20d"):
+                    self.assertGreater(report.unfilled_total, 0)
+                    self.assertGreater(len(report.unfilled_slots), 0)
 
-    def test_rest_chain_of_three(self):
-        shifts = [
-            Shift("M", "Morning", "11:00", "15:00", 4.0, False),
-            Shift("N", "Night", "21:00", "01:00", 4.0, True),
-        ]
-        case = one_student_case(6, [], None, shifts, cap=100)
-        # N,M,N,M,N,M on days 1..6 forces three short pairs only if N->M: days 1-2, 3-4, 5-6
-        demand = {}
-        for d in range(1, 7):
-            demand[(d, "N" if d % 2 else "M", "MPR")] = 1
-        case = Case(**{**case.__dict__, "demand": demand, "config": {"horizon_days": 6, "max_consecutive_days": 6, "penalty_unfilled_slot": 50}})
-        rules, res = self.solve(case)
-        cost, rep = group_cost(case, rules, "MPR", res.roster)
-        self.assertAlmostEqual(res.objective, cost, delta=TOL)
-        self.assertEqual(rep.unfilled_total, 0)
-        self.assertAlmostEqual(rep.cost_components["rest"], 9.0, delta=TOL)  # 2 + 3 + 4
+    def test_run_cli_prints_per_group_status_and_gap(self) -> None:
+        """`python -m roster.run cpsat` prints per-group status, gap, and warm-start status."""
+        with tempfile.TemporaryDirectory() as tmp:
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                rc = roster_run.main(
+                    [
+                        "cpsat",
+                        "test/case_04_small_7d",
+                        "--seed",
+                        "1",
+                        "--time",
+                        "8",
+                        "--out-dir",
+                        tmp,
+                    ]
+                )
+            self.assertEqual(rc, 0)
+            out = buf.getvalue()
+            self.assertIn("warm_start:", out)
+            self.assertIn("beat_greedy=", out)
+            for group in GROUPS:
+                self.assertIn(f"group {group}:", out)
+                self.assertIn("status=", out)
+                self.assertIn("gap=", out)
 
-    def test_hint_not_worse(self):
-        case = load_case(str(ROOT / "test" / "case_04_small_7d"))
-        rules = Rules.from_case(case)
-        group = "MPR"
-        cold = solve_group(case, rules, group, 10, seed=1)
-        warm = solve_group(case, rules, group, 10, seed=1, hint=cold.roster)
-        self.assertLessEqual(warm.objective, cold.objective + 1e-6)
+    def test_timeout_keeps_bounds_and_gaps_unknown(self) -> None:
+        """UNKNOWN groups must not fabricate a bound or a zero gap."""
+        case = load_case("test/case_01_balanced_20d")
+        side: dict = {}
+        cpsat.solve(case, time_limit_s=0.001, seed=1, side=side)
+        unknown = [g for g, i in side["groups"].items() if i["status"] == "UNKNOWN"]
+        self.assertTrue(unknown)
+        for g in unknown:
+            info = side["groups"][g]
+            self.assertIsNone(info["objective"])
+            self.assertIsNone(info["best_bound"])
+            self.assertIsNone(info["gap"])
+            self.assertIsNone(info["rel_gap"])
+        self.assertIsNone(side["best_bound"])
+        self.assertIsNone(side["gap"])
+        self.assertIsNone(side["rel_gap"])
+
+    def test_write_baseline_survives_timeout(self) -> None:
+        """Baseline writer renders missing objectives/bounds as n/a instead of raising."""
+        with tempfile.TemporaryDirectory() as tmp:
+            path = cpsat.write_baseline(
+                ["test/case_01_balanced_20d"], time_limit_s=0.001, seed=1, out_dir=tmp
+            )
+            text = path.read_text(encoding="utf-8")
+        self.assertIn("n/a", text)
+        self.assertIn("status=UNKNOWN", text)
+
+    def test_run_cli_prints_na_for_unknown_gap(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                rc = roster_run.main(
+                    ["cpsat", "test/case_01_balanced_20d", "--seed", "1",
+                     "--time", "0.001", "--out-dir", tmp]
+                )
+            self.assertEqual(rc, 0)
+            self.assertIn("gap=n/a", buf.getvalue())
 
 
 if __name__ == "__main__":

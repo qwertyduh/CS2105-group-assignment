@@ -1,4 +1,4 @@
-"""CP-SAT model for ONE group (B1).
+"""CP-SAT solver: single-group model (B1) and parallel four-group solver (B2).
 
 Groups never share students, so each group is an independent subproblem. The model
 prices every rule exactly as ``roster.evaluator.evaluate`` charges it, so
@@ -15,26 +15,54 @@ prices every rule exactly as ``roster.evaluator.evaluate`` charges it, so
   * fairness     w_fair * (max_h - min_h) / (horizon * longest shift) / non-empty groups
   * isolated     w_iso * Work-Off-Work count / (all students * (horizon - 2))
 
-Costs are multiplied by SCALE and rounded to integers. The brief suggested 100, but the
-soft terms are far smaller than 0.01 per event (an isolated day off is ~3e-5), so x100
-would round them to zero and the model could never match the evaluator.
+Costs are multiplied by SCALE and rounded to integers.
+
+In B2, ``solve(case, time_limit_s, seed)`` builds the greedy roster first as a warm-start
+hint, splits ``time_limit_s`` across the four groups by their share of model variables
+(minimum 10% each), divides CPU workers across the four groups so the total never exceeds
+``os.cpu_count()``, solves the four groups in parallel with ``ProcessPoolExecutor``, and
+merges the four group rosters into one ``Roster``.
 """
 
 from __future__ import annotations
 
+import argparse
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+from dataclasses import dataclass, field
+import json
 import math
 import os
-from dataclasses import dataclass, field
-from typing import Optional
+from pathlib import Path
+import time
+from typing import Any, Optional
 
 from ortools.sat.python import cp_model
 
-from ..case_io import Case
-from ..evaluator import GROUPS, rest_gap, rolling_windows
+from ..case_io import Case, load_case
+from ..evaluator import GROUPS, evaluate, rest_gap, rolling_windows
 from ..rules import Rules
-from .base import Roster
+from .base import Roster, save_roster
+from . import greedy as greedy_solver
 
 SCALE = 1_000_000
+MIN_GROUP_TIME_SHARE = 0.10
+
+# Side dict from the most recent solve() call.
+LAST_INFO: dict[str, Any] = {}
+LAST_SIDE: dict[str, Any] = LAST_INFO
+
+
+class SolvedRoster(dict):
+    """A dict (Roster) that also carries the CP-SAT side dict on .info / .side."""
+
+    def __init__(self, mapping: Roster | None = None, info: dict[str, Any] | None = None):
+        super().__init__(mapping or {})
+        self.info: dict[str, Any] = info if info is not None else {}
+        self.side: dict[str, Any] = self.info
+        self.stats: dict[str, Any] = self.info
+        self.groups: dict[str, Any] = self.info.get("groups", {})
+        self.beat_greedy: bool = bool(self.info.get("beat_greedy", False))
+        self.greedy_cost: Optional[float] = self.info.get("greedy_cost")
 
 
 @dataclass
@@ -53,6 +81,26 @@ class GroupResult:
     objective: Optional[float]
     best_bound: Optional[float]
     status: str
+
+    @property
+    def gap(self) -> Optional[float]:
+        if self.objective is None or self.best_bound is None:
+            return None
+        return max(0.0, float(self.objective - self.best_bound))
+
+    @property
+    def rel_gap(self) -> Optional[float]:
+        if self.objective is None or self.best_bound is None:
+            return None
+        denom = max(1e-9, abs(float(self.objective)))
+        return max(0.0, float(self.objective - self.best_bound)) / denom
+
+
+def fmt_opt(value: Optional[float], spec: str = ".4f", scale: float = 1.0, suffix: str = "") -> str:
+    """Format a possibly-unknown number; ``None`` renders as ``n/a``."""
+    if value is None:
+        return "n/a"
+    return f"{value * scale:{spec}}{suffix}"
 
 
 def _c(value: float) -> int:
@@ -246,22 +294,33 @@ def solve_group(
     time_limit_s: float,
     seed: int,
     hint: Optional[Roster] = None,
+    num_workers: Optional[int] = None,
 ) -> GroupResult:
     model, gv = model_for_group(case, rules, group)
     if hint is not None:
         for (s, d, sh), var in gv.x.items():
             model.add_hint(var, 1 if hint.get((s, d)) == sh else 0)
+        for (s, d), var in gv.worked.items():
+            model.add_hint(var, 1 if (s, d) in hint else 0)
+        for (d, sh), var in gv.unfilled.items():
+            req = case.demand.get((d, sh, group), 0)
+            assigned = sum(1 for s in gv.students if hint.get((s, d)) == sh)
+            model.add_hint(var, max(0, req - assigned))
 
     solver = cp_model.CpSolver()
-    solver.parameters.max_time_in_seconds = float(time_limit_s)
-    solver.parameters.num_workers = os.cpu_count() or 1
+    solver.parameters.max_time_in_seconds = max(0.01, float(time_limit_s))
+    workers = int(num_workers) if num_workers is not None else (os.cpu_count() or 1)
+    solver.parameters.num_workers = max(1, workers)
     solver.parameters.random_seed = int(seed)
     if hint is not None:
         solver.parameters.repair_hint = True
+
     status = solver.solve(model)
     name = solver.status_name(status)
     if status not in (cp_model.OPTIMAL, cp_model.FEASIBLE):
-        return GroupResult({}, None, None, name)
+        fallback = dict(hint) if hint is not None else {}
+        return GroupResult(fallback, None, None, name)
+
     roster: Roster = {
         (s, d): sh for (s, d, sh), var in gv.x.items() if solver.boolean_value(var)
     }
@@ -271,3 +330,344 @@ def solve_group(
         solver.best_objective_bound / SCALE,
         name,
     )
+
+
+def count_group_variables(case: Case, rules: Rules, groups: list[str] | tuple[str, ...] = GROUPS) -> dict[str, int]:
+    """Return the number of CP-SAT model variables for each group."""
+    counts: dict[str, int] = {}
+    for group in groups:
+        model, gv = model_for_group(case, rules, group)
+        n_vars = len(model.proto.variables)
+        if n_vars == 0:
+            n_vars = len(gv.x) + len(gv.unfilled) + len(gv.worked)
+        counts[group] = n_vars
+    return counts
+
+
+def split_time_limits(
+    var_counts: dict[str, int],
+    time_limit_s: float,
+    min_share: float = MIN_GROUP_TIME_SHARE,
+) -> dict[str, float]:
+    """Split ``time_limit_s`` across groups by variable share, minimum ``min_share`` (10%) each."""
+    groups = list(var_counts.keys())
+    if not groups:
+        return {}
+    total_time = max(0.0, float(time_limit_s))
+    n = len(groups)
+    floor_share = min(float(min_share), 1.0 / n)
+
+    shares: dict[str, float] = {}
+    remaining_groups = list(groups)
+    remaining_share = 1.0
+
+    while remaining_groups:
+        rem_vars = sum(max(0, var_counts[g]) for g in remaining_groups)
+        if rem_vars <= 0:
+            equal = remaining_share / len(remaining_groups)
+            for g in remaining_groups:
+                shares[g] = equal
+            break
+
+        provisional = {
+            g: remaining_share * (max(0, var_counts[g]) / rem_vars)
+            for g in remaining_groups
+        }
+        below = [g for g in remaining_groups if provisional[g] < floor_share - 1e-12]
+        if not below:
+            shares.update(provisional)
+            break
+
+        for g in below:
+            shares[g] = floor_share
+            remaining_share -= floor_share
+            remaining_groups.remove(g)
+        remaining_share = max(0.0, remaining_share)
+
+    return {g: total_time * shares[g] for g in groups}
+
+
+def split_workers(
+    var_counts: dict[str, int],
+    cpu_count: Optional[int] = None,
+) -> dict[str, int]:
+    """Divide CPU workers across groups by variable share so the sum never exceeds ``os.cpu_count()``."""
+    groups = list(var_counts.keys())
+    if not groups:
+        return {}
+    total_cpus = max(1, int(cpu_count if cpu_count is not None else (os.cpu_count() or 1)))
+    n = len(groups)
+    if total_cpus <= n:
+        return {g: 1 for g in groups}
+
+    workers = {g: 1 for g in groups}
+    extra = total_cpus - n
+    total_vars = sum(max(0, v) for v in var_counts.values())
+    if total_vars <= 0:
+        for i in range(extra):
+            workers[groups[i % n]] += 1
+        return workers
+
+    exact = {g: extra * (max(0, var_counts[g]) / total_vars) for g in groups}
+    for g in groups:
+        workers[g] += int(math.floor(exact[g]))
+    remainder = total_cpus - sum(workers.values())
+    order = sorted(
+        groups,
+        key=lambda g: (exact[g] - math.floor(exact[g]), var_counts[g]),
+        reverse=True,
+    )
+    for g in order[:remainder]:
+        workers[g] += 1
+    return workers
+
+
+def _solve_group_task(
+    case: Case,
+    rules: Rules,
+    group: str,
+    time_limit_s: float,
+    seed: int,
+    hint: Optional[Roster],
+    num_workers: int,
+) -> tuple[str, GroupResult, float]:
+    t0 = time.perf_counter()
+    res = solve_group(
+        case,
+        rules,
+        group,
+        time_limit_s=time_limit_s,
+        seed=seed,
+        hint=hint,
+        num_workers=num_workers,
+    )
+    elapsed = time.perf_counter() - t0
+    return group, res, elapsed
+
+
+def solve(
+    case: Case,
+    time_limit_s: float = 90.0,
+    seed: int = 0,
+    side: Optional[dict[str, Any]] = None,
+    *,
+    return_info: bool = False,
+) -> Roster | tuple[Roster, dict[str, Any]]:
+    """Solve all four groups in parallel with greedy warm start and merge into one Roster.
+
+    Per-group status, gap, objective, bound, allocated time/workers, and warm-start
+    comparison (``greedy_cost``, ``cpsat_cost``, ``beat_greedy``) are written into:
+      * ``side`` if a dict is passed in,
+      * ``cpsat.LAST_INFO`` / ``cpsat.LAST_SIDE`` at module level, and
+      * ``roster.info`` / ``roster.side`` on the returned ``SolvedRoster`` (a ``dict`` subclass).
+    """
+    started = time.perf_counter()
+    rules = Rules.from_case(case)
+    groups = [g for g in GROUPS if g in case.by_group] or list(GROUPS)
+
+    # 1. Warm start: build greedy roster first and partition by group.
+    greedy_budget = min(max(0.5, float(time_limit_s) * 0.1), 5.0)
+    greedy_roster = greedy_solver.solve(case, time_limit_s=greedy_budget, seed=seed)
+    greedy_report = evaluate(case, rules, greedy_roster)
+    greedy_cost = greedy_report.total_cost
+
+    hints: dict[str, Roster] = {}
+    for g in groups:
+        members = set(case.by_group.get(g, []))
+        hints[g] = {(r, d): sh for (r, d), sh in greedy_roster.items() if r in members}
+
+    # 2. Split time_limit_s by share of variables (min 10% each) and divide CPU workers.
+    var_counts = count_group_variables(case, rules, groups)
+    group_times = split_time_limits(var_counts, time_limit_s, min_share=MIN_GROUP_TIME_SHARE)
+    total_cpus = max(1, os.cpu_count() or 1)
+    group_workers = split_workers(var_counts, cpu_count=total_cpus)
+
+    # 3. Run the four group models in parallel with ProcessPoolExecutor.
+    max_pool_workers = min(len(groups), total_cpus)
+    results: dict[str, GroupResult] = {}
+    wall_times: dict[str, float] = {}
+
+    def _run_with_executor(executor_cls):
+        with executor_cls(max_workers=max_pool_workers) as pool:
+            futures = {
+                pool.submit(
+                    _solve_group_task,
+                    case,
+                    rules,
+                    g,
+                    group_times[g],
+                    int(seed),
+                    hints[g],
+                    group_workers[g],
+                ): g
+                for g in groups
+            }
+            for fut in futures:
+                g, res, elapsed = fut.result()
+                results[g] = res
+                wall_times[g] = elapsed
+
+    try:
+        _run_with_executor(ProcessPoolExecutor)
+    except (PermissionError, NotImplementedError, OSError):
+        _run_with_executor(ThreadPoolExecutor)
+
+    # 4. Merge group rosters, keeping the best per-group roster found (never worse than hint).
+    merged: Roster = {}
+    per_group_info: dict[str, dict[str, Any]] = {}
+    for g in groups:
+        res = results[g]
+        chosen_roster = res.roster
+        if hints[g]:
+            if not chosen_roster:
+                chosen_roster = dict(hints[g])
+            else:
+                cand_rep = evaluate(case, rules, chosen_roster)
+                hint_rep = evaluate(case, rules, hints[g])
+                if (not cand_rep.hard_pass) or (cand_rep.total_cost > hint_rep.total_cost + 1e-9):
+                    chosen_roster = dict(hints[g])
+
+        merged.update(chosen_roster)
+        per_group_info[g] = {
+            "status": res.status,
+            "objective": res.objective,
+            "best_bound": res.best_bound,
+            "gap": res.gap,
+            "rel_gap": res.rel_gap,
+            "time_limit_s": group_times[g],
+            "workers": group_workers[g],
+            "variables": var_counts[g],
+            "wall_time_s": wall_times.get(g, 0.0),
+        }
+
+    final_report = evaluate(case, rules, merged)
+    if (not final_report.hard_pass) or (final_report.total_cost > greedy_cost + 1e-9):
+        merged = dict(greedy_roster)
+        final_report = greedy_report
+
+    final_cost = final_report.total_cost
+    beat_greedy = bool(final_cost < greedy_cost - 1e-9)
+    total_wall = time.perf_counter() - started
+
+    all_objs = [info["objective"] for info in per_group_info.values() if info["objective"] is not None]
+    all_bounds = [info["best_bound"] for info in per_group_info.values() if info["best_bound"] is not None]
+    # Bounds/gaps stay unknown unless every group produced a real solver value.
+    total_obj: Optional[float] = sum(all_objs) if len(all_objs) == len(groups) else None
+    total_bound: Optional[float] = sum(all_bounds) if len(all_bounds) == len(groups) else None
+    if total_obj is not None and total_bound is not None:
+        total_gap: Optional[float] = max(0.0, float(total_obj - total_bound))
+        total_rel_gap: Optional[float] = total_gap / max(1e-9, abs(float(total_obj)))
+    else:
+        total_gap = None
+        total_rel_gap = None
+
+    info_dict: dict[str, Any] = {
+        **per_group_info,
+        "groups": per_group_info,
+        "per_group": per_group_info,
+        "status": {g: per_group_info[g]["status"] for g in groups},
+        "gaps": {g: per_group_info[g]["gap"] for g in groups},
+        "greedy_cost": greedy_cost,
+        "cpsat_cost": final_cost,
+        "beat_greedy": beat_greedy,
+        "objective": total_obj,
+        "best_bound": total_bound,
+        "gap": total_gap,
+        "rel_gap": total_rel_gap,
+        "wall_time_s": total_wall,
+        "total_workers": sum(group_workers.values()),
+    }
+
+    LAST_INFO.clear()
+    LAST_INFO.update(info_dict)
+    if side is not None:
+        side.clear()
+        side.update(info_dict)
+
+    solved = SolvedRoster(merged, info=info_dict)
+    if return_info:
+        return solved, info_dict
+    return solved
+
+
+def solve_with_info(
+    case: Case,
+    time_limit_s: float = 90.0,
+    seed: int = 0,
+) -> tuple[Roster, dict[str, Any]]:
+    """Convenience wrapper returning ``(roster, side_dict)``."""
+    side: dict[str, Any] = {}
+    roster = solve(case, time_limit_s=time_limit_s, seed=seed, side=side)
+    return roster, side
+
+
+def write_baseline(
+    case_folders: list[str] | None = None,
+    time_limit_s: float = 90.0,
+    seed: int = 1,
+    out_dir: str = "results",
+) -> Path:
+    """Run CP-SAT on all four sample cases and write ``results/cpsat_baseline.txt``."""
+    if case_folders is None:
+        case_folders = [
+            "test/case_01_balanced_20d",
+            "test/case_02_tight_28d",
+            "test/case_03_overloaded_20d",
+            "test/case_04_small_7d",
+        ]
+    out_path = Path(out_dir)
+    out_path.mkdir(parents=True, exist_ok=True)
+    lines: list[str] = [
+        f"CP-SAT baseline (seed={seed}, time_limit_s={time_limit_s:g})",
+        "=" * 88,
+    ]
+    for folder in case_folders:
+        case = load_case(folder)
+        rules = Rules.from_case(case)
+        case_name = Path(case.folder).name
+        side: dict[str, Any] = {}
+        t0 = time.perf_counter()
+        roster = solve(case, time_limit_s=time_limit_s, seed=seed, side=side)
+        wall_s = time.perf_counter() - t0
+        report = evaluate(case, rules, roster)
+
+        save_roster(roster, str(out_path / f"{case_name}_cpsat.roster.csv"))
+        (out_path / f"{case_name}_cpsat.report.json").write_text(
+            json.dumps(report.to_json(), indent=2), encoding="utf-8"
+        )
+
+        lines.append(
+            f"{case_name}: cost={report.total_cost:.4f} greedy_cost={side['greedy_cost']:.4f} "
+            f"beat_greedy={side['beat_greedy']} hard_pass={report.hard_pass} "
+            f"unfilled={report.unfilled_total} wall_time={wall_s:.2f}s "
+            f"gap={fmt_opt(side['gap'])} ({fmt_opt(side['rel_gap'], '.2f', 100.0, '%')})"
+        )
+        for g, ginfo in side["groups"].items():
+            lines.append(
+                f"  {g:<12} status={ginfo['status']:<9} "
+                f"obj={fmt_opt(ginfo['objective'])} bound={fmt_opt(ginfo['best_bound'])} "
+                f"gap={fmt_opt(ginfo['gap'])} ({fmt_opt(ginfo['rel_gap'], '.2f', 100.0, '%')}) "
+                f"time_limit={ginfo['time_limit_s']:.2f}s workers={ginfo['workers']} "
+                f"wall={ginfo['wall_time_s']:.2f}s"
+            )
+    baseline_file = out_path / "cpsat_baseline.txt"
+    baseline_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return baseline_file
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        prog="python -m roster.solvers.cpsat",
+        description="Run CP-SAT baseline across sample cases and write results/cpsat_baseline.txt.",
+    )
+    parser.add_argument("--time", dest="time_limit_s", type=float, default=90.0)
+    parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument("--out-dir", default="results")
+    args = parser.parse_args(argv)
+    path = write_baseline(time_limit_s=args.time_limit_s, seed=args.seed, out_dir=args.out_dir)
+    print(path.read_text(encoding="utf-8"), end="")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
