@@ -124,6 +124,44 @@ class TestCpSatSolver(unittest.TestCase):
                 self.assertIn("status=", out)
                 self.assertIn("gap=", out)
 
+    def test_timeout_keeps_bounds_and_gaps_unknown(self) -> None:
+        """UNKNOWN groups must not fabricate a bound or a zero gap."""
+        case = load_case("test/case_01_balanced_20d")
+        side: dict = {}
+        cpsat.solve(case, time_limit_s=0.001, seed=1, side=side)
+        unknown = [g for g, i in side["groups"].items() if i["status"] == "UNKNOWN"]
+        self.assertTrue(unknown)
+        for g in unknown:
+            info = side["groups"][g]
+            self.assertIsNone(info["objective"])
+            self.assertIsNone(info["best_bound"])
+            self.assertIsNone(info["gap"])
+            self.assertIsNone(info["rel_gap"])
+        self.assertIsNone(side["best_bound"])
+        self.assertIsNone(side["gap"])
+        self.assertIsNone(side["rel_gap"])
+
+    def test_write_baseline_survives_timeout(self) -> None:
+        """Baseline writer renders missing objectives/bounds as n/a instead of raising."""
+        with tempfile.TemporaryDirectory() as tmp:
+            path = cpsat.write_baseline(
+                ["test/case_01_balanced_20d"], time_limit_s=0.001, seed=1, out_dir=tmp
+            )
+            text = path.read_text(encoding="utf-8")
+        self.assertIn("n/a", text)
+        self.assertIn("status=UNKNOWN", text)
+
+    def test_run_cli_prints_na_for_unknown_gap(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                rc = roster_run.main(
+                    ["cpsat", "test/case_01_balanced_20d", "--seed", "1",
+                     "--time", "0.001", "--out-dir", tmp]
+                )
+            self.assertEqual(rc, 0)
+            self.assertIn("gap=n/a", buf.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

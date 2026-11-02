@@ -31,6 +31,10 @@ from .rules import Rules, RulesError
 from .solvers.base import Roster, save_roster
 
 
+def _fmt_opt(value: Any, spec: str = ".4f", scale: float = 1.0, suffix: str = "") -> str:
+    return "n/a" if value is None else f"{value * scale:{spec}}{suffix}"
+
+
 def _run_solver(
     name: str,
     case: Case,
@@ -231,15 +235,15 @@ def main(argv: list[str] | None = None) -> int:
             )
         for group_name, ginfo in side.get("groups", {}).items():
             status = ginfo.get("status", "UNKNOWN")
-            gap = float(ginfo.get("gap", 0.0))
-            rel_gap_pct = float(ginfo.get("rel_gap", 0.0)) * 100.0
+            gap_text = _fmt_opt(ginfo.get("gap"))
+            rel_gap_text = _fmt_opt(ginfo.get("rel_gap"), ".2f", 100.0, "%")
             obj = ginfo.get("objective")
             bound = ginfo.get("best_bound")
             obj_text = f"{obj:.4f}" if obj is not None else "n/a"
             bound_text = f"{bound:.4f}" if bound is not None else "n/a"
             print(
-                f"  group {group_name}: status={status} gap={gap:.4f} "
-                f"({rel_gap_pct:.2f}%) objective={obj_text} bound={bound_text} "
+                f"  group {group_name}: status={status} gap={gap_text} "
+                f"({rel_gap_text}) objective={obj_text} bound={bound_text} "
                 f"time_limit={ginfo.get('time_limit_s', 0.0):.2f}s "
                 f"workers={ginfo.get('workers', 1)}"
             )

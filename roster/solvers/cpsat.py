@@ -83,17 +83,24 @@ class GroupResult:
     status: str
 
     @property
-    def gap(self) -> float:
+    def gap(self) -> Optional[float]:
         if self.objective is None or self.best_bound is None:
-            return 0.0
+            return None
         return max(0.0, float(self.objective - self.best_bound))
 
     @property
-    def rel_gap(self) -> float:
+    def rel_gap(self) -> Optional[float]:
         if self.objective is None or self.best_bound is None:
-            return 0.0
+            return None
         denom = max(1e-9, abs(float(self.objective)))
         return max(0.0, float(self.objective - self.best_bound)) / denom
+
+
+def fmt_opt(value: Optional[float], spec: str = ".4f", scale: float = 1.0, suffix: str = "") -> str:
+    """Format a possibly-unknown number; ``None`` renders as ``n/a``."""
+    if value is None:
+        return "n/a"
+    return f"{value * scale:{spec}}{suffix}"
 
 
 def _c(value: float) -> int:
@@ -544,10 +551,15 @@ def solve(
 
     all_objs = [info["objective"] for info in per_group_info.values() if info["objective"] is not None]
     all_bounds = [info["best_bound"] for info in per_group_info.values() if info["best_bound"] is not None]
-    total_obj = sum(all_objs) if len(all_objs) == len(groups) else final_cost
-    total_bound = sum(all_bounds) if len(all_bounds) == len(groups) else final_cost
-    total_gap = max(0.0, float(total_obj - total_bound))
-    total_rel_gap = total_gap / max(1e-9, abs(float(total_obj)))
+    # Bounds/gaps stay unknown unless every group produced a real solver value.
+    total_obj: Optional[float] = sum(all_objs) if len(all_objs) == len(groups) else None
+    total_bound: Optional[float] = sum(all_bounds) if len(all_bounds) == len(groups) else None
+    if total_obj is not None and total_bound is not None:
+        total_gap: Optional[float] = max(0.0, float(total_obj - total_bound))
+        total_rel_gap: Optional[float] = total_gap / max(1e-9, abs(float(total_obj)))
+    else:
+        total_gap = None
+        total_rel_gap = None
 
     info_dict: dict[str, Any] = {
         **per_group_info,
@@ -628,13 +640,13 @@ def write_baseline(
             f"{case_name}: cost={report.total_cost:.4f} greedy_cost={side['greedy_cost']:.4f} "
             f"beat_greedy={side['beat_greedy']} hard_pass={report.hard_pass} "
             f"unfilled={report.unfilled_total} wall_time={wall_s:.2f}s "
-            f"gap={side['gap']:.4f} ({side['rel_gap'] * 100.0:.2f}%)"
+            f"gap={fmt_opt(side['gap'])} ({fmt_opt(side['rel_gap'], '.2f', 100.0, '%')})"
         )
         for g, ginfo in side["groups"].items():
             lines.append(
                 f"  {g:<12} status={ginfo['status']:<9} "
-                f"obj={ginfo['objective']:.4f} bound={ginfo['best_bound']:.4f} "
-                f"gap={ginfo['gap']:.4f} ({ginfo['rel_gap'] * 100.0:.2f}%) "
+                f"obj={fmt_opt(ginfo['objective'])} bound={fmt_opt(ginfo['best_bound'])} "
+                f"gap={fmt_opt(ginfo['gap'])} ({fmt_opt(ginfo['rel_gap'], '.2f', 100.0, '%')}) "
                 f"time_limit={ginfo['time_limit_s']:.2f}s workers={ginfo['workers']} "
                 f"wall={ginfo['wall_time_s']:.2f}s"
             )
