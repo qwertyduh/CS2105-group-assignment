@@ -3,13 +3,18 @@
 Examples::
 
     python -m roster.run greedy test/case_01_balanced_20d --seed 1
-    python -m roster.run greedy test/case_02_tight_28d --seed 1 --time 30
+    python -m roster.run local test/case_01_balanced_20d --seed 1 --time 60
+    python -m roster.run local test/case_04_small_7d --seed 1 --time 5 --debug
+    python -m roster.run repair test/case_04_small_7d \\
+        results/case_04_small_7d_greedy.roster.csv --sick 22CS01 --day 5
 
 The roster is written to ``results/<case>_<solver>.roster.csv`` and the
 evaluator report beside it as ``results/<case>_<solver>.report.json``. The
-command prints the total cost and runtime. Only the greedy solver exists at
-the moment; ``local`` and ``cpsat`` are wired up so later phases can drop in
-their modules without changing this CLI.
+command prints the total cost and runtime. Greedy and local search are
+implemented; ``cpsat`` is wired up so a later phase can drop in its module
+without changing this CLI. ``--debug`` makes local search cross-check its
+incremental cost against the evaluator every 1000 accepted moves and at the
+end.
 """
 
 from __future__ import annotations
@@ -26,14 +31,19 @@ from .rules import Rules, RulesError
 from .solvers.base import Roster, save_roster
 
 
-def _run_solver(name: str, case: Case, time_limit_s: float, seed: int) -> Roster:
+def _run_solver(
+    name: str,
+    case: Case,
+    time_limit_s: float,
+    seed: int,
+    debug: bool = False,
+) -> Roster:
     if name == "greedy":
         from .solvers.greedy import solve
     elif name == "local":
-        try:
-            from .solvers.local_search import solve
-        except ImportError as exc:
-            raise SystemExit(f"solver 'local' is not implemented yet ({exc})") from exc
+        from .solvers.local_search import solve
+
+        return solve(case, time_limit_s, seed, debug=debug)
     elif name == "cpsat":
         try:
             from .solvers.cpsat import solve
@@ -44,6 +54,21 @@ def _run_solver(name: str, case: Case, time_limit_s: float, seed: int) -> Roster
     return solve(case, time_limit_s, seed)
 
 
+def _parse_days(value: str | None) -> list[int] | None:
+    if not value:
+        return None
+    days: list[int] = []
+    for part in value.split(","):
+        part = part.strip()
+        if not part:
+            continue
+        try:
+            days.append(int(part))
+        except ValueError as exc:
+            raise SystemExit(f"--unavailable-days expects integers, got {part!r}") from exc
+    return days or None
+
+
 def _run_repair(
     case: Case,
     roster: Roster,
@@ -52,6 +77,8 @@ def _run_repair(
     time_limit_s: float,
     seed: int,
     method: str,
+    unavailable_days: list[int] | None = None,
+    out_dir: str = "results",
 ) -> None:
     shift_id = roster.get((sick_roll_no, sick_day))
     if shift_id is None:
@@ -71,8 +98,27 @@ def _run_repair(
         shift_id,
         time_limit_s,
         seed,
+        unavailable_days=unavailable_days,
+    )
+
+    rules = Rules.from_case(case)
+    report = evaluate(case, rules, result.roster)
+    case_name = Path(case.folder).name
+    out_path = Path(out_dir)
+    out_path.mkdir(parents=True, exist_ok=True)
+    roster_path = out_path / f"{case_name}_repair.roster.csv"
+    save_roster(result.roster, str(roster_path))
+    report_path = out_path / f"{case_name}_repair.report.json"
+    report_path.write_text(json.dumps(report.to_json(), indent=2), encoding="utf-8")
+
+    print(
+        f"{case_name} repair: total_cost={report.total_cost:.4f} "
+        f"hard_pass={report.hard_pass} unfilled={report.unfilled_total} "
+        f"changed={len(result.diff)}"
     )
     print(json.dumps({"diff": result.diff, "reason": result.reason}, indent=2, default=str))
+    print(f"  wrote: {roster_path}")
+    print(f"  wrote: {report_path}")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -88,12 +134,22 @@ def build_parser() -> argparse.ArgumentParser:
         run_parser.add_argument("--seed", type=int, default=1)
         run_parser.add_argument("--time", dest="time_limit_s", type=float, default=90.0)
         run_parser.add_argument("--out-dir", default="results")
+        run_parser.add_argument(
+            "--debug",
+            action="store_true",
+            help="cross-check local search's incremental cost against the evaluator",
+        )
 
     repair_parser = subparsers.add_parser("repair", help="re-optimize after a sick call")
     repair_parser.add_argument("case_folder")
     repair_parser.add_argument("roster_csv")
     repair_parser.add_argument("--sick", required=True)
     repair_parser.add_argument("--day", type=int, required=True)
+    repair_parser.add_argument(
+        "--unavailable-days",
+        default=None,
+        help="extra days the sick student is unavailable, comma separated (e.g. 5,6)",
+    )
     repair_parser.add_argument("--method", choices=("local", "cpsat"), default="local")
     repair_parser.add_argument("--seed", type=int, default=1)
     repair_parser.add_argument("--time", dest="time_limit_s", type=float, default=90.0)
@@ -127,11 +183,19 @@ def main(argv: list[str] | None = None) -> int:
             args.time_limit_s,
             args.seed,
             args.method,
+            unavailable_days=_parse_days(args.unavailable_days),
+            out_dir=args.out_dir,
         )
         return 0
 
     started = time.perf_counter()
-    roster = _run_solver(args.command, case, args.time_limit_s, args.seed)
+    roster = _run_solver(
+        args.command,
+        case,
+        args.time_limit_s,
+        args.seed,
+        debug=getattr(args, "debug", False),
+    )
     runtime = time.perf_counter() - started
 
     report = evaluate(case, rules, roster)
