@@ -1,0 +1,17 @@
+key,value,description
+horizon_days,28,Planning horizon in days (1 to 28)
+weekly_cap_default_hours,20,Default max hours in any rolling window; per-student value in students.csv wins
+rolling_window_days,7,Length of the rolling window for the weekly cap
+max_consecutive_days,5,Working days in a row allowed before the streak penalty applies
+min_rest_hours,11,Minimum gap between consecutive shifts; shorter gaps get the rest penalty
+hard_ceiling_hours_per_window,0,Absolute hard cap per rolling window; 0 = off
+penalty_unfilled_slot,3,Per missing headcount slot
+penalty_overwork_tier1,2,1st extra shift above the weekly cap in a window
+penalty_overwork_tier2,4,2nd extra shift above the cap
+penalty_overwork_tier3_plus,6,"3rd and further extra shifts, each"
+penalty_rest_violation,2,Base penalty per short-rest back-to-back pair
+penalty_rest_chain_increment,1,Added for each further consecutive rest violation in a run
+penalty_streak_day,4,Per working day beyond max_consecutive_days
+weight_preference,0.05,Soft term weight: shift and day-off preferences
+weight_fairness,0.05,Soft term weight: hours spread within a group
+weight_isolated_day_off,0.05,Soft term weight: Work-Off-Work pattern

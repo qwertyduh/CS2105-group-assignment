@@ -1,0 +1,4 @@
+shift_id,name,start,end,hours,crosses_midnight
+M,Morning,11:00,15:00,4,no
+E,Evening,16:00,20:00,4,no
+N,Night,21:00,01:00,4,yes

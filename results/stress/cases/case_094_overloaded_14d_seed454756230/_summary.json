@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-11-03T14:01:40",
+  "seed": 454756230,
+  "scenario": "overloaded",
+  "target_load": 1.15,
+  "horizon_days": 14,
+  "students": 50,
+  "preferences": 48,
+  "demand_slots": 556,
+  "capacity_slots": 484.0,
+  "load_ratio": 1.149,
+  "per_group": {
+    "MPR": {
+      "students": 20,
+      "demand_slots": 225,
+      "capacity_slots": 196.0,
+      "load_ratio": 1.148
+    },
+    "CND": {
+      "students": 12,
+      "demand_slots": 133,
+      "capacity_slots": 116.0,
+      "load_ratio": 1.147
+    },
+    "Hospitality": {
+      "students": 12,
+      "demand_slots": 138,
+      "capacity_slots": 120.0,
+      "load_ratio": 1.15
+    },
+    "SPONS": {
+      "students": 6,
+      "demand_slots": 60,
+      "capacity_slots": 52.0,
+      "load_ratio": 1.154
+    }
+  }
+}

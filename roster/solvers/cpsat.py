@@ -21,13 +21,15 @@ In B2, ``solve(case, time_limit_s, seed)`` builds the greedy roster first as a w
 hint, splits ``time_limit_s`` across the four groups by their share of model variables
 (minimum 10% each), divides CPU workers across the four groups so the total never exceeds
 ``os.cpu_count()``, solves the four groups in parallel with ``ProcessPoolExecutor``, and
-merges the four group rosters into one ``Roster``.
+merges the four group rosters into one ``Roster``. Pass ``warm_start=False`` to skip the
+greedy hint and start cold; the time/worker split is unchanged.
 """
 
 from __future__ import annotations
 
 import argparse
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+from concurrent.futures.process import BrokenProcessPool
 from dataclasses import dataclass, field
 import json
 import math
@@ -312,7 +314,10 @@ def solve_group(
     workers = int(num_workers) if num_workers is not None else (os.cpu_count() or 1)
     solver.parameters.num_workers = max(1, workers)
     solver.parameters.random_seed = int(seed)
-    if hint is not None:
+    if hint is not None and workers > 1:
+        # OR-Tools can hit an internal CHECK with repair_hint when a single
+        # worker is used and the time limit is very small; the hint itself is
+        # complete, so single-worker runs rely on add_hint without repair.
         solver.parameters.repair_hint = True
 
     status = solver.solve(model)
@@ -452,8 +457,18 @@ def solve(
     side: Optional[dict[str, Any]] = None,
     *,
     return_info: bool = False,
+    warm_start: bool = True,
+    num_workers: Optional[int] = None,
 ) -> Roster | tuple[Roster, dict[str, Any]]:
-    """Solve all four groups in parallel with greedy warm start and merge into one Roster.
+    """Solve all four groups in parallel and merge into one Roster.
+
+    With ``warm_start=True`` (the default) a greedy roster is built first and passed
+    to each group as a hint. With ``warm_start=False`` no hint is supplied and the
+    solver starts cold; the split of time and workers is otherwise identical.
+
+    ``num_workers`` forces the CP-SAT search thread count for every group. The
+    default ``None`` keeps B2's CPU-share split; stress runs pass ``1`` so timings
+    are comparable across cases.
 
     Per-group status, gap, objective, bound, allocated time/workers, and warm-start
     comparison (``greedy_cost``, ``cpsat_cost``, ``beat_greedy``) are written into:
@@ -465,22 +480,28 @@ def solve(
     rules = Rules.from_case(case)
     groups = [g for g in GROUPS if g in case.by_group] or list(GROUPS)
 
-    # 1. Warm start: build greedy roster first and partition by group.
-    greedy_budget = min(max(0.5, float(time_limit_s) * 0.1), 5.0)
-    greedy_roster = greedy_solver.solve(case, time_limit_s=greedy_budget, seed=seed)
-    greedy_report = evaluate(case, rules, greedy_roster)
-    greedy_cost = greedy_report.total_cost
+    # 1. Optional greedy warm start, partitioned by group.
+    greedy_roster: Roster = {}
+    greedy_cost: Optional[float] = None
+    hints: dict[str, Optional[Roster]] = {g: None for g in groups}
+    if warm_start:
+        greedy_budget = min(max(0.5, float(time_limit_s) * 0.1), 5.0)
+        greedy_roster = greedy_solver.solve(case, time_limit_s=greedy_budget, seed=seed)
+        greedy_report = evaluate(case, rules, greedy_roster)
+        greedy_cost = greedy_report.total_cost
 
-    hints: dict[str, Roster] = {}
-    for g in groups:
-        members = set(case.by_group.get(g, []))
-        hints[g] = {(r, d): sh for (r, d), sh in greedy_roster.items() if r in members}
+        for g in groups:
+            members = set(case.by_group.get(g, []))
+            hints[g] = {(r, d): sh for (r, d), sh in greedy_roster.items() if r in members}
 
     # 2. Split time_limit_s by share of variables (min 10% each) and divide CPU workers.
     var_counts = count_group_variables(case, rules, groups)
     group_times = split_time_limits(var_counts, time_limit_s, min_share=MIN_GROUP_TIME_SHARE)
     total_cpus = max(1, os.cpu_count() or 1)
-    group_workers = split_workers(var_counts, cpu_count=total_cpus)
+    if num_workers is not None:
+        group_workers = {g: max(1, int(num_workers)) for g in groups}
+    else:
+        group_workers = split_workers(var_counts, cpu_count=total_cpus)
 
     # 3. Run the four group models in parallel with ProcessPoolExecutor.
     max_pool_workers = min(len(groups), total_cpus)
@@ -509,7 +530,7 @@ def solve(
 
     try:
         _run_with_executor(ProcessPoolExecutor)
-    except (PermissionError, NotImplementedError, OSError):
+    except (PermissionError, NotImplementedError, OSError, BrokenProcessPool):
         _run_with_executor(ThreadPoolExecutor)
 
     # 4. Merge group rosters, keeping the best per-group roster found (never worse than hint).
@@ -541,12 +562,14 @@ def solve(
         }
 
     final_report = evaluate(case, rules, merged)
-    if (not final_report.hard_pass) or (final_report.total_cost > greedy_cost + 1e-9):
+    if greedy_roster and (
+        (not final_report.hard_pass) or (final_report.total_cost > greedy_cost + 1e-9)
+    ):
         merged = dict(greedy_roster)
         final_report = greedy_report
 
     final_cost = final_report.total_cost
-    beat_greedy = bool(final_cost < greedy_cost - 1e-9)
+    beat_greedy = bool(greedy_cost is not None and final_cost < greedy_cost - 1e-9)
     total_wall = time.perf_counter() - started
 
     all_objs = [info["objective"] for info in per_group_info.values() if info["objective"] is not None]

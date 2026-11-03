@@ -1,0 +1,1001 @@
+case_id,event_index,method,scenario,days,students,load_ratio,roll_no,sick_day,shift_id,before_cost,after_cost,changes,runtime_s,unfilled_total,sick_slot_unfilled,hard_pass,reason
+case_000_tight_20d_seed1133593457,0,local,tight,20,54,1.002000,25ME42,10,M,47.017969,49.018021,2,0.022275,13,False,True,
+case_000_tight_20d_seed1133593457,1,local,tight,20,54,1.002000,22CB29,17,M,47.017969,50.017918,1,0.023524,14,True,True,left day 17 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_000_tight_20d_seed1133593457,2,local,tight,20,54,1.002000,22CB26,11,N,47.017969,50.017918,1,0.016740,14,True,True,left day 11 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_000_tight_20d_seed1133593457,3,local,tight,20,54,1.002000,23CE48,12,M,47.017969,49.017866,2,0.017355,13,False,True,
+case_000_tight_20d_seed1133593457,0,cpsat,tight,20,54,1.002000,25ME42,10,M,47.017969,47.018123,2,0.607048,13,True,True,"left day 10 M, day 11 E unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_000_tight_20d_seed1133593457,1,cpsat,tight,20,54,1.002000,22CB29,17,M,47.017969,47.017815,5,0.604976,13,False,True,
+case_000_tight_20d_seed1133593457,4,local,tight,20,54,1.002000,22EE16,16,M,47.017969,50.017866,1,0.024513,14,True,True,left day 16 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_000_tight_20d_seed1133593457,2,cpsat,tight,20,54,1.002000,22CB26,11,N,47.017969,47.017969,2,0.629553,13,True,True,left day 11 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_001_tight_28d_seed1777913500,0,local,tight,28,92,1.000000,25EC53,13,N,215.051824,218.051845,1,0.062680,48,True,True,left day 13 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_000_tight_20d_seed1133593457,3,cpsat,tight,20,54,1.002000,23CE48,12,M,47.017969,49.017866,2,0.637833,13,False,True,left day 12 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_001_tight_28d_seed1777913500,1,local,tight,28,92,1.000000,22CE91,20,M,215.051824,218.051803,1,0.044675,48,True,True,left day 20 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_000_tight_20d_seed1133593457,4,cpsat,tight,20,54,1.002000,22EE16,16,M,47.017969,47.019200,4,0.196792,13,False,True,
+case_001_tight_28d_seed1777913500,2,local,tight,28,92,1.000000,22CS73,6,N,215.051824,218.051803,1,0.057646,48,True,True,left day 6 N unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_001_tight_28d_seed1777913500,3,local,tight,28,92,1.000000,25CS72,5,E,215.051824,218.051803,1,0.051393,48,True,True,left day 5 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_001_tight_28d_seed1777913500,1,cpsat,tight,28,92,1.000000,22CE91,20,M,215.051824,215.051824,2,0.368763,47,True,True,"left day 20 M, day 20 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_001_tight_28d_seed1777913500,4,local,tight,28,92,1.000000,22ME66,28,M,215.051824,215.051803,2,0.047560,47,False,True,
+case_001_tight_28d_seed1777913500,4,cpsat,tight,28,92,1.000000,22ME66,28,M,215.051824,215.051803,2,0.237151,47,False,True,
+case_002_balanced_20d_seed1734382574,0,local,balanced,20,54,0.850000,25EE22,15,E,0.039005,0.038902,2,0.035296,0,False,True,
+case_001_tight_28d_seed1777913500,3,cpsat,tight,28,92,1.000000,25CS72,5,E,215.051824,218.051803,1,0.615626,48,True,True,left day 5 E unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_002_balanced_20d_seed1734382574,1,local,balanced,20,54,0.850000,22EC05,20,M,0.039005,0.039005,2,0.026477,0,False,True,
+case_001_tight_28d_seed1777913500,2,cpsat,tight,28,92,1.000000,22CS73,6,N,215.051824,213.051824,8,0.735967,47,False,True,
+case_002_balanced_20d_seed1734382574,2,local,balanced,20,54,0.850000,22EC16,4,M,0.039005,0.038953,2,0.016813,0,False,True,
+case_002_balanced_20d_seed1734382574,0,cpsat,balanced,20,54,0.850000,25EE22,15,E,0.039005,0.038902,2,0.264752,0,False,True,
+case_002_balanced_20d_seed1734382574,3,local,balanced,20,54,0.850000,24CS44,6,M,0.039005,2.038902,2,0.014534,0,False,True,
+case_002_balanced_20d_seed1734382574,1,cpsat,balanced,20,54,0.850000,22EC05,20,M,0.039005,0.039005,2,0.196418,0,False,True,
+case_002_balanced_20d_seed1734382574,4,local,balanced,20,54,0.850000,25EC39,12,N,0.039005,0.039108,2,0.017944,0,False,True,
+case_002_balanced_20d_seed1734382574,3,cpsat,balanced,20,54,0.850000,24CS44,6,M,0.039005,0.038902,3,0.115834,0,False,True,
+case_002_balanced_20d_seed1734382574,2,cpsat,balanced,20,54,0.850000,22EC16,4,M,0.039005,0.038953,2,0.284781,0,False,True,
+case_003_overloaded_28d_seed359239193,0,local,overloaded,28,58,1.149000,23EE27,26,N,561.021544,563.021611,2,0.021768,169,False,True,
+case_002_balanced_20d_seed1734382574,4,cpsat,balanced,20,54,0.850000,25EC39,12,N,0.039005,0.039108,2,0.119758,0,False,True,
+case_003_overloaded_28d_seed359239193,1,local,overloaded,28,58,1.149000,23EC46,16,N,561.021544,563.021190,2,0.038763,169,False,True,
+case_003_overloaded_28d_seed359239193,2,local,overloaded,28,58,1.149000,25CS11,26,M,561.021544,563.021065,2,0.021932,169,False,True,
+case_003_overloaded_28d_seed359239193,0,cpsat,overloaded,28,58,1.149000,23EE27,26,N,561.021544,563.021611,2,0.262059,169,False,True,
+case_003_overloaded_28d_seed359239193,3,local,overloaded,28,58,1.149000,25EC19,27,M,561.021544,564.021577,1,0.008060,170,True,True,left day 27 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_003_overloaded_28d_seed359239193,2,cpsat,overloaded,28,58,1.149000,25CS11,26,M,561.021544,557.021577,8,0.208473,169,False,True,
+case_003_overloaded_28d_seed359239193,4,local,overloaded,28,58,1.149000,24EE45,1,M,561.021544,563.021577,2,0.025411,169,False,True,
+case_003_overloaded_28d_seed359239193,1,cpsat,overloaded,28,58,1.149000,23EC46,16,N,561.021544,561.021190,2,0.335185,169,True,True,"left day 16 M, day 16 N, day 17 M, day 17 E, day 17 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_003_overloaded_28d_seed359239193,3,cpsat,overloaded,28,58,1.149000,25EC19,27,M,561.021544,564.021577,1,0.087032,170,True,True,left day 27 M unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_004_balanced_20d_seed197938595,0,local,balanced,20,79,0.850000,22EC10,10,M,0.043458,0.043458,2,0.023955,0,False,True,
+case_004_balanced_20d_seed197938595,1,local,balanced,20,79,0.850000,22EE09,17,E,0.043458,0.043423,2,0.023987,0,False,True,
+case_004_balanced_20d_seed197938595,0,cpsat,balanced,20,79,0.850000,22EC10,10,M,0.043458,0.043458,2,0.113985,0,False,True,
+case_004_balanced_20d_seed197938595,1,cpsat,balanced,20,79,0.850000,22EE09,17,E,0.043458,0.043423,2,0.111876,0,False,True,
+case_004_balanced_20d_seed197938595,2,local,balanced,20,79,0.850000,24EC63,18,M,0.043458,0.043493,2,0.051981,0,False,True,
+case_004_balanced_20d_seed197938595,3,local,balanced,20,79,0.850000,24CS33,19,E,0.043458,0.043458,2,0.023865,0,False,True,
+case_004_balanced_20d_seed197938595,3,cpsat,balanced,20,79,0.850000,24CS33,19,E,0.043458,0.043458,2,0.165333,0,False,True,
+case_004_balanced_20d_seed197938595,2,cpsat,balanced,20,79,0.850000,24EC63,18,M,0.043458,0.043493,2,0.229133,0,False,True,
+case_004_balanced_20d_seed197938595,4,local,balanced,20,79,0.850000,23CB32,11,N,0.043458,0.043354,2,0.034375,0,False,True,
+case_005_tight_20d_seed694020579,0,local,tight,20,70,1.000000,24EE29,9,N,103.045809,106.045770,1,0.031707,24,True,True,left day 9 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_004_balanced_20d_seed197938595,4,cpsat,balanced,20,79,0.850000,23CB32,11,N,0.043458,0.043354,2,0.176546,0,False,True,
+case_005_tight_20d_seed694020579,1,local,tight,20,70,1.000000,23CB70,19,M,103.045809,106.046474,1,0.024205,24,True,True,left day 19 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_003_overloaded_28d_seed359239193,4,cpsat,overloaded,28,58,1.149000,24EE45,1,M,561.021544,561.021577,4,0.750628,169,False,True,
+case_005_tight_20d_seed694020579,2,local,tight,20,70,1.000000,23CE49,20,E,103.045809,103.045809,2,0.006127,23,False,True,
+case_001_tight_28d_seed1777913500,0,cpsat,tight,28,92,1.000000,25EC53,13,N,215.051824,216.051348,5,2.321049,48,True,True,left day 13 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_005_tight_20d_seed694020579,3,local,tight,20,70,1.000000,24CB14,19,M,103.045809,106.045770,1,0.020707,24,True,True,left day 19 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_005_tight_20d_seed694020579,1,cpsat,tight,20,70,1.000000,23CB70,19,M,103.045809,106.046474,1,0.127520,24,True,True,left day 19 M unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_005_tight_20d_seed694020579,4,local,tight,20,70,1.000000,23CB70,2,N,103.045809,105.047020,2,0.023344,23,False,True,
+case_005_tight_20d_seed694020579,2,cpsat,tight,20,70,1.000000,23CE49,20,E,103.045809,103.045809,2,0.088900,23,False,True,
+case_006_balanced_14d_seed225501379,0,local,balanced,14,68,0.850000,22CB36,13,M,0.007204,0.007204,2,0.014536,0,False,True,
+case_005_tight_20d_seed694020579,0,cpsat,tight,20,70,1.000000,24EE29,9,N,103.045809,101.045889,4,0.383952,23,False,True,left day 10 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_006_balanced_14d_seed225501379,1,local,balanced,14,68,0.850000,22EE24,9,M,0.007204,0.007388,2,0.013764,0,False,True,
+case_006_balanced_14d_seed225501379,0,cpsat,balanced,14,68,0.850000,22CB36,13,M,0.007204,0.007204,2,0.075297,0,False,True,
+case_005_tight_20d_seed694020579,4,cpsat,tight,20,70,1.000000,23CB70,2,N,103.045809,103.047020,3,0.122871,23,False,True,
+case_005_tight_20d_seed694020579,3,cpsat,tight,20,70,1.000000,24CB14,19,M,103.045809,105.045730,3,0.163361,23,False,True,
+case_006_balanced_14d_seed225501379,2,local,balanced,14,68,0.850000,24CB39,3,M,0.007204,2.007265,2,0.011408,0,False,True,
+case_006_balanced_14d_seed225501379,3,local,balanced,14,68,0.850000,24CE34,14,M,0.007204,0.007204,2,0.015279,0,False,True,
+case_006_balanced_14d_seed225501379,1,cpsat,balanced,14,68,0.850000,22EE24,9,M,0.007204,0.007388,2,0.087296,0,False,True,
+case_006_balanced_14d_seed225501379,4,local,balanced,14,68,0.850000,22CB10,11,N,0.007204,0.008036,2,0.024969,0,False,True,
+case_006_balanced_14d_seed225501379,2,cpsat,balanced,14,68,0.850000,24CB39,3,M,0.007204,2.007265,2,0.088934,0,False,True,
+case_006_balanced_14d_seed225501379,3,cpsat,balanced,14,68,0.850000,24CE34,14,M,0.007204,0.007204,2,0.073379,0,False,True,
+case_007_balanced_14d_seed1749446003,0,local,balanced,14,91,0.850000,23CE32,13,N,0.040603,0.040558,2,0.042185,0,False,True,
+case_007_balanced_14d_seed1749446003,1,local,balanced,14,91,0.850000,23CB87,12,N,0.040603,0.040558,2,0.038267,0,False,True,
+case_006_balanced_14d_seed225501379,4,cpsat,balanced,14,68,0.850000,22CB10,11,N,0.007204,0.008036,2,0.123431,0,False,True,
+case_007_balanced_14d_seed1749446003,2,local,balanced,14,91,0.850000,25CB17,8,N,0.040603,0.040649,2,0.037253,0,False,True,
+case_007_balanced_14d_seed1749446003,3,local,balanced,14,91,0.850000,24EC18,1,M,0.040603,0.040074,2,0.039678,0,False,True,
+case_007_balanced_14d_seed1749446003,0,cpsat,balanced,14,91,0.850000,23CE32,13,N,0.040603,0.040558,2,0.175862,0,False,True,
+case_007_balanced_14d_seed1749446003,1,cpsat,balanced,14,91,0.850000,23CB87,12,N,0.040603,0.040558,2,0.171907,0,False,True,
+case_007_balanced_14d_seed1749446003,4,local,balanced,14,91,0.850000,22CB36,3,N,0.040603,0.040695,2,0.035623,0,False,True,
+case_008_balanced_20d_seed180583020,0,local,balanced,20,78,0.850000,25EC21,11,N,0.046115,0.046079,2,0.024341,0,False,True,
+case_007_balanced_14d_seed1749446003,2,cpsat,balanced,14,91,0.850000,25CB17,8,N,0.040603,0.040649,2,0.192231,0,False,True,
+case_007_balanced_14d_seed1749446003,3,cpsat,balanced,14,91,0.850000,24EC18,1,M,0.040603,0.040074,2,0.164044,0,False,True,
+case_008_balanced_20d_seed180583020,1,local,balanced,20,78,0.850000,22EC35,3,N,0.046115,0.046043,2,0.038262,0,False,True,
+case_008_balanced_20d_seed180583020,2,local,balanced,20,78,0.850000,25CS10,11,M,0.046115,0.046043,2,0.024462,0,False,True,
+case_007_balanced_14d_seed1749446003,4,cpsat,balanced,14,91,0.850000,22CB36,3,N,0.040603,0.040695,2,0.202337,0,False,True,
+case_008_balanced_20d_seed180583020,3,local,balanced,20,78,0.850000,22ME71,18,E,0.046115,0.046043,2,0.044028,0,False,True,
+case_008_balanced_20d_seed180583020,0,cpsat,balanced,20,78,0.850000,25EC21,11,N,0.046115,0.046079,2,0.207120,0,False,True,
+case_008_balanced_20d_seed180583020,4,local,balanced,20,78,0.850000,23EC66,14,N,0.046115,2.045832,2,0.035048,0,False,True,
+case_008_balanced_20d_seed180583020,1,cpsat,balanced,20,78,0.850000,22EC35,3,N,0.046115,0.046043,2,0.225221,0,False,True,
+case_009_balanced_20d_seed1295669740,0,local,balanced,20,54,0.850000,24CB22,12,E,0.012074,0.012751,2,0.020453,0,False,True,
+case_008_balanced_20d_seed180583020,2,cpsat,balanced,20,78,0.850000,25CS10,11,M,0.046115,0.046043,2,0.200419,0,False,True,
+case_009_balanced_20d_seed1295669740,1,local,balanced,20,54,0.850000,24EC26,1,M,0.012074,0.012699,2,0.017624,0,False,True,
+case_009_balanced_20d_seed1295669740,0,cpsat,balanced,20,54,0.850000,24CB22,12,E,0.012074,0.012751,2,0.140702,0,False,True,
+case_008_balanced_20d_seed180583020,3,cpsat,balanced,20,78,0.850000,22ME71,18,E,0.046115,0.046043,2,0.259055,0,False,True,
+case_009_balanced_20d_seed1295669740,1,cpsat,balanced,20,54,0.850000,24EC26,1,M,0.012074,0.012699,2,0.119765,0,False,True,
+case_009_balanced_20d_seed1295669740,2,local,balanced,20,54,0.850000,25ME03,20,N,0.012074,0.012699,2,0.010346,0,False,True,
+case_009_balanced_20d_seed1295669740,3,local,balanced,20,54,0.850000,23ME35,20,N,0.012074,0.012699,2,0.012871,0,False,True,
+case_009_balanced_20d_seed1295669740,4,local,balanced,20,54,0.850000,25EC40,5,M,0.012074,0.012596,2,0.017145,0,False,True,
+case_009_balanced_20d_seed1295669740,2,cpsat,balanced,20,54,0.850000,25ME03,20,N,0.012074,0.012699,2,0.071084,0,False,True,
+case_008_balanced_20d_seed180583020,4,cpsat,balanced,20,78,0.850000,23EC66,14,N,0.046115,0.045832,3,0.275783,0,False,True,
+case_010_balanced_20d_seed1246204652,0,local,balanced,20,92,0.850000,24CS31,13,M,0.045362,0.045332,2,0.041363,0,False,True,
+case_009_balanced_20d_seed1295669740,3,cpsat,balanced,20,54,0.850000,23ME35,20,N,0.012074,0.012699,2,0.110083,0,False,True,
+case_010_balanced_20d_seed1246204652,1,local,balanced,20,92,0.850000,23ME85,7,E,0.045362,3.045957,1,0.015492,1,True,True,left day 7 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_010_balanced_20d_seed1246204652,2,local,balanced,20,92,0.850000,24CE03,11,N,0.045362,0.045362,2,0.052090,0,False,True,
+case_009_balanced_20d_seed1295669740,4,cpsat,balanced,20,54,0.850000,25EC40,5,M,0.012074,0.012596,2,0.161186,0,False,True,
+case_010_balanced_20d_seed1246204652,1,cpsat,balanced,20,92,0.850000,23ME85,7,E,0.045362,0.045271,4,0.085948,0,False,True,
+case_010_balanced_20d_seed1246204652,3,local,balanced,20,92,0.850000,24EE58,13,E,0.045362,0.045332,2,0.030945,0,False,True,
+case_010_balanced_20d_seed1246204652,4,local,balanced,20,92,0.850000,22CS06,2,E,0.045362,0.045332,2,0.044029,0,False,True,
+case_010_balanced_20d_seed1246204652,0,cpsat,balanced,20,92,0.850000,24CS31,13,M,0.045362,0.045332,2,0.269759,0,False,True,
+case_011_balanced_20d_seed733803670,0,local,balanced,20,63,0.851000,24ME34,3,N,0.010224,0.010893,2,0.021561,0,False,True,
+case_010_balanced_20d_seed1246204652,3,cpsat,balanced,20,92,0.850000,24EE58,13,E,0.045362,0.045332,2,0.254545,0,False,True,
+case_010_balanced_20d_seed1246204652,2,cpsat,balanced,20,92,0.850000,24CE03,11,N,0.045362,0.045362,2,0.268383,0,False,True,
+case_011_balanced_20d_seed733803670,1,local,balanced,20,63,0.851000,23CB28,11,M,0.010224,0.010180,2,0.031421,0,False,True,
+case_010_balanced_20d_seed1246204652,4,cpsat,balanced,20,92,0.850000,22CS06,2,E,0.045362,0.045332,2,0.228998,0,False,True,
+case_011_balanced_20d_seed733803670,2,local,balanced,20,63,0.851000,23ME25,7,E,0.010224,0.010180,2,0.034416,0,False,True,
+case_011_balanced_20d_seed733803670,3,local,balanced,20,63,0.851000,24EC51,16,N,0.010224,0.010849,2,0.021563,0,False,True,
+case_011_balanced_20d_seed733803670,0,cpsat,balanced,20,63,0.851000,24ME34,3,N,0.010224,0.010893,2,0.221765,0,False,True,
+case_011_balanced_20d_seed733803670,4,local,balanced,20,63,0.851000,23CS16,3,M,0.010224,0.010268,2,0.013374,0,False,True,
+case_011_balanced_20d_seed733803670,1,cpsat,balanced,20,63,0.851000,23CB28,11,M,0.010224,0.010180,2,0.213158,0,False,True,
+case_011_balanced_20d_seed733803670,3,cpsat,balanced,20,63,0.851000,24EC51,16,N,0.010224,0.010849,2,0.128076,0,False,True,
+case_012_balanced_14d_seed1607761709,0,local,balanced,14,65,0.851000,24CS62,9,M,0.007335,0.007335,2,0.017221,0,False,True,
+case_012_balanced_14d_seed1607761709,1,local,balanced,14,65,0.851000,23EE63,6,E,0.007335,0.007399,2,0.017193,0,False,True,
+case_011_balanced_20d_seed733803670,2,cpsat,balanced,20,63,0.851000,23ME25,7,E,0.010224,0.010180,2,0.211879,0,False,True,
+case_012_balanced_14d_seed1607761709,2,local,balanced,14,65,0.851000,24EE13,1,N,0.007335,0.008565,2,0.011107,0,False,True,
+case_011_balanced_20d_seed733803670,4,cpsat,balanced,20,63,0.851000,23CS16,3,M,0.010224,0.010268,2,0.144034,0,False,True,
+case_012_balanced_14d_seed1607761709,3,local,balanced,14,65,0.851000,23CE27,4,N,0.007335,0.007463,2,0.023090,0,False,True,
+case_012_balanced_14d_seed1607761709,0,cpsat,balanced,14,65,0.851000,24CS62,9,M,0.007335,0.007335,2,0.122206,0,False,True,
+case_012_balanced_14d_seed1607761709,2,cpsat,balanced,14,65,0.851000,24EE13,1,N,0.007335,0.008565,2,0.071625,0,False,True,
+case_012_balanced_14d_seed1607761709,4,local,balanced,14,65,0.851000,25ME10,5,N,0.007335,0.008010,2,0.011228,0,False,True,
+case_012_balanced_14d_seed1607761709,1,cpsat,balanced,14,65,0.851000,23EE63,6,E,0.007335,0.007399,2,0.132923,0,False,True,
+case_013_overloaded_20d_seed904148329,0,local,overloaded,20,57,1.151000,23EC55,3,E,342.047618,345.047667,1,0.008648,103,True,True,left day 3 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_013_overloaded_20d_seed904148329,1,local,overloaded,20,57,1.151000,25CB47,1,E,342.047618,344.048243,2,0.014353,102,False,True,
+case_012_balanced_14d_seed1607761709,4,cpsat,balanced,14,65,0.851000,25ME10,5,N,0.007335,0.008010,2,0.068699,0,False,True,
+case_012_balanced_14d_seed1607761709,3,cpsat,balanced,14,65,0.851000,23CE27,4,N,0.007335,0.007463,2,0.128358,0,False,True,
+case_013_overloaded_20d_seed904148329,2,local,overloaded,20,57,1.151000,24ME54,7,N,342.047618,345.048194,1,0.019491,103,True,True,left day 7 N unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_013_overloaded_20d_seed904148329,3,local,overloaded,20,57,1.151000,22EE42,5,E,342.047618,345.045845,1,0.018780,103,True,True,left day 5 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_013_overloaded_20d_seed904148329,0,cpsat,overloaded,20,57,1.151000,23EC55,3,E,342.047618,345.047667,1,0.130979,103,True,True,left day 3 E unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_013_overloaded_20d_seed904148329,4,local,overloaded,20,57,1.151000,22EC23,1,N,342.047618,344.047618,2,0.008874,102,False,True,
+case_013_overloaded_20d_seed904148329,1,cpsat,overloaded,20,57,1.151000,25CB47,1,E,342.047618,344.048243,2,0.131072,102,False,True,
+case_014_overloaded_20d_seed1561453423,0,local,overloaded,20,61,1.150000,24CE17,18,M,330.021123,330.021214,2,0.025951,108,False,True,
+case_013_overloaded_20d_seed904148329,2,cpsat,overloaded,20,57,1.151000,24ME54,7,N,342.047618,342.047618,4,0.152629,102,True,True,"left day 7 M, day 7 E, day 7 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_013_overloaded_20d_seed904148329,4,cpsat,overloaded,20,57,1.151000,22EC23,1,N,342.047618,344.047618,2,0.062494,102,False,True,
+case_014_overloaded_20d_seed1561453423,1,local,overloaded,20,61,1.150000,22CS39,6,N,330.021123,333.021032,1,0.015094,109,True,True,left day 6 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_014_overloaded_20d_seed1561453423,2,local,overloaded,20,61,1.150000,24CE26,13,E,330.021123,333.021077,1,0.012902,109,True,True,left day 13 E unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_014_overloaded_20d_seed1561453423,1,cpsat,overloaded,20,61,1.150000,22CS39,6,N,330.021123,332.021032,2,0.110672,108,True,True,"left day 6 E, day 6 N, day 7 M, day 7 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_014_overloaded_20d_seed1561453423,3,local,overloaded,20,61,1.150000,25CS05,6,E,330.021123,330.021123,2,0.030576,108,True,True,left day 6 E unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_014_overloaded_20d_seed1561453423,0,cpsat,overloaded,20,61,1.150000,24CE17,18,M,330.021123,327.021214,5,0.228487,107,False,True,
+case_014_overloaded_20d_seed1561453423,2,cpsat,overloaded,20,61,1.150000,24CE26,13,E,330.021123,332.021123,2,0.164039,108,True,True,"left day 13 M, day 13 E, day 14 M, day 14 E, day 14 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_014_overloaded_20d_seed1561453423,4,local,overloaded,20,61,1.150000,22ME02,11,N,330.021123,333.021077,1,0.022489,109,True,True,left day 11 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_015_balanced_20d_seed1230717061,0,local,balanced,20,84,0.850000,22ME62,10,M,0.041897,0.041897,2,0.034477,0,False,True,
+case_014_overloaded_20d_seed1561453423,4,cpsat,overloaded,20,61,1.150000,22ME02,11,N,330.021123,333.021077,1,0.235525,109,True,True,left day 11 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_015_balanced_20d_seed1230717061,0,cpsat,balanced,20,84,0.850000,22ME62,10,M,0.041897,0.041897,2,0.197276,0,False,True,
+case_015_balanced_20d_seed1230717061,1,local,balanced,20,84,0.850000,23CS15,3,E,0.041897,0.041831,2,0.047443,0,False,True,
+case_015_balanced_20d_seed1230717061,2,local,balanced,20,84,0.850000,22ME62,13,M,0.041897,0.041831,2,0.025785,0,False,True,
+case_014_overloaded_20d_seed1561453423,3,cpsat,overloaded,20,61,1.150000,25CS05,6,E,330.021123,326.021123,4,0.416920,108,True,True,"left day 6 M, day 6 E, day 6 N, day 7 M, day 7 E, day 7 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_015_balanced_20d_seed1230717061,3,local,balanced,20,84,0.850000,25EC80,2,N,0.041897,0.042522,2,0.009999,0,False,True,
+case_015_balanced_20d_seed1230717061,3,cpsat,balanced,20,84,0.850000,25EC80,2,N,0.041897,0.042522,2,0.068465,0,False,True,
+case_015_balanced_20d_seed1230717061,4,local,balanced,20,84,0.850000,22CE19,11,M,0.041897,0.041996,2,0.045944,0,False,True,
+case_015_balanced_20d_seed1230717061,2,cpsat,balanced,20,84,0.850000,22ME62,13,M,0.041897,0.041831,2,0.211013,0,False,True,
+case_015_balanced_20d_seed1230717061,1,cpsat,balanced,20,84,0.850000,23CS15,3,E,0.041897,0.041831,2,0.307292,0,False,True,
+case_016_balanced_28d_seed481928997,0,local,balanced,28,59,0.850000,22CB46,25,E,0.039040,0.039040,2,0.031588,0,False,True,
+case_016_balanced_28d_seed481928997,1,local,balanced,28,59,0.850000,23CE06,23,M,0.039040,3.039073,1,0.026016,1,True,True,left day 23 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_016_balanced_28d_seed481928997,1,cpsat,balanced,28,59,0.850000,23CE06,23,M,0.039040,0.039617,4,0.095668,0,False,True,
+case_016_balanced_28d_seed481928997,2,local,balanced,28,59,0.850000,23CB33,18,N,0.039040,0.039040,2,0.024224,0,False,True,
+case_015_balanced_20d_seed1230717061,4,cpsat,balanced,20,84,0.850000,22CE19,11,M,0.041897,0.041996,2,0.303194,0,False,True,
+case_016_balanced_28d_seed481928997,0,cpsat,balanced,28,59,0.850000,22CB46,25,E,0.039040,0.039040,2,0.273275,0,False,True,
+case_016_balanced_28d_seed481928997,3,local,balanced,28,59,0.850000,24ME42,13,M,0.039040,0.039487,2,0.036447,0,False,True,
+case_016_balanced_28d_seed481928997,4,local,balanced,28,59,0.850000,25CE58,24,N,0.039040,0.039105,2,0.037718,0,False,True,
+case_016_balanced_28d_seed481928997,2,cpsat,balanced,28,59,0.850000,23CB33,18,N,0.039040,0.039040,2,0.161856,0,False,True,
+case_017_balanced_28d_seed947833377,0,local,balanced,28,97,0.850000,24EE38,8,N,0.042227,0.042187,2,0.085216,0,False,True,
+case_013_overloaded_20d_seed904148329,3,cpsat,overloaded,20,57,1.151000,22EE42,5,E,342.047618,344.045894,2,1.375098,102,True,True,"left day 5 E, day 6 M, day 6 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_017_balanced_28d_seed947833377,1,local,balanced,28,97,0.850000,25EC53,7,N,0.042227,0.042187,2,0.085963,0,False,True,
+case_016_balanced_28d_seed481928997,3,cpsat,balanced,28,59,0.850000,24ME42,13,M,0.039040,0.039487,2,0.278139,0,False,True,
+case_016_balanced_28d_seed481928997,4,cpsat,balanced,28,59,0.850000,25CE58,24,N,0.039040,0.039105,2,0.263877,0,False,True,
+case_017_balanced_28d_seed947833377,2,local,balanced,28,97,0.850000,23ME32,13,E,0.042227,0.042227,2,0.080682,0,False,True,
+case_017_balanced_28d_seed947833377,3,local,balanced,28,97,0.850000,25CS56,3,N,0.042227,0.042187,2,0.086255,0,False,True,
+case_017_balanced_28d_seed947833377,0,cpsat,balanced,28,97,0.850000,24EE38,8,N,0.042227,0.042187,2,0.364562,0,False,True,
+case_017_balanced_28d_seed947833377,4,local,balanced,28,97,0.850000,23CB45,25,N,0.042227,0.042187,2,0.070012,0,False,True,
+case_017_balanced_28d_seed947833377,1,cpsat,balanced,28,97,0.850000,25EC53,7,N,0.042227,0.042187,2,0.382547,0,False,True,
+case_017_balanced_28d_seed947833377,2,cpsat,balanced,28,97,0.850000,23ME32,13,E,0.042227,0.042227,2,0.334313,0,False,True,
+case_018_overloaded_14d_seed1242909059,0,local,overloaded,14,81,1.151000,25ME47,4,N,330.047594,331.048436,1,0.005446,91,True,True,left day 4 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_018_overloaded_14d_seed1242909059,1,local,overloaded,14,81,1.151000,23EC76,12,E,330.047594,330.047697,2,0.016622,90,False,True,
+case_018_overloaded_14d_seed1242909059,0,cpsat,overloaded,14,81,1.151000,25ME47,4,N,330.047594,330.047594,2,0.144022,90,True,True,"left day 4 E, day 4 N, day 5 M, day 5 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_017_balanced_28d_seed947833377,3,cpsat,balanced,28,97,0.850000,25CS56,3,N,0.042227,0.042187,2,0.346337,0,False,True,
+case_018_overloaded_14d_seed1242909059,2,local,overloaded,14,81,1.151000,23ME43,2,E,330.047594,332.047594,2,0.019249,90,False,True,
+case_018_overloaded_14d_seed1242909059,3,local,overloaded,14,81,1.151000,22CB40,2,M,330.047594,331.047646,1,0.023793,91,True,True,left day 2 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_017_balanced_28d_seed947833377,4,cpsat,balanced,28,97,0.850000,23CB45,25,N,0.042227,0.042187,2,0.355044,0,False,True,
+case_018_overloaded_14d_seed1242909059,4,local,overloaded,14,81,1.151000,25CS11,10,M,330.047594,333.047646,1,0.011006,91,True,True,left day 10 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_018_overloaded_14d_seed1242909059,1,cpsat,overloaded,14,81,1.151000,23EC76,12,E,330.047594,330.047697,2,0.334849,90,False,True,
+case_019_balanced_7d_seed1359585649,0,local,balanced,7,76,0.847000,24EE72,1,E,0.012500,0.012845,2,0.006136,0,False,True,
+case_019_balanced_7d_seed1359585649,0,cpsat,balanced,7,76,0.847000,24EE72,1,E,0.012500,0.012845,2,0.034273,0,False,True,
+case_019_balanced_7d_seed1359585649,1,local,balanced,7,76,0.847000,24EE58,5,N,0.012500,0.014417,2,0.007046,0,False,True,
+case_018_overloaded_14d_seed1242909059,4,cpsat,overloaded,14,81,1.151000,25CS11,10,M,330.047594,333.047646,1,0.142375,91,True,True,left day 10 M unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_019_balanced_7d_seed1359585649,2,local,balanced,7,76,0.847000,22ME69,3,E,0.012500,0.012500,2,0.005362,0,False,True,
+case_019_balanced_7d_seed1359585649,1,cpsat,balanced,7,76,0.847000,24EE58,5,N,0.012500,0.014417,2,0.067023,0,False,True,
+case_019_balanced_7d_seed1359585649,3,local,balanced,7,76,0.847000,23EE46,7,N,0.012500,0.012632,2,0.009631,0,False,True,
+case_019_balanced_7d_seed1359585649,2,cpsat,balanced,7,76,0.847000,22ME69,3,E,0.012500,0.012500,2,0.034992,0,False,True,
+case_019_balanced_7d_seed1359585649,4,local,balanced,7,76,0.847000,25ME34,2,M,0.012500,0.012500,2,0.014131,0,False,True,
+case_019_balanced_7d_seed1359585649,3,cpsat,balanced,7,76,0.847000,23EE46,7,N,0.012500,0.012632,2,0.048699,0,False,True,
+case_020_overloaded_7d_seed734594281,0,local,overloaded,7,61,1.149000,22CB17,2,N,88.019115,89.019279,1,0.004129,1,True,True,left day 2 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_020_overloaded_7d_seed734594281,0,cpsat,overloaded,7,61,1.149000,22CB17,2,N,88.019115,89.019279,1,0.030496,1,True,True,left day 2 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_020_overloaded_7d_seed734594281,1,local,overloaded,7,61,1.149000,24CS30,6,N,88.019115,89.019279,1,0.009286,1,True,True,left day 6 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_019_balanced_7d_seed1359585649,4,cpsat,balanced,7,76,0.847000,25ME34,2,M,0.012500,0.012500,2,0.081796,0,False,True,
+case_020_overloaded_7d_seed734594281,2,local,overloaded,7,61,1.149000,23CE33,4,N,88.019115,88.019443,2,0.007644,0,False,True,
+case_018_overloaded_14d_seed1242909059,2,cpsat,overloaded,14,81,1.151000,23ME43,2,E,330.047594,329.047646,3,5.020000,89,False,True,
+case_020_overloaded_7d_seed734594281,3,local,overloaded,7,61,1.149000,24EC18,3,N,88.019115,88.019125,2,0.002141,0,False,True,
+case_018_overloaded_14d_seed1242909059,3,cpsat,overloaded,14,81,1.151000,22CB40,2,M,330.047594,331.047646,1,5.005651,91,True,True,"left day 2 M, day 3 M unfilled for CND: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_020_overloaded_7d_seed734594281,4,local,overloaded,7,61,1.149000,22CB14,4,M,88.019115,89.021064,1,0.003201,1,True,True,left day 4 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_020_overloaded_7d_seed734594281,3,cpsat,overloaded,7,61,1.149000,24EC18,3,N,88.019115,88.019125,2,0.034259,0,False,True,
+case_020_overloaded_7d_seed734594281,4,cpsat,overloaded,7,61,1.149000,22CB14,4,M,88.019115,89.021064,1,0.033021,1,True,True,left day 4 M unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_021_balanced_28d_seed1105865120,0,local,balanced,28,84,0.850000,24CE32,3,E,0.042202,0.042202,2,0.033655,0,False,True,
+case_021_balanced_28d_seed1105865120,1,local,balanced,28,84,0.850000,25ME30,28,M,0.042202,0.042202,2,0.018571,0,False,True,
+case_021_balanced_28d_seed1105865120,0,cpsat,balanced,28,84,0.850000,24CE32,3,E,0.042202,0.042202,2,0.131035,0,False,True,
+case_021_balanced_28d_seed1105865120,1,cpsat,balanced,28,84,0.850000,25ME30,28,M,0.042202,0.042202,2,0.113944,0,False,True,
+case_021_balanced_28d_seed1105865120,2,local,balanced,28,84,0.850000,23EE04,2,E,0.042202,0.042202,2,0.057650,0,False,True,
+case_021_balanced_28d_seed1105865120,3,local,balanced,28,84,0.850000,24CB46,17,N,0.042202,0.042648,2,0.095405,0,False,True,
+case_020_overloaded_7d_seed734594281,1,cpsat,overloaded,7,61,1.149000,24CS30,6,N,88.019115,89.019279,1,5.010553,1,True,True,left day 6 N unfilled for Hospitality: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_020_overloaded_7d_seed734594281,2,cpsat,overloaded,7,61,1.149000,23CE33,4,N,88.019115,88.019443,2,5.003072,0,False,True,
+case_021_balanced_28d_seed1105865120,4,local,balanced,28,84,0.850000,25CE72,18,M,0.042202,0.042202,2,0.043735,0,False,True,
+case_022_overloaded_20d_seed2066994838,0,local,overloaded,20,64,1.149000,23EC60,13,E,382.051358,385.051939,1,0.013006,111,True,True,left day 13 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_021_balanced_28d_seed1105865120,2,cpsat,balanced,28,84,0.850000,23EE04,2,E,0.042202,0.042202,2,0.287322,0,False,True,
+case_022_overloaded_20d_seed2066994838,1,local,overloaded,20,64,1.149000,23CS25,20,E,382.051358,382.051358,2,0.012103,110,False,True,
+case_022_overloaded_20d_seed2066994838,0,cpsat,overloaded,20,64,1.149000,23EC60,13,E,382.051358,385.051939,1,0.087765,111,True,True,"left day 13 E, day 13 N, day 14 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_022_overloaded_20d_seed2066994838,2,local,overloaded,20,64,1.149000,23ME10,12,M,382.051358,385.051314,1,0.050319,111,True,True,left day 12 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_022_overloaded_20d_seed2066994838,1,cpsat,overloaded,20,64,1.149000,23CS25,20,E,382.051358,382.051358,2,0.115301,110,False,True,
+case_021_balanced_28d_seed1105865120,4,cpsat,balanced,28,84,0.850000,25CE72,18,M,0.042202,0.042202,2,0.223705,0,False,True,
+case_022_overloaded_20d_seed2066994838,3,local,overloaded,20,64,1.149000,22ME06,7,M,382.051358,383.051271,1,0.040845,111,True,True,left day 7 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_022_overloaded_20d_seed2066994838,4,local,overloaded,20,64,1.149000,24EE62,12,M,382.051358,385.051401,1,0.012348,111,True,True,left day 12 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_021_balanced_28d_seed1105865120,3,cpsat,balanced,28,84,0.850000,24CB46,17,N,0.042202,0.042648,2,0.369642,0,False,True,
+case_023_balanced_14d_seed1521098432,0,local,balanced,14,75,0.850000,25EC37,2,M,0.008451,0.009399,2,0.010476,0,False,True,
+case_022_overloaded_20d_seed2066994838,4,cpsat,overloaded,20,64,1.149000,24EE62,12,M,382.051358,385.051401,1,0.087362,111,True,True,"left day 12 M, day 13 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_023_balanced_14d_seed1521098432,0,cpsat,balanced,14,75,0.850000,25EC37,2,M,0.008451,0.009399,2,0.085248,0,False,True,
+case_023_balanced_14d_seed1521098432,1,local,balanced,14,75,0.850000,22CE27,13,N,0.008451,0.008451,2,0.022957,0,False,True,
+case_023_balanced_14d_seed1521098432,2,local,balanced,14,75,0.850000,24ME42,2,N,0.008451,0.009985,2,0.010640,0,False,True,
+case_023_balanced_14d_seed1521098432,2,cpsat,balanced,14,75,0.850000,24ME42,2,N,0.008451,0.009985,2,0.079659,0,False,True,
+case_023_balanced_14d_seed1521098432,3,local,balanced,14,75,0.850000,24CS68,13,N,0.008451,2.009455,2,0.009000,0,False,True,
+case_023_balanced_14d_seed1521098432,1,cpsat,balanced,14,75,0.850000,22CE27,13,N,0.008451,0.008451,2,0.179319,0,False,True,
+case_023_balanced_14d_seed1521098432,4,local,balanced,14,75,0.850000,22EC19,6,N,0.008451,0.008562,2,0.037961,0,False,True,
+case_023_balanced_14d_seed1521098432,3,cpsat,balanced,14,75,0.850000,24CS68,13,N,0.008451,0.009650,3,0.098026,0,False,True,
+case_022_overloaded_20d_seed2066994838,3,cpsat,overloaded,20,64,1.149000,22ME06,7,M,382.051358,381.051228,3,0.411890,111,True,True,"left day 7 M, day 7 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_024_overloaded_28d_seed408098958,0,local,overloaded,28,80,1.149000,24EC47,21,M,713.017403,716.017403,1,0.036247,224,True,True,left day 21 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_024_overloaded_28d_seed408098958,1,local,overloaded,28,80,1.149000,24ME72,6,E,713.017403,716.017403,1,0.062538,224,True,True,left day 6 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_023_balanced_14d_seed1521098432,4,cpsat,balanced,14,75,0.850000,22EC19,6,N,0.008451,0.008562,2,0.201571,0,False,True,
+case_024_overloaded_28d_seed408098958,2,local,overloaded,28,80,1.149000,24EC51,22,M,713.017403,716.017403,1,0.079747,224,True,True,left day 22 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_022_overloaded_20d_seed2066994838,2,cpsat,overloaded,20,64,1.149000,23ME10,12,M,382.051358,382.051358,4,0.767678,110,False,True,"left day 12 N, day 13 E, day 13 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_024_overloaded_28d_seed408098958,0,cpsat,overloaded,28,80,1.149000,24EC47,21,M,713.017403,716.017403,1,0.356016,224,True,True,"left day 21 M, day 21 N, day 22 M, day 22 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_024_overloaded_28d_seed408098958,3,local,overloaded,28,80,1.149000,25CS32,6,N,713.017403,716.017403,1,0.061124,224,True,True,left day 6 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_024_overloaded_28d_seed408098958,1,cpsat,overloaded,28,80,1.149000,24ME72,6,E,713.017403,713.017403,2,0.327565,223,True,True,"left day 6 E, day 6 N, day 7 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_024_overloaded_28d_seed408098958,4,local,overloaded,28,80,1.149000,24CB68,23,N,713.017403,716.017427,1,0.076703,224,True,True,left day 23 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_025_balanced_14d_seed1274846945,0,local,balanced,14,63,0.851000,25EE43,7,N,0.007738,0.007804,2,0.022025,0,False,True,
+case_024_overloaded_28d_seed408098958,2,cpsat,overloaded,28,80,1.149000,24EC51,22,M,713.017403,716.017403,1,0.329820,224,True,True,"left day 22 M, day 23 M, day 23 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_025_balanced_14d_seed1274846945,1,local,balanced,14,63,0.851000,25EC26,6,M,0.007738,0.007804,2,0.015785,0,False,True,
+case_025_balanced_14d_seed1274846945,0,cpsat,balanced,14,63,0.851000,25EE43,7,N,0.007738,0.007804,2,0.183868,0,False,True,
+case_025_balanced_14d_seed1274846945,2,local,balanced,14,63,0.851000,22CS22,5,N,0.007738,0.007804,2,0.016645,0,False,True,
+case_024_overloaded_28d_seed408098958,3,cpsat,overloaded,28,80,1.149000,25CS32,6,N,713.017403,715.017451,2,0.359820,223,True,True,"left day 6 E, day 6 N, day 7 E, day 7 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_025_balanced_14d_seed1274846945,1,cpsat,balanced,14,63,0.851000,25EC26,6,M,0.007738,0.007804,2,0.093189,0,False,True,
+case_025_balanced_14d_seed1274846945,3,local,balanced,14,63,0.851000,23CB51,6,N,0.007738,0.008631,2,0.023325,0,False,True,
+case_025_balanced_14d_seed1274846945,4,local,balanced,14,63,0.851000,25CE40,9,M,0.007738,0.008697,2,0.017733,0,False,True,
+case_025_balanced_14d_seed1274846945,2,cpsat,balanced,14,63,0.851000,22CS22,5,N,0.007738,0.007804,2,0.100878,0,False,True,
+case_026_balanced_20d_seed2059949648,0,local,balanced,20,83,0.849000,23EC80,10,N,0.041593,0.042251,2,0.048115,0,False,True,
+case_025_balanced_14d_seed1274846945,3,cpsat,balanced,14,63,0.851000,23CB51,6,N,0.007738,0.008631,2,0.166998,0,False,True,
+case_026_balanced_20d_seed2059949648,1,local,balanced,20,83,0.849000,24EC74,17,M,0.041593,0.041626,2,0.026697,0,False,True,
+case_025_balanced_14d_seed1274846945,4,cpsat,balanced,14,63,0.851000,25CE40,9,M,0.007738,0.008697,2,0.178349,0,False,True,
+case_026_balanced_20d_seed2059949648,2,local,balanced,20,83,0.849000,22CS22,18,N,0.041593,0.042218,2,0.041064,0,False,True,
+case_026_balanced_20d_seed2059949648,0,cpsat,balanced,20,83,0.849000,23EC80,10,N,0.041593,0.042251,2,0.233951,0,False,True,
+case_026_balanced_20d_seed2059949648,3,local,balanced,20,83,0.849000,22CB44,20,N,0.041593,0.041559,2,0.041711,0,False,True,
+case_026_balanced_20d_seed2059949648,1,cpsat,balanced,20,83,0.849000,24EC74,17,M,0.041593,0.041626,2,0.222391,0,False,True,
+case_026_balanced_20d_seed2059949648,2,cpsat,balanced,20,83,0.849000,22CS22,18,N,0.041593,0.042218,2,0.198961,0,False,True,
+case_026_balanced_20d_seed2059949648,4,local,balanced,20,83,0.849000,23CB01,7,N,0.041593,0.041559,2,0.034432,0,False,True,
+case_027_balanced_14d_seed1889002532,0,local,balanced,14,87,0.851000,24CB72,2,N,0.012770,0.012818,2,0.025739,0,False,True,
+case_027_balanced_14d_seed1889002532,0,cpsat,balanced,14,87,0.851000,24CB72,2,N,0.012770,0.012818,2,0.117539,0,False,True,
+case_026_balanced_20d_seed2059949648,3,cpsat,balanced,20,83,0.849000,22CB44,20,N,0.041593,0.041559,2,0.201489,0,False,True,
+case_027_balanced_14d_seed1889002532,1,local,balanced,14,87,0.851000,22CS58,5,E,0.012770,0.013759,2,0.020954,0,False,True,
+case_027_balanced_14d_seed1889002532,2,local,balanced,14,87,0.851000,24CB54,4,E,0.012770,0.012866,2,0.019465,0,False,True,
+case_026_balanced_20d_seed2059949648,4,cpsat,balanced,20,83,0.849000,23CB01,7,N,0.041593,0.041559,2,0.215874,0,False,True,
+case_027_balanced_14d_seed1889002532,1,cpsat,balanced,14,87,0.851000,22CS58,5,E,0.012770,0.013759,2,0.086718,0,False,True,
+case_027_balanced_14d_seed1889002532,3,local,balanced,14,87,0.851000,22ME15,13,M,0.012770,0.012770,2,0.037178,0,False,True,
+case_027_balanced_14d_seed1889002532,2,cpsat,balanced,14,87,0.851000,24CB54,4,E,0.012770,0.012866,2,0.085867,0,False,True,
+case_027_balanced_14d_seed1889002532,4,local,balanced,14,87,0.851000,24ME13,5,E,0.012770,0.012722,2,0.032428,0,False,True,
+case_028_tight_20d_seed2092026167,0,local,tight,20,94,1.000000,24EC01,20,M,138.051877,138.051877,2,0.048933,36,False,True,
+case_027_balanced_14d_seed1889002532,3,cpsat,balanced,14,87,0.851000,22ME15,13,M,0.012770,0.012770,2,0.160078,0,False,True,
+case_028_tight_20d_seed2092026167,1,local,tight,20,94,1.000000,24EE12,1,M,138.051877,138.051877,2,0.049985,36,False,True,
+case_027_balanced_14d_seed1889002532,4,cpsat,balanced,14,87,0.851000,24ME13,5,E,0.012770,0.012722,2,0.175527,0,False,True,
+case_028_tight_20d_seed2092026167,2,local,tight,20,94,1.000000,24CE11,16,N,138.051877,141.051495,1,0.053802,37,True,True,left day 16 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_028_tight_20d_seed2092026167,0,cpsat,tight,20,94,1.000000,24EC01,20,M,138.051877,138.051877,2,0.200142,36,False,True,
+case_028_tight_20d_seed2092026167,3,local,tight,20,94,1.000000,24ME90,5,N,138.051877,141.051671,1,0.023387,37,True,True,left day 5 N unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_028_tight_20d_seed2092026167,1,cpsat,tight,20,94,1.000000,24EE12,1,M,138.051877,138.051877,2,0.226771,36,False,True,
+case_028_tight_20d_seed2092026167,4,local,tight,20,94,1.000000,25EC40,12,M,138.051877,141.051847,1,0.017719,37,True,True,left day 12 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_028_tight_20d_seed2092026167,3,cpsat,tight,20,94,1.000000,24ME90,5,N,138.051877,141.051671,1,0.128467,37,True,True,left day 5 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_029_tight_20d_seed94740131,0,local,tight,20,61,1.001000,23CB14,7,M,69.017175,72.017800,1,0.014990,19,True,True,left day 7 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_028_tight_20d_seed2092026167,2,cpsat,tight,20,94,1.000000,24CE11,16,N,138.051877,141.051495,1,0.312815,37,True,True,left day 16 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_029_tight_20d_seed94740131,1,local,tight,20,61,1.001000,25CS50,20,E,69.017175,69.019360,2,0.014783,18,False,True,
+case_029_tight_20d_seed94740131,0,cpsat,tight,20,61,1.001000,23CB14,7,M,69.017175,72.017800,1,0.134684,19,True,True,left day 7 M unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_029_tight_20d_seed94740131,2,local,tight,20,61,1.001000,23CE41,3,E,69.017175,71.017709,2,0.027447,18,False,True,
+case_029_tight_20d_seed94740131,1,cpsat,tight,20,61,1.001000,25CS50,20,E,69.017175,66.019360,3,0.171422,18,False,True,
+case_029_tight_20d_seed94740131,3,local,tight,20,61,1.001000,23CB14,14,M,69.017175,72.017800,1,0.017215,19,True,True,left day 14 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_029_tight_20d_seed94740131,2,cpsat,tight,20,61,1.001000,23CE41,3,E,69.017175,71.017709,2,0.274656,18,False,True,
+case_029_tight_20d_seed94740131,3,cpsat,tight,20,61,1.001000,23CB14,14,M,69.017175,72.017800,1,0.139938,19,True,True,"left day 14 M, day 14 E unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_029_tight_20d_seed94740131,4,local,tight,20,61,1.001000,23CB45,2,N,69.017175,69.016595,2,0.024141,18,False,True,
+case_030_tight_14d_seed881875713,0,local,tight,14,74,1.000000,22EE49,4,M,17.020553,20.020610,1,0.027617,6,True,True,left day 4 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_029_tight_20d_seed94740131,4,cpsat,tight,20,61,1.001000,23CB45,2,N,69.017175,67.017357,4,0.200039,18,False,True,
+case_030_tight_14d_seed881875713,1,local,tight,14,74,1.000000,25ME11,4,E,17.020553,17.020610,2,0.019320,5,False,True,
+case_030_tight_14d_seed881875713,1,cpsat,tight,14,74,1.000000,25ME11,4,E,17.020553,17.020610,2,0.112321,5,False,True,
+case_030_tight_14d_seed881875713,0,cpsat,tight,14,74,1.000000,22EE49,4,M,17.020553,18.020610,3,0.316832,6,True,True,left day 4 M unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_030_tight_14d_seed881875713,2,local,tight,14,74,1.000000,22EC73,8,N,17.020553,20.020497,1,0.025252,6,True,True,left day 8 N unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_028_tight_20d_seed2092026167,4,cpsat,tight,20,94,1.000000,25EC40,12,M,138.051877,137.051847,6,0.889507,37,True,True,"left day 12 M, day 12 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_030_tight_14d_seed881875713,3,local,tight,14,74,1.000000,24CB33,12,E,17.020553,19.021559,2,0.031819,5,False,True,
+case_030_tight_14d_seed881875713,4,local,tight,14,74,1.000000,23CB10,14,E,17.020553,19.020610,2,0.018894,5,False,True,
+case_030_tight_14d_seed881875713,2,cpsat,tight,14,74,1.000000,22EC73,8,N,17.020553,20.020497,1,0.135991,6,True,True,"left day 8 E, day 8 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_031_overloaded_20d_seed308436407,0,local,overloaded,20,68,1.151000,22CE22,5,N,410.024983,413.024983,1,0.010576,115,True,True,left day 5 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_030_tight_14d_seed881875713,4,cpsat,tight,14,74,1.000000,23CB10,14,E,17.020553,19.020610,2,0.085829,5,False,True,
+case_031_overloaded_20d_seed308436407,1,local,overloaded,20,68,1.151000,24EE30,20,E,410.024983,413.025567,1,0.017424,115,True,True,left day 20 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_031_overloaded_20d_seed308436407,0,cpsat,overloaded,20,68,1.151000,22CE22,5,N,410.024983,412.025065,2,0.074473,114,True,True,left day 5 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_031_overloaded_20d_seed308436407,2,local,overloaded,20,68,1.151000,25CS06,1,E,410.024983,413.024983,1,0.003165,115,True,True,left day 1 E unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_031_overloaded_20d_seed308436407,1,cpsat,overloaded,20,68,1.151000,24EE30,20,E,410.024983,413.025567,1,0.103727,115,True,True,left day 20 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_030_tight_14d_seed881875713,3,cpsat,tight,14,74,1.000000,24CB33,12,E,17.020553,19.021559,2,0.287941,5,False,True,
+case_031_overloaded_20d_seed308436407,3,local,overloaded,20,68,1.151000,25CB26,5,N,410.024983,413.025024,1,0.010090,115,True,True,left day 5 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_031_overloaded_20d_seed308436407,4,local,overloaded,20,68,1.151000,22CB68,1,E,410.024983,413.024983,1,0.003207,115,True,True,left day 1 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_031_overloaded_20d_seed308436407,3,cpsat,overloaded,20,68,1.151000,25CB26,5,N,410.024983,413.025024,1,0.072605,115,True,True,"left day 5 N, day 6 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_031_overloaded_20d_seed308436407,2,cpsat,overloaded,20,68,1.151000,25CS06,1,E,410.024983,413.024983,1,0.156047,115,True,True,left day 1 E unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_032_overloaded_20d_seed697122880,0,local,overloaded,20,76,1.151000,25EE55,13,M,435.017294,438.017221,1,0.028407,124,True,True,left day 13 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_024_overloaded_28d_seed408098958,4,cpsat,overloaded,28,80,1.149000,24CB68,23,N,713.017403,716.017427,1,2.848776,224,True,True,"left day 23 M, day 23 E, day 23 N, day 24 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_032_overloaded_20d_seed697122880,1,local,overloaded,20,76,1.151000,25CS05,17,N,435.017294,438.017257,1,0.029555,124,True,True,left day 17 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_032_overloaded_20d_seed697122880,2,local,overloaded,20,76,1.151000,25ME31,5,M,435.017294,438.017294,1,0.023623,124,True,True,left day 5 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_031_overloaded_20d_seed308436407,4,cpsat,overloaded,20,68,1.151000,22CB68,1,E,410.024983,413.024983,1,0.233531,115,True,True,left day 1 E unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_032_overloaded_20d_seed697122880,3,local,overloaded,20,76,1.151000,22ME70,11,M,435.017294,436.017330,1,0.035220,124,True,True,left day 11 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_032_overloaded_20d_seed697122880,1,cpsat,overloaded,20,76,1.151000,25CS05,17,N,435.017294,436.017919,3,0.232207,124,True,True,"left day 17 E, day 17 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_032_overloaded_20d_seed697122880,4,local,overloaded,20,76,1.151000,24CB68,5,N,435.017294,438.017330,1,0.026656,124,True,True,left day 5 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_032_overloaded_20d_seed697122880,2,cpsat,overloaded,20,76,1.151000,25ME31,5,M,435.017294,435.017403,4,0.309244,123,False,True,"left day 6 M, day 6 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_033_balanced_20d_seed438521308,0,local,balanced,20,64,0.850000,25CB58,10,N,0.008449,0.009117,2,0.013415,0,False,True,
+case_033_balanced_20d_seed438521308,0,cpsat,balanced,20,64,0.850000,25CB58,10,N,0.008449,0.009117,2,0.076776,0,False,True,
+case_033_balanced_20d_seed438521308,1,local,balanced,20,64,0.850000,23CB40,3,M,0.008449,0.009074,2,0.029865,0,False,True,
+case_032_overloaded_20d_seed697122880,3,cpsat,overloaded,20,76,1.151000,22ME70,11,M,435.017294,431.017367,5,0.417171,125,False,True,"left day 11 E, day 12 M, day 12 E, day 12 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_033_balanced_20d_seed438521308,2,local,balanced,20,64,0.850000,25CB20,2,E,0.008449,0.008449,2,0.028369,0,False,True,
+case_032_overloaded_20d_seed697122880,4,cpsat,overloaded,20,76,1.151000,24CB68,5,N,435.017294,431.017367,5,0.356016,125,False,True,"left day 5 M, day 6 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_033_balanced_20d_seed438521308,3,local,balanced,20,64,0.850000,22CE25,7,E,0.008449,2.008406,2,0.039255,0,False,True,
+case_032_overloaded_20d_seed697122880,0,cpsat,overloaded,20,76,1.151000,25EE55,13,M,435.017294,432.017257,5,0.817300,124,True,True,"left day 13 M, day 14 M, day 14 E, day 14 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_033_balanced_20d_seed438521308,1,cpsat,balanced,20,64,0.850000,23CB40,3,M,0.008449,0.009074,2,0.279423,0,False,True,
+case_033_balanced_20d_seed438521308,4,local,balanced,20,64,0.850000,25CB15,15,N,0.008449,0.008536,2,0.040696,0,False,True,
+case_033_balanced_20d_seed438521308,2,cpsat,balanced,20,64,0.850000,25CB20,2,E,0.008449,0.008449,2,0.228223,0,False,True,
+case_034_overloaded_28d_seed1251758415,0,local,overloaded,28,97,1.150000,23ME75,27,M,935.017745,935.018834,2,0.028181,295,False,True,
+case_033_balanced_20d_seed438521308,3,cpsat,balanced,20,64,0.850000,22CE25,7,E,0.008449,0.008449,4,0.262749,0,False,True,
+case_034_overloaded_28d_seed1251758415,1,local,overloaded,28,97,1.150000,22CS12,23,M,935.017745,938.018211,1,0.112956,296,True,True,left day 23 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_033_balanced_20d_seed438521308,4,cpsat,balanced,20,64,0.850000,25CB15,15,N,0.008449,0.008536,2,0.262431,0,False,True,
+case_034_overloaded_28d_seed1251758415,2,local,overloaded,28,97,1.150000,23EC25,21,E,935.017745,938.017745,1,0.056487,296,True,True,left day 21 E unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_034_overloaded_28d_seed1251758415,3,local,overloaded,28,97,1.150000,24CB63,24,E,935.017745,937.018658,2,0.040565,295,False,True,
+case_034_overloaded_28d_seed1251758415,0,cpsat,overloaded,28,97,1.150000,23ME75,27,M,935.017745,933.018388,4,0.347547,295,False,True,
+case_034_overloaded_28d_seed1251758415,4,local,overloaded,28,97,1.150000,24EE57,5,N,935.017745,935.017765,2,0.038946,295,False,True,
+case_034_overloaded_28d_seed1251758415,2,cpsat,overloaded,28,97,1.150000,23EC25,21,E,935.017745,937.017785,2,0.384889,295,True,True,"left day 21 E, day 21 N, day 22 E, day 22 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_035_balanced_7d_seed311602298,0,local,balanced,7,54,0.851000,25EE27,7,N,0.012500,0.012500,2,0.006741,0,False,True,
+case_035_balanced_7d_seed311602298,0,cpsat,balanced,7,54,0.851000,25EE27,7,N,0.012500,0.012500,2,0.047954,0,False,True,
+case_035_balanced_7d_seed311602298,1,local,balanced,7,54,0.851000,25EE54,7,N,0.012500,0.014286,2,0.003338,0,False,True,
+case_035_balanced_7d_seed311602298,1,cpsat,balanced,7,54,0.851000,25EE54,7,N,0.012500,0.014286,2,0.020778,0,False,True,
+case_035_balanced_7d_seed311602298,2,local,balanced,7,54,0.851000,25ME08,2,E,0.012500,0.012685,2,0.002712,0,False,True,
+case_035_balanced_7d_seed311602298,2,cpsat,balanced,7,54,0.851000,25ME08,2,E,0.012500,0.012685,2,0.029668,0,False,True,
+case_035_balanced_7d_seed311602298,3,local,balanced,7,54,0.851000,25ME09,5,M,0.012500,0.012500,2,0.004203,0,False,True,
+case_034_overloaded_28d_seed1251758415,1,cpsat,overloaded,28,97,1.150000,22CS12,23,M,935.017745,938.018211,1,0.662414,296,True,True,"left day 23 M, day 23 E, day 23 N, day 24 E, day 24 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_035_balanced_7d_seed311602298,4,local,balanced,7,54,0.851000,24EC35,3,E,0.012500,0.012685,2,0.007399,0,False,True,
+case_035_balanced_7d_seed311602298,3,cpsat,balanced,7,54,0.851000,25ME09,5,M,0.012500,0.012500,2,0.029294,0,False,True,
+case_036_balanced_20d_seed136577210,0,local,balanced,20,52,0.849000,22EC30,3,E,0.009324,0.009270,2,0.026945,0,False,True,
+case_034_overloaded_28d_seed1251758415,4,cpsat,overloaded,28,97,1.150000,24EE57,5,N,935.017745,932.018118,3,0.393877,294,False,True,left day 6 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_035_balanced_7d_seed311602298,4,cpsat,balanced,7,54,0.851000,24EC35,3,E,0.012500,0.012685,2,0.062130,0,False,True,
+case_036_balanced_20d_seed136577210,1,local,balanced,20,52,0.849000,25EE33,10,N,0.009324,0.009377,2,0.031246,0,False,True,
+case_036_balanced_20d_seed136577210,2,local,balanced,20,52,0.849000,22ME51,5,E,0.009324,0.009431,2,0.012222,0,False,True,
+case_034_overloaded_28d_seed1251758415,3,cpsat,overloaded,28,97,1.150000,24CB63,24,E,935.017745,936.018677,3,0.655325,294,False,True,"left day 24 N, day 25 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_036_balanced_20d_seed136577210,2,cpsat,balanced,20,52,0.849000,22ME51,5,E,0.009324,0.009431,2,0.075375,0,False,True,
+case_036_balanced_20d_seed136577210,3,local,balanced,20,52,0.849000,23CE02,13,E,0.009324,0.010056,2,0.013983,0,False,True,
+case_036_balanced_20d_seed136577210,4,local,balanced,20,52,0.849000,22CS10,15,M,0.009324,2.009949,2,0.014295,0,False,True,
+case_036_balanced_20d_seed136577210,0,cpsat,balanced,20,52,0.849000,22EC30,3,E,0.009324,0.009270,2,0.240199,0,False,True,
+case_036_balanced_20d_seed136577210,1,cpsat,balanced,20,52,0.849000,25EE33,10,N,0.009324,0.009377,2,0.222817,0,False,True,
+case_036_balanced_20d_seed136577210,3,cpsat,balanced,20,52,0.849000,23CE02,13,E,0.009324,0.010056,2,0.097865,0,False,True,
+case_037_balanced_20d_seed592976945,0,local,balanced,20,67,0.851000,22ME01,11,E,0.021798,0.022266,2,0.026247,0,False,True,
+case_036_balanced_20d_seed136577210,4,cpsat,balanced,20,52,0.849000,22CS10,15,M,0.009324,0.009949,3,0.094767,0,False,True,
+case_037_balanced_20d_seed592976945,1,local,balanced,20,67,0.851000,25CE04,10,N,0.021798,0.022506,2,0.030627,0,False,True,
+case_037_balanced_20d_seed592976945,2,local,balanced,20,67,0.851000,24EC23,15,E,0.021798,0.022465,2,0.014722,0,False,True,
+case_037_balanced_20d_seed592976945,3,local,balanced,20,67,0.851000,25EC48,19,N,0.021798,0.021798,2,0.043642,0,False,True,
+case_037_balanced_20d_seed592976945,2,cpsat,balanced,20,67,0.851000,24EC23,15,E,0.021798,0.022465,2,0.084341,0,False,True,
+case_037_balanced_20d_seed592976945,4,local,balanced,20,67,0.851000,22ME28,7,N,0.021798,0.022423,2,0.017364,0,False,True,
+case_037_balanced_20d_seed592976945,0,cpsat,balanced,20,67,0.851000,22ME01,11,E,0.021798,0.022266,2,0.167738,0,False,True,
+case_038_overloaded_14d_seed360467448,0,local,overloaded,14,78,1.150000,25EC47,12,E,311.047830,314.047883,1,0.017941,86,True,True,left day 12 E unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_037_balanced_20d_seed592976945,1,cpsat,balanced,20,67,0.851000,25CE04,10,N,0.021798,0.022506,2,0.191927,0,False,True,
+case_037_balanced_20d_seed592976945,4,cpsat,balanced,20,67,0.851000,22ME28,7,N,0.021798,0.022423,2,0.086812,0,False,True,
+case_038_overloaded_14d_seed360467448,1,local,overloaded,14,78,1.150000,23CB48,13,M,311.047830,313.047330,2,0.029019,85,False,True,
+case_038_overloaded_14d_seed360467448,2,local,overloaded,14,78,1.150000,22CB35,2,N,311.047830,313.047830,2,0.022672,85,False,True,
+case_037_balanced_20d_seed592976945,3,cpsat,balanced,20,67,0.851000,25EC48,19,N,0.021798,0.021798,2,0.233443,0,False,True,
+case_038_overloaded_14d_seed360467448,3,local,overloaded,14,78,1.150000,23EE65,14,E,311.047830,313.047830,2,0.009809,85,False,True,
+case_038_overloaded_14d_seed360467448,3,cpsat,overloaded,14,78,1.150000,23EE65,14,E,311.047830,313.047830,2,0.074493,85,False,True,
+case_038_overloaded_14d_seed360467448,4,local,overloaded,14,78,1.150000,23EE38,9,E,311.047830,314.047776,1,0.023527,86,True,True,left day 9 E unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_038_overloaded_14d_seed360467448,0,cpsat,overloaded,14,78,1.150000,25EC47,12,E,311.047830,314.047883,1,5.006225,86,True,True,left day 12 E unfilled for CND: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_039_tight_28d_seed1884758794,0,local,tight,28,63,1.000000,25CB58,7,E,153.046320,156.046350,1,0.026054,42,True,True,left day 7 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_038_overloaded_14d_seed360467448,1,cpsat,overloaded,14,78,1.150000,23CB48,13,M,311.047830,314.047383,1,5.005621,86,True,True,left day 13 M unfilled for CND: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_039_tight_28d_seed1884758794,1,local,tight,28,63,1.000000,23EC21,8,M,153.046320,156.046350,1,0.016564,42,True,True,left day 8 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_038_overloaded_14d_seed360467448,2,cpsat,overloaded,14,78,1.150000,22CB35,2,N,311.047830,313.047830,2,5.005355,85,False,True,
+case_039_tight_28d_seed1884758794,2,local,tight,28,63,1.000000,23EE22,5,N,153.046320,156.046350,1,0.011945,42,True,True,left day 5 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_039_tight_28d_seed1884758794,1,cpsat,tight,28,63,1.000000,23EC21,8,M,153.046320,156.046350,1,0.113466,42,True,True,"left day 8 M, day 8 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_039_tight_28d_seed1884758794,2,cpsat,tight,28,63,1.000000,23EE22,5,N,153.046320,154.046350,3,0.103784,42,False,True,left day 6 M unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_039_tight_28d_seed1884758794,3,local,tight,28,63,1.000000,24ME38,13,E,153.046320,156.046289,1,0.031154,42,True,True,left day 13 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_038_overloaded_14d_seed360467448,4,cpsat,overloaded,14,78,1.150000,23EE38,9,E,311.047830,314.047776,1,5.005846,86,True,True,left day 9 E unfilled for CND: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_039_tight_28d_seed1884758794,4,local,tight,28,63,1.000000,23EC17,23,N,153.046320,156.046320,1,0.045973,42,True,True,left day 23 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_039_tight_28d_seed1884758794,0,cpsat,tight,28,63,1.000000,25CB58,7,E,153.046320,156.046350,1,0.272840,42,True,True,left day 7 E unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_040_balanced_28d_seed72685321,0,local,balanced,28,81,0.849000,24EC51,6,E,0.042472,0.042543,2,0.041544,0,False,True,
+case_040_balanced_28d_seed72685321,1,local,balanced,28,81,0.849000,23ME19,24,M,0.042472,0.042116,2,0.050964,0,False,True,
+case_040_balanced_28d_seed72685321,0,cpsat,balanced,28,81,0.849000,24EC51,6,E,0.042472,0.042543,2,0.256085,0,False,True,
+case_039_tight_28d_seed1884758794,3,cpsat,tight,28,63,1.000000,24ME38,13,E,153.046320,156.046289,1,0.372705,42,True,True,"left day 13 E, day 13 N, day 14 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_040_balanced_28d_seed72685321,2,local,balanced,28,81,0.849000,23CE23,8,M,0.042472,0.042448,2,0.027021,0,False,True,
+case_040_balanced_28d_seed72685321,1,cpsat,balanced,28,81,0.849000,23ME19,24,M,0.042472,0.042116,2,0.282887,0,False,True,
+case_040_balanced_28d_seed72685321,3,local,balanced,28,81,0.849000,22CB74,4,M,0.042472,0.042448,2,0.071241,0,False,True,
+case_040_balanced_28d_seed72685321,4,local,balanced,28,81,0.849000,25EC30,22,E,0.042472,2.042425,2,0.034359,0,False,True,
+case_040_balanced_28d_seed72685321,2,cpsat,balanced,28,81,0.849000,23CE23,8,M,0.042472,0.042448,2,0.164278,0,False,True,
+case_041_balanced_20d_seed1121655978,0,local,balanced,20,66,0.850000,22CB57,4,E,0.042496,0.042454,2,0.044906,0,False,True,
+case_040_balanced_28d_seed72685321,4,cpsat,balanced,28,81,0.849000,25EC30,22,E,0.042472,2.042425,2,0.166199,0,False,True,
+case_041_balanced_20d_seed1121655978,1,local,balanced,20,66,0.850000,23CB48,3,E,0.042496,0.043079,2,0.039133,0,False,True,
+case_041_balanced_20d_seed1121655978,0,cpsat,balanced,20,66,0.850000,22CB57,4,E,0.042496,0.042454,2,0.234501,0,False,True,
+case_040_balanced_28d_seed72685321,3,cpsat,balanced,28,81,0.849000,22CB74,4,M,0.042472,0.042448,2,0.369075,0,False,True,
+case_041_balanced_20d_seed1121655978,2,local,balanced,20,66,0.850000,24CB60,10,M,0.042496,0.042538,2,0.035390,0,False,True,
+case_041_balanced_20d_seed1121655978,3,local,balanced,20,66,0.850000,24CS40,17,M,0.042496,0.042538,2,0.029770,0,False,True,
+case_041_balanced_20d_seed1121655978,1,cpsat,balanced,20,66,0.850000,23CB48,3,E,0.042496,0.043079,2,0.239068,0,False,True,
+case_041_balanced_20d_seed1121655978,4,local,balanced,20,66,0.850000,23CE26,3,N,0.042496,0.042496,2,0.025659,0,False,True,
+case_041_balanced_20d_seed1121655978,2,cpsat,balanced,20,66,0.850000,24CB60,10,M,0.042496,0.042538,2,0.259086,0,False,True,
+case_041_balanced_20d_seed1121655978,3,cpsat,balanced,20,66,0.850000,24CS40,17,M,0.042496,0.042538,2,0.243958,0,False,True,
+case_042_balanced_20d_seed1687655386,0,local,balanced,20,90,0.850000,25ME21,3,N,0.043220,0.043251,2,0.054108,0,False,True,
+case_041_balanced_20d_seed1121655978,4,cpsat,balanced,20,66,0.850000,23CE26,3,N,0.042496,0.042496,2,0.166990,0,False,True,
+case_042_balanced_20d_seed1687655386,1,local,balanced,20,90,0.850000,25ME09,7,E,0.043220,0.043281,2,0.058608,0,False,True,
+case_042_balanced_20d_seed1687655386,2,local,balanced,20,90,0.850000,25EC88,15,E,0.043220,0.043251,2,0.015720,0,False,True,
+case_042_balanced_20d_seed1687655386,2,cpsat,balanced,20,90,0.850000,25EC88,15,E,0.043220,0.043251,2,0.072001,0,False,True,
+case_042_balanced_20d_seed1687655386,3,local,balanced,20,90,0.850000,25ME09,19,N,0.043220,0.043189,2,0.051305,0,False,True,
+case_042_balanced_20d_seed1687655386,0,cpsat,balanced,20,90,0.850000,25ME21,3,N,0.043220,0.043251,2,0.240173,0,False,True,
+case_042_balanced_20d_seed1687655386,4,local,balanced,20,90,0.850000,24CB42,19,E,0.043220,0.043220,2,0.061281,0,False,True,
+case_042_balanced_20d_seed1687655386,1,cpsat,balanced,20,90,0.850000,25ME09,7,E,0.043220,0.043281,2,0.305790,0,False,True,
+case_043_balanced_14d_seed494037100,0,local,balanced,14,62,0.849000,25CE57,10,N,0.007073,0.007694,2,0.018523,0,False,True,
+case_043_balanced_14d_seed494037100,0,cpsat,balanced,14,62,0.849000,25CE57,10,N,0.007073,0.007694,2,0.087517,0,False,True,
+case_043_balanced_14d_seed494037100,1,local,balanced,14,62,0.849000,22CB19,3,N,0.007073,0.007966,2,0.021868,0,False,True,
+case_042_balanced_20d_seed1687655386,3,cpsat,balanced,20,90,0.850000,25ME09,19,N,0.043220,0.043189,2,0.237494,0,False,True,
+case_043_balanced_14d_seed494037100,2,local,balanced,14,62,0.849000,22CB18,13,E,0.007073,0.006939,2,0.019681,0,False,True,
+case_039_tight_28d_seed1884758794,4,cpsat,tight,28,63,1.000000,23EC17,23,N,153.046320,156.046320,1,1.671670,42,True,True,"left day 23 M, day 23 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_043_balanced_14d_seed494037100,3,local,balanced,14,62,0.849000,22CE45,14,N,0.007073,2.007140,2,0.005354,0,False,True,
+case_042_balanced_20d_seed1687655386,4,cpsat,balanced,20,90,0.850000,24CB42,19,E,0.043220,0.043220,2,0.232531,0,False,True,
+case_043_balanced_14d_seed494037100,4,local,balanced,14,62,0.849000,24ME38,7,M,0.007073,0.007208,2,0.010758,0,False,True,
+case_043_balanced_14d_seed494037100,3,cpsat,balanced,14,62,0.849000,22CE45,14,N,0.007073,2.007140,2,0.047332,0,False,True,
+case_044_overloaded_20d_seed211597713,0,local,overloaded,20,65,1.150000,22EE21,19,E,408.014639,408.014596,2,0.024615,122,False,True,
+case_043_balanced_14d_seed494037100,1,cpsat,balanced,14,62,0.849000,22CB19,3,N,0.007073,0.007966,2,0.156659,0,False,True,
+case_043_balanced_14d_seed494037100,4,cpsat,balanced,14,62,0.849000,24ME38,7,M,0.007073,0.007208,2,0.078748,0,False,True,
+case_044_overloaded_20d_seed211597713,1,local,overloaded,20,65,1.150000,25EC03,12,E,408.014639,408.015815,2,0.019770,122,False,True,
+case_043_balanced_14d_seed494037100,2,cpsat,balanced,14,62,0.849000,22CB18,13,E,0.007073,0.006939,2,0.154508,0,False,True,
+case_044_overloaded_20d_seed211597713,2,local,overloaded,20,65,1.150000,25EE53,17,N,408.014639,408.016403,2,0.020831,122,False,True,
+case_044_overloaded_20d_seed211597713,3,local,overloaded,20,65,1.150000,24ME63,18,N,408.014639,411.014596,1,0.009310,123,True,True,left day 18 N unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_044_overloaded_20d_seed211597713,3,cpsat,overloaded,20,65,1.150000,24ME63,18,N,408.014639,411.014596,1,0.092540,123,True,True,left day 18 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_044_overloaded_20d_seed211597713,0,cpsat,overloaded,20,65,1.150000,22EE21,19,E,408.014639,406.015178,4,0.194745,122,False,True,
+case_044_overloaded_20d_seed211597713,4,local,overloaded,20,65,1.150000,25EE44,7,M,408.014639,411.014596,1,0.062144,123,True,True,left day 7 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_044_overloaded_20d_seed211597713,2,cpsat,overloaded,20,65,1.150000,25EE53,17,N,408.014639,404.016318,4,0.232786,122,False,True,
+case_045_tight_14d_seed1978785143,0,local,tight,14,79,1.000000,22EE58,7,E,34.025098,37.025045,1,0.018261,9,True,True,left day 7 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_045_tight_14d_seed1978785143,1,local,tight,14,79,1.000000,24EC76,8,E,34.025098,37.025150,1,0.020245,9,True,True,left day 8 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_044_overloaded_20d_seed211597713,1,cpsat,overloaded,20,65,1.150000,25EC03,12,E,408.014639,394.016446,7,0.361196,124,False,True,"left day 13 M, day 13 E, day 13 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_045_tight_14d_seed1978785143,1,cpsat,tight,14,79,1.000000,24EC76,8,E,34.025098,37.025150,1,0.115027,9,True,True,"left day 8 M, day 8 E unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_045_tight_14d_seed1978785143,2,local,tight,14,79,1.000000,23CE05,8,N,34.025098,36.026043,2,0.048754,8,True,True,left day 8 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_045_tight_14d_seed1978785143,3,local,tight,14,79,1.000000,25ME06,11,E,34.025098,37.025150,1,0.032743,9,True,True,left day 11 E unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_045_tight_14d_seed1978785143,0,cpsat,tight,14,79,1.000000,22EE58,7,E,34.025098,37.025045,1,0.209662,9,True,True,"left day 7 E, day 8 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_045_tight_14d_seed1978785143,4,local,tight,14,79,1.000000,25CB11,12,N,34.025098,37.025150,1,0.026669,9,True,True,left day 12 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_044_overloaded_20d_seed211597713,4,cpsat,overloaded,20,65,1.150000,25EE44,7,M,408.014639,411.014596,1,0.430902,123,True,True,"left day 7 M, day 7 E, day 7 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_046_balanced_14d_seed882933208,0,local,balanced,14,83,0.850000,22CB26,3,N,0.008951,0.009002,2,0.011605,0,False,True,
+case_045_tight_14d_seed1978785143,3,cpsat,tight,14,79,1.000000,25ME06,11,E,34.025098,37.025150,1,0.235584,9,True,True,left day 11 E unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_046_balanced_14d_seed882933208,1,local,balanced,14,83,0.850000,25ME34,3,E,0.008951,0.009052,2,0.011965,0,False,True,
+case_046_balanced_14d_seed882933208,0,cpsat,balanced,14,83,0.850000,22CB26,3,N,0.008951,0.009002,2,0.110239,0,False,True,
+case_045_tight_14d_seed1978785143,4,cpsat,tight,14,79,1.000000,25CB11,12,N,34.025098,37.025150,1,0.265256,9,True,True,left day 12 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_046_balanced_14d_seed882933208,2,local,balanced,14,83,0.850000,23CE11,8,N,0.008951,0.009002,2,0.029694,0,False,True,
+case_046_balanced_14d_seed882933208,3,local,balanced,14,83,0.850000,24CE64,5,M,0.008951,0.009102,2,0.016885,0,False,True,
+case_046_balanced_14d_seed882933208,1,cpsat,balanced,14,83,0.850000,25ME34,3,E,0.008951,0.009052,2,0.114813,0,False,True,
+case_046_balanced_14d_seed882933208,4,local,balanced,14,83,0.850000,25CS51,8,E,0.008951,0.010737,2,0.026285,0,False,True,
+case_046_balanced_14d_seed882933208,2,cpsat,balanced,14,83,0.850000,23CE11,8,N,0.008951,0.009002,2,0.161743,0,False,True,
+case_046_balanced_14d_seed882933208,3,cpsat,balanced,14,83,0.850000,24CE64,5,M,0.008951,0.009102,2,0.139936,0,False,True,
+case_047_tight_14d_seed1217366955,0,local,tight,14,63,1.000000,24CE46,3,N,34.017642,37.017708,1,0.020431,11,True,True,left day 3 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_047_tight_14d_seed1217366955,1,local,tight,14,63,1.000000,24ME01,11,N,34.017642,34.017774,2,0.021895,10,False,True,
+case_046_balanced_14d_seed882933208,4,cpsat,balanced,14,83,0.850000,25CS51,8,E,0.008951,0.010737,2,0.136336,0,False,True,
+case_047_tight_14d_seed1217366955,2,local,tight,14,63,1.000000,23ME54,9,M,34.017642,37.017708,1,0.011059,11,True,True,left day 9 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_047_tight_14d_seed1217366955,0,cpsat,tight,14,63,1.000000,24CE46,3,N,34.017642,37.017708,1,0.120039,11,True,True,"left day 3 N, day 4 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_047_tight_14d_seed1217366955,3,local,tight,14,63,1.000000,25CB20,4,E,34.017642,37.018327,1,0.012365,11,True,True,left day 4 E unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_047_tight_14d_seed1217366955,2,cpsat,tight,14,63,1.000000,23ME54,9,M,34.017642,37.017708,1,0.107924,11,True,True,left day 9 M unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_047_tight_14d_seed1217366955,4,local,tight,14,63,1.000000,24ME33,11,E,34.017642,37.017576,1,0.017371,11,True,True,left day 11 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_047_tight_14d_seed1217366955,1,cpsat,tight,14,63,1.000000,24ME01,11,N,34.017642,34.017774,2,0.200824,10,False,True,
+case_048_tight_28d_seed487336465,0,local,tight,28,87,1.000000,22CE33,5,N,196.048403,199.048380,1,0.036966,51,True,True,left day 5 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_045_tight_14d_seed1978785143,2,cpsat,tight,14,79,1.000000,23CE05,8,N,34.025098,32.026503,4,0.864730,6,True,True,"left day 8 M, day 8 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_047_tight_14d_seed1217366955,3,cpsat,tight,14,63,1.000000,25CB20,4,E,34.017642,34.017566,4,0.191050,10,False,True,
+case_047_tight_14d_seed1217366955,4,cpsat,tight,14,63,1.000000,24ME33,11,E,34.017642,37.017576,1,0.158995,11,True,True,left day 11 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_048_tight_28d_seed487336465,1,local,tight,28,87,1.000000,22CE84,27,M,196.048403,198.047934,2,0.059708,50,False,True,
+case_048_tight_28d_seed487336465,2,local,tight,28,87,1.000000,24EC19,28,N,196.048403,196.048403,2,0.059084,50,False,True,
+case_048_tight_28d_seed487336465,3,local,tight,28,87,1.000000,23CE47,5,N,196.048403,199.048425,1,0.052266,51,True,True,left day 5 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_048_tight_28d_seed487336465,0,cpsat,tight,28,87,1.000000,22CE33,5,N,196.048403,199.048380,1,0.239533,51,True,True,left day 5 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_048_tight_28d_seed487336465,1,cpsat,tight,28,87,1.000000,22CE84,27,M,196.048403,196.048380,4,0.254082,50,False,True,
+case_048_tight_28d_seed487336465,4,local,tight,28,87,1.000000,22EE62,8,M,196.048403,199.048358,1,0.071534,51,True,True,left day 8 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_048_tight_28d_seed487336465,2,cpsat,tight,28,87,1.000000,24EC19,28,N,196.048403,196.048403,2,0.244352,50,False,True,
+case_049_overloaded_20d_seed1994913403,0,local,overloaded,20,81,1.150000,25ME06,4,E,506.050105,507.050696,1,0.027037,159,True,True,left day 4 E unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_049_overloaded_20d_seed1994913403,1,local,overloaded,20,81,1.150000,24ME71,11,E,506.050105,507.049920,1,0.015489,159,True,True,left day 11 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_049_overloaded_20d_seed1994913403,1,cpsat,overloaded,20,81,1.150000,24ME71,11,E,506.050105,504.049989,2,0.132088,158,True,True,"left day 11 E, day 11 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_049_overloaded_20d_seed1994913403,2,local,overloaded,20,81,1.150000,22CB32,18,E,506.050105,509.050071,1,0.021393,159,True,True,left day 18 E unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_048_tight_28d_seed487336465,3,cpsat,tight,28,87,1.000000,23CE47,5,N,196.048403,199.048425,1,0.456021,51,True,True,left day 5 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_049_overloaded_20d_seed1994913403,3,local,overloaded,20,81,1.150000,25CB62,11,N,506.050105,509.050071,1,0.040398,159,True,True,left day 11 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_049_overloaded_20d_seed1994913403,2,cpsat,overloaded,20,81,1.150000,22CB32,18,E,506.050105,509.050071,1,0.179771,159,True,True,left day 18 E unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_049_overloaded_20d_seed1994913403,4,local,overloaded,20,81,1.150000,24CS63,14,E,506.050105,509.050139,1,0.056154,159,True,True,left day 14 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_048_tight_28d_seed487336465,4,cpsat,tight,28,87,1.000000,22EE62,8,M,196.048403,198.048358,2,0.885631,50,True,True,"left day 8 M, day 9 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_050_balanced_28d_seed118812267,0,local,balanced,28,66,0.850000,22EC36,12,N,0.043158,0.043158,2,0.051922,0,False,True,
+case_049_overloaded_20d_seed1994913403,3,cpsat,overloaded,20,81,1.150000,25CB62,11,N,506.050105,506.050105,2,0.554410,158,True,True,"left day 11 M, day 11 E, day 11 N, day 12 E, day 12 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_050_balanced_28d_seed118812267,1,local,balanced,28,66,0.850000,24CE41,25,E,0.043158,0.043100,2,0.048344,0,False,True,
+case_050_balanced_28d_seed118812267,0,cpsat,balanced,28,66,0.850000,22EC36,12,N,0.043158,0.043158,2,0.375381,0,False,True,
+case_050_balanced_28d_seed118812267,1,cpsat,balanced,28,66,0.850000,24CE41,25,E,0.043158,0.043100,2,0.334927,0,False,True,
+case_050_balanced_28d_seed118812267,2,local,balanced,28,66,0.850000,23CB37,18,N,0.043158,0.042682,2,0.059388,0,False,True,
+case_050_balanced_28d_seed118812267,3,local,balanced,28,66,0.850000,25CB23,27,M,0.043158,0.043158,2,0.052583,0,False,True,
+case_050_balanced_28d_seed118812267,2,cpsat,balanced,28,66,0.850000,23CB37,18,N,0.043158,0.042682,2,0.332309,0,False,True,
+case_049_overloaded_20d_seed1994913403,0,cpsat,overloaded,20,81,1.150000,25ME06,4,E,506.050105,505.050696,3,1.724819,159,False,True,"left day 5 M, day 5 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_050_balanced_28d_seed118812267,4,local,balanced,28,66,0.850000,25CB39,11,E,0.043158,2.043100,2,0.036666,0,False,True,
+case_051_balanced_7d_seed995149834,0,local,balanced,7,66,0.849000,23EE17,3,M,0.014286,0.014437,2,0.008259,0,False,True,
+case_050_balanced_28d_seed118812267,3,cpsat,balanced,28,66,0.850000,25CB23,27,M,0.043158,0.043158,2,0.313692,0,False,True,
+case_051_balanced_7d_seed995149834,1,local,balanced,7,66,0.849000,23EE26,1,N,0.014286,0.014437,2,0.009760,0,False,True,
+case_051_balanced_7d_seed995149834,0,cpsat,balanced,7,66,0.849000,23EE17,3,M,0.014286,0.014437,2,0.071200,0,False,True,
+case_051_balanced_7d_seed995149834,1,cpsat,balanced,7,66,0.849000,23EE26,1,N,0.014286,0.014437,2,0.059706,0,False,True,
+case_051_balanced_7d_seed995149834,2,local,balanced,7,66,0.849000,24CE19,3,M,0.014286,0.014437,2,0.008245,0,False,True,
+case_051_balanced_7d_seed995149834,3,local,balanced,7,66,0.849000,22EC66,2,N,0.014286,0.014437,2,0.009307,0,False,True,
+case_051_balanced_7d_seed995149834,2,cpsat,balanced,7,66,0.849000,24CE19,3,M,0.014286,0.014437,2,0.069253,0,False,True,
+case_051_balanced_7d_seed995149834,4,local,balanced,7,66,0.849000,24EE32,6,E,0.014286,0.014286,2,0.006072,0,False,True,
+case_051_balanced_7d_seed995149834,3,cpsat,balanced,7,66,0.849000,22EC66,2,N,0.014286,0.014437,2,0.074150,0,False,True,
+case_051_balanced_7d_seed995149834,4,cpsat,balanced,7,66,0.849000,24EE32,6,E,0.014286,0.014286,2,0.066581,0,False,True,
+case_052_tight_28d_seed2113015768,0,local,tight,28,87,1.000000,25CE36,2,N,211.050674,211.050696,2,0.087730,53,False,True,
+case_050_balanced_28d_seed118812267,4,cpsat,balanced,28,66,0.850000,25CB39,11,E,0.043158,0.042680,4,0.371118,0,False,True,
+case_052_tight_28d_seed2113015768,1,local,tight,28,87,1.000000,24CE47,7,E,211.050674,214.050674,1,0.063054,54,True,True,left day 7 E unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_052_tight_28d_seed2113015768,2,local,tight,28,87,1.000000,24ME03,1,M,211.050674,211.050674,2,0.056925,53,False,True,
+case_052_tight_28d_seed2113015768,0,cpsat,tight,28,87,1.000000,25CE36,2,N,211.050674,211.050696,2,0.391846,53,False,True,
+case_052_tight_28d_seed2113015768,3,local,tight,28,87,1.000000,24EC07,5,M,211.050674,214.050306,1,0.068433,54,True,True,left day 5 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_052_tight_28d_seed2113015768,2,cpsat,tight,28,87,1.000000,24ME03,1,M,211.050674,211.050674,2,0.302590,53,False,True,
+case_052_tight_28d_seed2113015768,1,cpsat,tight,28,87,1.000000,24CE47,7,E,211.050674,214.050674,1,0.468901,54,True,True,left day 7 E unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_052_tight_28d_seed2113015768,4,local,tight,28,87,1.000000,22CB30,16,N,211.050674,214.050652,1,0.079035,54,True,True,left day 16 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_053_balanced_7d_seed628656808,0,local,balanced,7,76,0.851000,24EE05,4,M,0.008929,0.011729,2,0.003234,0,False,True,
+case_053_balanced_7d_seed628656808,0,cpsat,balanced,7,76,0.851000,24EE05,4,M,0.008929,0.011729,2,0.048339,0,False,True,
+case_053_balanced_7d_seed628656808,1,local,balanced,7,76,0.851000,22CS11,2,M,0.008929,0.009192,2,0.005813,0,False,True,
+case_049_overloaded_20d_seed1994913403,4,cpsat,overloaded,20,81,1.150000,24CS63,14,E,506.050105,509.050139,1,2.222534,159,True,True,"left day 14 M, day 14 E, day 14 N, day 15 E, day 15 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_053_balanced_7d_seed628656808,1,cpsat,balanced,7,76,0.851000,22CS11,2,M,0.008929,0.009192,2,0.044093,0,False,True,
+case_053_balanced_7d_seed628656808,2,local,balanced,7,76,0.851000,25CS59,3,N,0.008929,0.008929,2,0.015462,0,False,True,
+case_053_balanced_7d_seed628656808,3,local,balanced,7,76,0.851000,23EC03,5,E,0.008929,0.010846,2,0.006905,0,False,True,
+case_053_balanced_7d_seed628656808,3,cpsat,balanced,7,76,0.851000,23EC03,5,E,0.008929,0.010846,2,0.039242,0,False,True,
+case_053_balanced_7d_seed628656808,4,local,balanced,7,76,0.851000,25EE60,2,N,0.008929,0.010714,2,0.014714,0,False,True,
+case_053_balanced_7d_seed628656808,2,cpsat,balanced,7,76,0.851000,25CS59,3,N,0.008929,0.008929,2,0.091559,0,False,True,
+case_052_tight_28d_seed2113015768,3,cpsat,tight,28,87,1.000000,24EC07,5,M,211.050674,214.050306,1,0.379919,54,True,True,left day 5 M unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_054_balanced_20d_seed1507404055,0,local,balanced,20,88,0.849000,23ME87,9,N,0.042697,0.042603,2,0.052230,0,False,True,
+case_053_balanced_7d_seed628656808,4,cpsat,balanced,7,76,0.851000,25EE60,2,N,0.008929,0.010714,2,0.083714,0,False,True,
+case_054_balanced_20d_seed1507404055,1,local,balanced,20,88,0.849000,24CS61,20,M,0.042697,0.042697,2,0.045799,0,False,True,
+case_054_balanced_20d_seed1507404055,2,local,balanced,20,88,0.849000,25CS36,6,E,0.042697,0.042729,2,0.040828,0,False,True,
+case_054_balanced_20d_seed1507404055,1,cpsat,balanced,20,88,0.849000,24CS61,20,M,0.042697,0.042697,2,0.205180,0,False,True,
+case_054_balanced_20d_seed1507404055,0,cpsat,balanced,20,88,0.849000,23ME87,9,N,0.042697,0.042603,2,0.265676,0,False,True,
+case_054_balanced_20d_seed1507404055,3,local,balanced,20,88,0.849000,23CS03,9,N,0.042697,2.042697,2,0.038476,0,False,True,
+case_054_balanced_20d_seed1507404055,2,cpsat,balanced,20,88,0.849000,25CS36,6,E,0.042697,0.042729,2,0.213440,0,False,True,
+case_054_balanced_20d_seed1507404055,4,local,balanced,20,88,0.849000,23EC72,3,N,0.042697,0.042666,2,0.044478,0,False,True,
+case_055_balanced_7d_seed1853836938,0,local,balanced,7,88,0.849000,24CB10,7,E,0.012614,0.014399,2,0.012980,0,False,True,
+case_055_balanced_7d_seed1853836938,0,cpsat,balanced,7,88,0.849000,24CB10,7,E,0.012614,0.014399,2,0.049083,0,False,True,
+case_055_balanced_7d_seed1853836938,1,local,balanced,7,88,0.849000,22CS13,6,M,0.012614,0.014399,2,0.012928,0,False,True,
+case_054_balanced_20d_seed1507404055,3,cpsat,balanced,20,88,0.849000,23CS03,9,N,0.042697,0.042634,4,0.187977,0,False,True,
+case_055_balanced_7d_seed1853836938,1,cpsat,balanced,7,88,0.849000,22CS13,6,M,0.012614,0.014399,2,0.061232,0,False,True,
+case_055_balanced_7d_seed1853836938,2,local,balanced,7,88,0.849000,23EE37,6,E,0.012614,0.012727,2,0.012489,0,False,True,
+case_055_balanced_7d_seed1853836938,3,local,balanced,7,88,0.849000,22CE30,4,M,0.012614,0.012727,2,0.011255,0,False,True,
+case_055_balanced_7d_seed1853836938,2,cpsat,balanced,7,88,0.849000,23EE37,6,E,0.012614,0.012727,2,0.053861,0,False,True,
+case_055_balanced_7d_seed1853836938,4,local,balanced,7,88,0.849000,24ME62,1,E,0.012614,0.012614,2,0.014601,0,False,True,
+case_055_balanced_7d_seed1853836938,3,cpsat,balanced,7,88,0.849000,22CE30,4,M,0.012614,0.012727,2,0.057081,0,False,True,
+case_056_balanced_20d_seed1100256834,0,local,balanced,20,58,0.849000,24EE07,10,M,0.023549,0.024270,2,0.009999,0,False,True,
+case_054_balanced_20d_seed1507404055,4,cpsat,balanced,20,88,0.849000,23EC72,3,N,0.042697,0.042666,2,0.250487,0,False,True,
+case_056_balanced_20d_seed1100256834,1,local,balanced,20,58,0.849000,22EE46,14,N,0.023549,0.024270,2,0.009653,0,False,True,
+case_055_balanced_7d_seed1853836938,4,cpsat,balanced,7,88,0.849000,24ME62,1,E,0.012614,0.012614,2,0.073470,0,False,True,
+case_056_balanced_20d_seed1100256834,0,cpsat,balanced,20,58,0.849000,24EE07,10,M,0.023549,0.024270,2,0.072808,0,False,True,
+case_056_balanced_20d_seed1100256834,2,local,balanced,20,58,0.849000,24CS20,2,M,0.023549,0.023597,2,0.037698,0,False,True,
+case_056_balanced_20d_seed1100256834,3,local,balanced,20,58,0.849000,25CE53,15,E,0.023549,0.024222,2,0.017197,0,False,True,
+case_056_balanced_20d_seed1100256834,1,cpsat,balanced,20,58,0.849000,22EE46,14,N,0.023549,0.024270,2,0.116483,0,False,True,
+case_056_balanced_20d_seed1100256834,4,local,balanced,20,58,0.849000,24CS56,11,E,0.023549,0.024270,2,0.020359,0,False,True,
+case_056_balanced_20d_seed1100256834,3,cpsat,balanced,20,58,0.849000,25CE53,15,E,0.023549,0.024222,2,0.113373,0,False,True,
+case_057_balanced_20d_seed543056054,0,local,balanced,20,70,0.850000,23ME14,12,M,0.010967,0.011555,2,0.033771,0,False,True,
+case_056_balanced_20d_seed1100256834,4,cpsat,balanced,20,58,0.849000,24CS56,11,E,0.023549,0.024270,2,0.113087,0,False,True,
+case_057_balanced_20d_seed543056054,1,local,balanced,20,70,0.850000,22CE61,11,M,0.010967,3.010927,1,0.028932,1,True,True,left day 11 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_056_balanced_20d_seed1100256834,2,cpsat,balanced,20,58,0.849000,24CS20,2,M,0.023549,0.023597,2,0.252628,0,False,True,
+case_057_balanced_20d_seed543056054,2,local,balanced,20,70,0.850000,22EE05,11,M,0.010967,0.011007,2,0.034677,0,False,True,
+case_057_balanced_20d_seed543056054,1,cpsat,balanced,20,70,0.850000,22CE61,11,M,0.010967,0.010927,4,0.161079,0,False,True,
+case_057_balanced_20d_seed543056054,0,cpsat,balanced,20,70,0.850000,23ME14,12,M,0.010967,0.011555,2,0.207352,0,False,True,
+case_057_balanced_20d_seed543056054,3,local,balanced,20,70,0.850000,25ME64,7,M,0.010967,0.011711,2,0.028848,0,False,True,
+case_057_balanced_20d_seed543056054,4,local,balanced,20,70,0.850000,23CE41,11,E,0.010967,0.011632,2,0.025106,0,False,True,
+case_057_balanced_20d_seed543056054,2,cpsat,balanced,20,70,0.850000,22EE05,11,M,0.010967,0.011007,2,0.192267,0,False,True,
+case_058_overloaded_7d_seed697308021,0,local,overloaded,7,80,1.147000,22CE52,2,N,117.045365,118.045240,1,0.005461,2,True,True,left day 2 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_057_balanced_20d_seed543056054,3,cpsat,balanced,20,70,0.850000,25ME64,7,M,0.010967,0.011711,2,0.153388,0,False,True,
+case_058_overloaded_7d_seed697308021,1,local,overloaded,7,80,1.147000,22EE25,7,N,117.045365,119.047151,2,0.010278,1,False,True,
+case_058_overloaded_7d_seed697308021,0,cpsat,overloaded,7,80,1.147000,22CE52,2,N,117.045365,118.045240,1,0.104251,2,True,True,left day 2 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_058_overloaded_7d_seed697308021,2,local,overloaded,7,80,1.147000,25CE06,6,E,117.045365,120.045620,1,0.005552,2,True,True,left day 6 E unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_057_balanced_20d_seed543056054,4,cpsat,balanced,20,70,0.850000,23CE41,11,E,0.010967,0.011632,2,0.150737,0,False,True,
+case_058_overloaded_7d_seed697308021,3,local,overloaded,7,80,1.147000,23CB50,5,M,117.045365,120.045490,1,0.005794,2,True,True,left day 5 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_058_overloaded_7d_seed697308021,1,cpsat,overloaded,7,80,1.147000,22EE25,7,N,117.045365,119.047151,2,0.070533,1,False,True,
+case_058_overloaded_7d_seed697308021,4,local,overloaded,7,80,1.147000,25CB01,2,E,117.045365,118.045490,1,0.007128,2,True,True,left day 2 E unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_058_overloaded_7d_seed697308021,3,cpsat,overloaded,7,80,1.147000,23CB50,5,M,117.045365,120.045490,1,0.276875,2,True,True,left day 5 M unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_059_tight_28d_seed165451314,0,local,tight,28,69,1.000000,23EC01,22,N,154.047469,157.047469,1,0.029921,39,True,True,left day 22 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_059_tight_28d_seed165451314,0,cpsat,tight,28,69,1.000000,23EC01,22,N,154.047469,157.047469,1,1.329945,39,True,True,left day 22 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_059_tight_28d_seed165451314,1,local,tight,28,69,1.000000,23CB41,6,E,154.047469,155.047441,1,0.036380,39,True,True,left day 6 E unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_058_overloaded_7d_seed697308021,4,cpsat,overloaded,7,80,1.147000,25CB01,2,E,117.045365,118.045490,1,1.985109,2,True,True,left day 2 E unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_059_tight_28d_seed165451314,2,local,tight,28,69,1.000000,22CS35,25,M,154.047469,157.047441,1,0.042785,39,True,True,left day 25 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_059_tight_28d_seed165451314,1,cpsat,tight,28,69,1.000000,23CB41,6,E,154.047469,155.047441,1,0.422860,39,True,True,"left day 6 E, day 7 E unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_059_tight_28d_seed165451314,3,local,tight,28,69,1.000000,25EE63,20,N,154.047469,157.047414,1,0.036513,39,True,True,left day 20 N unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_059_tight_28d_seed165451314,2,cpsat,tight,28,69,1.000000,22CS35,25,M,154.047469,154.047469,4,0.355276,38,False,True,
+case_059_tight_28d_seed165451314,4,local,tight,28,69,1.000000,24EE57,28,N,154.047469,154.047469,2,0.040555,38,False,True,
+case_059_tight_28d_seed165451314,3,cpsat,tight,28,69,1.000000,25EE63,20,N,154.047469,156.047414,2,0.300288,38,True,True,"left day 20 M, day 20 N, day 21 M unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_060_balanced_7d_seed1140891794,0,local,balanced,7,88,0.848000,23EC66,2,E,0.008929,0.009042,2,0.012562,0,False,True,
+case_060_balanced_7d_seed1140891794,0,cpsat,balanced,7,88,0.848000,23EC66,2,E,0.008929,0.009042,2,0.068762,0,False,True,
+case_060_balanced_7d_seed1140891794,1,local,balanced,7,88,0.848000,23CE77,5,M,0.008929,0.010828,2,0.007639,0,False,True,
+case_060_balanced_7d_seed1140891794,1,cpsat,balanced,7,88,0.848000,23CE77,5,M,0.008929,0.010828,2,0.035751,0,False,True,
+case_060_balanced_7d_seed1140891794,2,local,balanced,7,88,0.848000,23EC65,2,M,0.008929,0.009042,2,0.016646,0,False,True,
+case_059_tight_28d_seed165451314,4,cpsat,tight,28,69,1.000000,24EE57,28,N,154.047469,154.047469,2,0.208454,38,False,True,
+case_060_balanced_7d_seed1140891794,3,local,balanced,7,88,0.848000,23CS34,6,E,0.008929,0.009042,2,0.013194,0,False,True,
+case_060_balanced_7d_seed1140891794,2,cpsat,balanced,7,88,0.848000,23EC65,2,M,0.008929,0.009042,2,0.061163,0,False,True,
+case_060_balanced_7d_seed1140891794,4,local,balanced,7,88,0.848000,23CE68,4,E,0.008929,0.009269,2,0.009989,0,False,True,
+case_060_balanced_7d_seed1140891794,3,cpsat,balanced,7,88,0.848000,23CS34,6,E,0.008929,0.009042,2,0.076392,0,False,True,
+case_060_balanced_7d_seed1140891794,4,cpsat,balanced,7,88,0.848000,23CE68,4,E,0.008929,0.009269,2,0.079901,0,False,True,
+case_061_overloaded_28d_seed1059995127,0,local,overloaded,28,75,1.150000,22EC46,23,M,709.018013,712.018459,1,0.016396,226,True,True,left day 23 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_061_overloaded_28d_seed1059995127,1,local,overloaded,28,75,1.150000,22EC48,23,E,709.018013,712.018038,1,0.015636,226,True,True,left day 23 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_061_overloaded_28d_seed1059995127,0,cpsat,overloaded,28,75,1.150000,22EC46,23,M,709.018013,712.018459,1,0.088653,226,True,True,"left day 23 M, day 24 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_061_overloaded_28d_seed1059995127,1,cpsat,overloaded,28,75,1.150000,22EC48,23,E,709.018013,712.018038,1,0.093705,226,True,True,"left day 23 M, day 23 E, day 24 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_061_overloaded_28d_seed1059995127,2,local,overloaded,28,75,1.150000,24EC23,25,N,709.018013,711.017592,2,0.042991,225,False,True,
+case_061_overloaded_28d_seed1059995127,3,local,overloaded,28,75,1.150000,23CE55,20,N,709.018013,709.018064,2,0.044496,225,True,True,left day 20 N unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_061_overloaded_28d_seed1059995127,2,cpsat,overloaded,28,75,1.150000,24EC23,25,N,709.018013,709.018115,4,0.334131,225,False,True,
+case_061_overloaded_28d_seed1059995127,3,cpsat,overloaded,28,75,1.150000,23CE55,20,N,709.018013,709.018064,2,0.281283,225,True,True,"left day 20 N, day 21 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_061_overloaded_28d_seed1059995127,4,local,overloaded,28,75,1.150000,23EC47,12,N,709.018013,712.018013,1,0.014926,226,True,True,left day 12 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_062_balanced_20d_seed1135410243,0,local,balanced,20,73,0.850000,24ME21,10,E,0.043447,0.043409,2,0.041535,0,False,True,
+case_052_tight_28d_seed2113015768,4,cpsat,tight,28,87,1.000000,22CB30,16,N,211.050674,214.050652,1,5.010242,54,True,True,"left day 16 N, day 17 E unfilled for CND: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_061_overloaded_28d_seed1059995127,4,cpsat,overloaded,28,75,1.150000,23EC47,12,N,709.018013,712.018013,1,0.098341,226,True,True,"left day 12 N, day 13 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_062_balanced_20d_seed1135410243,1,local,balanced,20,73,0.850000,23CE08,10,N,0.043447,0.043447,2,0.042836,0,False,True,
+case_062_balanced_20d_seed1135410243,2,local,balanced,20,73,0.850000,24CS24,16,M,0.043447,0.044072,2,0.023306,0,False,True,
+case_062_balanced_20d_seed1135410243,0,cpsat,balanced,20,73,0.850000,24ME21,10,E,0.043447,0.043409,2,0.230225,0,False,True,
+case_062_balanced_20d_seed1135410243,3,local,balanced,20,73,0.850000,23CE31,12,E,0.043447,0.043333,2,0.033887,0,False,True,
+case_062_balanced_20d_seed1135410243,1,cpsat,balanced,20,73,0.850000,23CE08,10,N,0.043447,0.043447,2,0.238760,0,False,True,
+case_062_balanced_20d_seed1135410243,4,local,balanced,20,73,0.850000,24CS40,14,N,0.043447,3.043485,1,0.034458,1,True,True,left day 14 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_062_balanced_20d_seed1135410243,2,cpsat,balanced,20,73,0.850000,24CS24,16,M,0.043447,0.044072,2,0.245282,0,False,True,
+case_063_balanced_14d_seed2089637963,0,local,balanced,14,87,0.850000,22CE26,1,N,0.014419,0.014467,2,0.027288,0,False,True,
+case_062_balanced_20d_seed1135410243,3,cpsat,balanced,20,73,0.850000,23CE31,12,E,0.043447,0.043333,2,0.166361,0,False,True,
+case_063_balanced_14d_seed2089637963,1,local,balanced,14,87,0.850000,22CS77,14,N,0.014419,0.014419,2,0.027075,0,False,True,
+case_063_balanced_14d_seed2089637963,0,cpsat,balanced,14,87,0.850000,22CE26,1,N,0.014419,0.014467,2,0.110750,0,False,True,
+case_063_balanced_14d_seed2089637963,2,local,balanced,14,87,0.850000,24CE25,4,N,0.014419,0.014419,2,0.024046,0,False,True,
+case_062_balanced_20d_seed1135410243,4,cpsat,balanced,20,73,0.850000,24CS40,14,N,0.043447,0.043409,4,0.210572,0,False,True,
+case_063_balanced_14d_seed2089637963,3,local,balanced,14,87,0.850000,24CB59,3,M,0.014419,0.014783,2,0.033553,0,False,True,
+case_063_balanced_14d_seed2089637963,1,cpsat,balanced,14,87,0.850000,22CS77,14,N,0.014419,0.014419,2,0.126835,0,False,True,
+case_063_balanced_14d_seed2089637963,4,local,balanced,14,87,0.850000,25CE83,1,N,0.014419,0.014419,2,0.034716,0,False,True,
+case_063_balanced_14d_seed2089637963,2,cpsat,balanced,14,87,0.850000,24CE25,4,N,0.014419,0.014419,2,0.118644,0,False,True,
+case_064_balanced_14d_seed1040448127,0,local,balanced,14,74,0.850000,22CB08,7,M,0.010167,0.010224,2,0.011746,0,False,True,
+case_063_balanced_14d_seed2089637963,3,cpsat,balanced,14,87,0.850000,24CB59,3,M,0.014419,0.014783,2,0.133566,0,False,True,
+case_064_balanced_14d_seed1040448127,0,cpsat,balanced,14,74,0.850000,22CB08,7,M,0.010167,0.010224,2,0.078073,0,False,True,
+case_064_balanced_14d_seed1040448127,1,local,balanced,14,74,0.850000,25CB07,14,M,0.010167,0.011060,2,0.017490,0,False,True,
+case_064_balanced_14d_seed1040448127,2,local,balanced,14,74,0.850000,22CB13,14,N,0.010167,0.011060,2,0.016192,0,False,True,
+case_063_balanced_14d_seed2089637963,4,cpsat,balanced,14,87,0.850000,25CE83,1,N,0.014419,0.014419,2,0.142962,0,False,True,
+case_064_balanced_14d_seed1040448127,3,local,balanced,14,74,0.850000,22CB36,4,M,0.010167,0.010167,2,0.022022,0,False,True,
+case_064_balanced_14d_seed1040448127,1,cpsat,balanced,14,74,0.850000,25CB07,14,M,0.010167,0.011060,2,0.068170,0,False,True,
+case_064_balanced_14d_seed1040448127,2,cpsat,balanced,14,74,0.850000,22CB13,14,N,0.010167,0.011060,2,0.072338,0,False,True,
+case_064_balanced_14d_seed1040448127,4,local,balanced,14,74,0.850000,25CS72,9,N,0.010167,0.010167,2,0.023466,0,False,True,
+case_065_balanced_14d_seed2138587422,0,local,balanced,14,90,0.850000,23CE06,10,E,0.011964,3.011964,1,0.011991,1,True,True,left day 10 E unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_064_balanced_14d_seed1040448127,3,cpsat,balanced,14,74,0.850000,22CB36,4,M,0.010167,0.010167,2,0.128397,0,False,True,
+case_065_balanced_14d_seed2138587422,0,cpsat,balanced,14,90,0.850000,23CE06,10,E,0.011964,3.011964,1,0.087211,1,True,True,left day 10 E unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_065_balanced_14d_seed2138587422,1,local,balanced,14,90,0.850000,24EE14,13,M,0.011964,0.012857,2,0.035873,0,False,True,
+case_064_balanced_14d_seed1040448127,4,cpsat,balanced,14,74,0.850000,25CS72,9,N,0.010167,0.010167,2,0.160041,0,False,True,
+case_065_balanced_14d_seed2138587422,2,local,balanced,14,90,0.850000,23CS25,8,E,0.011964,0.012057,2,0.029482,0,False,True,
+case_065_balanced_14d_seed2138587422,3,local,balanced,14,90,0.850000,23ME09,3,M,0.011964,0.012011,2,0.015146,0,False,True,
+case_065_balanced_14d_seed2138587422,1,cpsat,balanced,14,90,0.850000,24EE14,13,M,0.011964,0.012857,2,0.135894,0,False,True,
+case_065_balanced_14d_seed2138587422,3,cpsat,balanced,14,90,0.850000,23ME09,3,M,0.011964,0.012011,2,0.085809,0,False,True,
+case_065_balanced_14d_seed2138587422,4,local,balanced,14,90,0.850000,24EC29,11,N,0.011964,0.011964,2,0.032132,0,False,True,
+case_065_balanced_14d_seed2138587422,2,cpsat,balanced,14,90,0.850000,23CS25,8,E,0.011964,0.012057,2,0.153359,0,False,True,
+case_066_balanced_28d_seed1339506339,0,local,balanced,28,59,0.850000,25CB42,13,N,0.040898,3.040931,1,0.019122,1,True,True,left day 13 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_066_balanced_28d_seed1339506339,1,local,balanced,28,59,0.850000,22CB51,19,E,0.040898,2.040865,2,0.030459,0,False,True,
+case_066_balanced_28d_seed1339506339,0,cpsat,balanced,28,59,0.850000,25CB42,13,N,0.040898,3.040931,1,0.117206,1,True,True,left day 13 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_065_balanced_14d_seed2138587422,4,cpsat,balanced,14,90,0.850000,24EC29,11,N,0.011964,0.011964,2,0.145839,0,False,True,
+case_066_balanced_28d_seed1339506339,2,local,balanced,28,59,0.850000,25CE25,21,M,0.040898,2.040833,2,0.039159,0,False,True,
+case_066_balanced_28d_seed1339506339,3,local,balanced,28,59,0.850000,22EC33,24,M,0.040898,0.040898,2,0.039965,0,False,True,
+case_066_balanced_28d_seed1339506339,1,cpsat,balanced,28,59,0.850000,22CB51,19,E,0.040898,0.040833,4,0.222499,0,False,True,
+case_066_balanced_28d_seed1339506339,4,local,balanced,28,59,0.850000,22CE05,10,E,0.040898,0.040452,2,0.022363,0,False,True,
+case_058_overloaded_7d_seed697308021,2,cpsat,overloaded,7,80,1.147000,25CE06,6,E,117.045365,120.045620,1,5.003483,2,True,True,left day 6 E unfilled for MPR: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_066_balanced_28d_seed1339506339,2,cpsat,balanced,28,59,0.850000,25CE25,21,M,0.040898,0.040800,4,0.284754,0,False,True,
+case_067_balanced_14d_seed1028034064,0,local,balanced,14,92,0.851000,23CB10,11,N,0.014497,0.014542,2,0.031709,0,False,True,
+case_066_balanced_28d_seed1339506339,4,cpsat,balanced,28,59,0.850000,22CE05,10,E,0.040898,0.040452,2,0.130775,0,False,True,
+case_067_balanced_14d_seed1028034064,1,local,balanced,14,92,0.851000,23CB21,11,E,0.014497,0.014497,2,0.029955,0,False,True,
+case_067_balanced_14d_seed1028034064,2,local,balanced,14,92,0.851000,25CS49,7,N,0.014497,0.014497,2,0.035292,0,False,True,
+case_066_balanced_28d_seed1339506339,3,cpsat,balanced,28,59,0.850000,22EC33,24,M,0.040898,0.040898,2,0.287433,0,False,True,
+case_067_balanced_14d_seed1028034064,3,local,balanced,14,92,0.851000,25CE12,3,E,0.014497,0.014451,2,0.026930,0,False,True,
+case_067_balanced_14d_seed1028034064,0,cpsat,balanced,14,92,0.851000,23CB10,11,N,0.014497,0.014542,2,0.142737,0,False,True,
+case_067_balanced_14d_seed1028034064,1,cpsat,balanced,14,92,0.851000,23CB21,11,E,0.014497,0.014497,2,0.142808,0,False,True,
+case_067_balanced_14d_seed1028034064,4,local,balanced,14,92,0.851000,23ME48,8,N,0.014497,0.014542,2,0.044765,0,False,True,
+case_068_balanced_20d_seed2008219081,0,local,balanced,20,61,0.849000,25CE11,20,M,0.009553,0.010803,2,0.022919,0,False,True,
+case_067_balanced_14d_seed1028034064,2,cpsat,balanced,14,92,0.851000,25CS49,7,N,0.014497,0.014497,2,0.182852,0,False,True,
+case_067_balanced_14d_seed1028034064,3,cpsat,balanced,14,92,0.851000,25CE12,3,E,0.014497,0.014451,2,0.144021,0,False,True,
+case_068_balanced_20d_seed2008219081,1,local,balanced,20,61,0.849000,23CS14,17,N,0.009553,0.010758,2,0.028965,0,False,True,
+case_068_balanced_20d_seed2008219081,2,local,balanced,20,61,0.849000,24ME52,15,M,0.009553,0.010178,2,0.026354,0,False,True,
+case_067_balanced_14d_seed1028034064,4,cpsat,balanced,14,92,0.851000,23ME48,8,N,0.014497,0.014542,2,0.197389,0,False,True,
+case_068_balanced_20d_seed2008219081,0,cpsat,balanced,20,61,0.849000,25CE11,20,M,0.009553,0.010803,2,0.156026,0,False,True,
+case_068_balanced_20d_seed2008219081,3,local,balanced,20,61,0.849000,23EC05,14,E,0.009553,0.010224,2,0.010705,0,False,True,
+case_068_balanced_20d_seed2008219081,4,local,balanced,20,61,0.849000,23CS32,18,N,0.009553,0.010178,2,0.019696,0,False,True,
+case_068_balanced_20d_seed2008219081,3,cpsat,balanced,20,61,0.849000,23EC05,14,E,0.009553,0.010224,2,0.079246,0,False,True,
+case_069_tight_7d_seed1617567425,0,local,tight,7,59,1.000000,23EC45,5,E,0.010578,2.009764,2,0.006139,0,False,True,
+case_068_balanced_20d_seed2008219081,1,cpsat,balanced,20,61,0.849000,23CS14,17,N,0.009553,0.010758,2,0.210427,0,False,True,
+case_069_tight_7d_seed1617567425,1,local,tight,7,59,1.000000,23EC42,3,N,0.010578,2.010748,2,0.004635,0,False,True,
+case_068_balanced_20d_seed2008219081,2,cpsat,balanced,20,61,0.849000,24ME52,15,M,0.009553,0.010178,2,0.175536,0,False,True,
+case_069_tight_7d_seed1617567425,2,local,tight,7,59,1.000000,22CS58,7,M,0.010578,3.012364,1,0.004663,1,True,True,left day 7 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_069_tight_7d_seed1617567425,0,cpsat,tight,7,59,1.000000,23EC45,5,E,0.010578,2.009764,2,0.051294,0,False,True,
+case_069_tight_7d_seed1617567425,3,local,tight,7,59,1.000000,22CE26,5,N,0.010578,2.010748,2,0.004497,0,False,True,
+case_069_tight_7d_seed1617567425,2,cpsat,tight,7,59,1.000000,22CS58,7,M,0.010578,3.012364,1,0.028535,1,True,True,left day 7 M unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_069_tight_7d_seed1617567425,1,cpsat,tight,7,59,1.000000,23EC42,3,N,0.010578,2.010748,2,0.051141,0,False,True,
+case_068_balanced_20d_seed2008219081,4,cpsat,balanced,20,61,0.849000,23CS32,18,N,0.009553,0.010178,2,0.135526,0,False,True,
+case_069_tight_7d_seed1617567425,4,local,tight,7,59,1.000000,22ME43,3,M,0.010578,2.011452,2,0.004216,0,False,True,
+case_069_tight_7d_seed1617567425,3,cpsat,tight,7,59,1.000000,22CE26,5,N,0.010578,2.010748,2,0.033465,0,False,True,
+case_070_tight_14d_seed45548679,0,local,tight,14,81,1.000000,23CE57,10,E,71.044045,74.043993,1,0.034167,20,True,True,left day 10 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_070_tight_14d_seed45548679,1,local,tight,14,81,1.000000,24CS28,5,N,71.044045,74.043993,1,0.022011,20,True,True,left day 5 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_069_tight_7d_seed1617567425,4,cpsat,tight,7,59,1.000000,22ME43,3,M,0.010578,2.011452,2,0.053270,0,False,True,
+case_070_tight_14d_seed45548679,2,local,tight,14,81,1.000000,22CE56,11,N,71.044045,73.044148,2,0.032295,19,False,True,
+case_070_tight_14d_seed45548679,3,local,tight,14,81,1.000000,24EC48,3,N,71.044045,74.044096,1,0.022756,20,True,True,left day 3 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_070_tight_14d_seed45548679,0,cpsat,tight,14,81,1.000000,23CE57,10,E,71.044045,74.043993,1,0.243397,20,True,True,left day 10 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_070_tight_14d_seed45548679,4,local,tight,14,81,1.000000,22ME64,4,E,71.044045,74.043993,1,0.018946,20,True,True,left day 4 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_070_tight_14d_seed45548679,2,cpsat,tight,14,81,1.000000,22CE56,11,N,71.044045,73.044148,2,0.418483,19,False,True,
+case_070_tight_14d_seed45548679,4,cpsat,tight,14,81,1.000000,22ME64,4,E,71.044045,74.043993,1,0.231315,20,True,True,left day 4 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_071_balanced_28d_seed77938780,0,local,balanced,28,74,0.850000,24EC03,9,M,0.047135,2.047161,2,0.042674,0,False,True,
+case_071_balanced_28d_seed77938780,1,local,balanced,28,74,0.850000,22CS06,26,N,0.047135,0.047083,2,0.035312,0,False,True,
+case_071_balanced_28d_seed77938780,0,cpsat,balanced,28,74,0.850000,24EC03,9,M,0.047135,0.047135,4,0.263487,0,False,True,
+case_071_balanced_28d_seed77938780,2,local,balanced,28,74,0.850000,24CB12,7,N,0.047135,0.047187,2,0.024368,0,False,True,
+case_071_balanced_28d_seed77938780,1,cpsat,balanced,28,74,0.850000,22CS06,26,N,0.047135,0.047083,2,0.257065,0,False,True,
+case_071_balanced_28d_seed77938780,3,local,balanced,28,74,0.850000,24CS38,1,N,0.047135,0.047135,2,0.057150,0,False,True,
+case_071_balanced_28d_seed77938780,2,cpsat,balanced,28,74,0.850000,24CB12,7,N,0.047135,0.047187,2,0.252674,0,False,True,
+case_071_balanced_28d_seed77938780,4,local,balanced,28,74,0.850000,22ME56,20,M,0.047135,0.047135,2,0.044908,0,False,True,
+case_071_balanced_28d_seed77938780,3,cpsat,balanced,28,74,0.850000,24CS38,1,N,0.047135,0.047135,2,0.270755,0,False,True,
+case_072_overloaded_14d_seed826732066,0,local,overloaded,14,89,1.151000,23EE19,10,M,348.047127,351.047174,1,0.026469,91,True,True,left day 10 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_071_balanced_28d_seed77938780,4,cpsat,balanced,28,74,0.850000,22ME56,20,M,0.047135,0.047135,2,0.249350,0,False,True,
+case_072_overloaded_14d_seed826732066,1,local,overloaded,14,89,1.151000,25CE10,14,M,348.047127,348.047081,2,0.023798,90,False,True,
+case_072_overloaded_14d_seed826732066,1,cpsat,overloaded,14,89,1.151000,25CE10,14,M,348.047127,348.047081,2,0.114070,90,False,True,
+case_072_overloaded_14d_seed826732066,2,local,overloaded,14,89,1.151000,24CE25,10,M,348.047127,351.047174,1,0.017860,91,True,True,left day 10 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_072_overloaded_14d_seed826732066,0,cpsat,overloaded,14,89,1.151000,23EE19,10,M,348.047127,351.047174,1,0.390132,91,True,True,left day 10 M unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_072_overloaded_14d_seed826732066,3,local,overloaded,14,89,1.151000,23CE36,1,M,348.047127,350.047973,2,0.014749,90,False,True,
+case_070_tight_14d_seed45548679,1,cpsat,tight,14,81,1.000000,24CS28,5,N,71.044045,73.044045,2,1.612920,19,True,True,left day 5 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_072_overloaded_14d_seed826732066,4,local,overloaded,14,89,1.151000,25CE86,4,E,348.047127,351.047174,1,0.012522,91,True,True,left day 4 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_072_overloaded_14d_seed826732066,2,cpsat,overloaded,14,89,1.151000,24CE25,10,M,348.047127,351.047174,1,0.224037,91,True,True,"left day 10 M, day 10 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_073_balanced_28d_seed492503897,0,local,balanced,28,92,0.850000,24CE88,17,M,0.044505,0.044505,2,0.032647,0,False,True,
+case_073_balanced_28d_seed492503897,0,cpsat,balanced,28,92,0.850000,24CE88,17,M,0.044505,0.044505,2,0.166127,0,False,True,
+case_073_balanced_28d_seed492503897,1,local,balanced,28,92,0.850000,25ME61,13,E,0.044505,0.044463,2,0.061472,0,False,True,
+case_073_balanced_28d_seed492503897,1,cpsat,balanced,28,92,0.850000,25ME61,13,E,0.044505,0.044463,2,0.223655,0,False,True,
+case_073_balanced_28d_seed492503897,2,local,balanced,28,92,0.850000,25CE75,12,E,0.044505,0.044505,2,0.055675,0,False,True,
+case_072_overloaded_14d_seed826732066,4,cpsat,overloaded,14,89,1.151000,25CE86,4,E,348.047127,351.047174,1,0.864935,91,True,True,"left day 4 E, day 4 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_073_balanced_28d_seed492503897,3,local,balanced,28,92,0.850000,22CS01,2,N,0.044505,0.044505,2,0.057876,0,False,True,
+case_073_balanced_28d_seed492503897,2,cpsat,balanced,28,92,0.850000,25CE75,12,E,0.044505,0.044505,2,0.256219,0,False,True,
+case_073_balanced_28d_seed492503897,4,local,balanced,28,92,0.850000,24CE70,9,E,0.044505,0.044484,2,0.055459,0,False,True,
+case_073_balanced_28d_seed492503897,3,cpsat,balanced,28,92,0.850000,22CS01,2,N,0.044505,0.044505,2,0.311758,0,False,True,
+case_074_tight_14d_seed297164463,0,local,tight,14,90,1.000000,24CS90,12,N,69.043226,71.043980,2,0.021161,21,False,True,
+case_073_balanced_28d_seed492503897,4,cpsat,balanced,28,92,0.850000,24CE70,9,E,0.044505,0.044484,2,0.264993,0,False,True,
+case_074_tight_14d_seed297164463,1,local,tight,14,90,1.000000,22CE49,11,N,69.043226,72.043226,1,0.033140,22,True,True,left day 11 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_074_tight_14d_seed297164463,0,cpsat,tight,14,90,1.000000,24CS90,12,N,69.043226,69.042752,4,0.143346,21,False,True,
+case_074_tight_14d_seed297164463,2,local,tight,14,90,1.000000,24CB22,14,N,69.043226,69.043226,2,0.032984,21,False,True,
+case_074_tight_14d_seed297164463,2,cpsat,tight,14,90,1.000000,24CB22,14,N,69.043226,69.043226,2,0.140374,21,False,True,
+case_074_tight_14d_seed297164463,1,cpsat,tight,14,90,1.000000,22CE49,11,N,69.043226,72.043226,1,0.249369,22,True,True,left day 11 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_074_tight_14d_seed297164463,3,local,tight,14,90,1.000000,22EC26,10,N,69.043226,72.043133,1,0.032383,22,True,True,left day 10 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_074_tight_14d_seed297164463,4,local,tight,14,90,1.000000,22EC26,12,N,69.043226,72.043180,1,0.027846,22,True,True,left day 12 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_074_tight_14d_seed297164463,3,cpsat,tight,14,90,1.000000,22EC26,10,N,69.043226,69.043133,4,0.211952,21,False,True,
+case_075_overloaded_7d_seed40087281,0,local,overloaded,7,75,1.148000,24EE42,5,N,108.044024,109.043696,1,0.003919,1,True,True,left day 5 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_074_tight_14d_seed297164463,4,cpsat,tight,14,90,1.000000,22EC26,12,N,69.043226,72.043180,1,0.170770,22,True,True,left day 12 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_072_overloaded_14d_seed826732066,3,cpsat,overloaded,14,89,1.151000,23CE36,1,M,348.047127,350.047973,2,1.920942,90,False,True,
+case_075_overloaded_7d_seed40087281,1,local,overloaded,7,75,1.148000,25CE20,4,N,108.044024,109.044157,1,0.008123,1,True,True,left day 4 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_075_overloaded_7d_seed40087281,2,local,overloaded,7,75,1.148000,24CS43,4,M,108.044024,109.044157,1,0.007573,1,True,True,left day 4 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_070_tight_14d_seed45548679,3,cpsat,tight,14,81,1.000000,24EC48,3,N,71.044045,74.044096,1,3.773922,20,True,True,left day 3 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_075_overloaded_7d_seed40087281,3,local,overloaded,7,75,1.148000,25CE20,7,E,108.044024,108.044024,2,0.006473,0,False,True,
+case_075_overloaded_7d_seed40087281,3,cpsat,overloaded,7,75,1.148000,25CE20,7,E,108.044024,108.044024,2,0.071197,0,False,True,
+case_075_overloaded_7d_seed40087281,4,local,overloaded,7,75,1.148000,23ME21,5,M,108.044024,109.043890,1,0.004046,1,True,True,left day 5 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_075_overloaded_7d_seed40087281,0,cpsat,overloaded,7,75,1.148000,24EE42,5,N,108.044024,109.043696,1,5.003428,1,True,True,left day 5 N unfilled for CND: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_075_overloaded_7d_seed40087281,1,cpsat,overloaded,7,75,1.148000,25CE20,4,N,108.044024,109.044157,1,5.003438,1,True,True,left day 4 N unfilled for CND: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_076_balanced_14d_seed1917794518,0,local,balanced,14,54,0.850000,23ME12,3,N,0.007143,0.007220,2,0.014636,0,False,True,
+case_075_overloaded_7d_seed40087281,2,cpsat,overloaded,7,75,1.148000,24CS43,4,M,108.044024,109.044157,1,5.003335,1,True,True,left day 4 M unfilled for CND: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_076_balanced_14d_seed1917794518,1,local,balanced,14,54,0.850000,25CS32,13,M,0.007143,0.008036,2,0.008001,0,False,True,
+case_076_balanced_14d_seed1917794518,2,local,balanced,14,54,0.850000,23EC04,8,M,0.007143,2.009083,2,0.006124,0,False,True,
+case_076_balanced_14d_seed1917794518,1,cpsat,balanced,14,54,0.850000,25CS32,13,M,0.007143,0.008036,2,0.054195,0,False,True,
+case_076_balanced_14d_seed1917794518,3,local,balanced,14,54,0.850000,22EC02,11,N,0.007143,0.008036,2,0.006340,0,False,True,
+case_076_balanced_14d_seed1917794518,2,cpsat,balanced,14,54,0.850000,23EC04,8,M,0.007143,0.007451,4,0.052162,0,False,True,
+case_076_balanced_14d_seed1917794518,4,local,balanced,14,54,0.850000,24EC44,5,E,0.007143,0.007220,2,0.006663,0,False,True,
+case_076_balanced_14d_seed1917794518,0,cpsat,balanced,14,54,0.850000,23ME12,3,N,0.007143,0.007220,2,0.117770,0,False,True,
+case_077_tight_14d_seed147264960,0,local,tight,14,48,1.000000,24CB39,7,N,25.012282,28.012282,1,0.012811,6,True,True,left day 7 N unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_076_balanced_14d_seed1917794518,3,cpsat,balanced,14,54,0.850000,22EC02,11,N,0.007143,0.008036,2,0.055965,0,False,True,
+case_077_tight_14d_seed147264960,1,local,tight,14,48,1.000000,24EC25,4,M,25.012282,27.011389,2,0.011066,5,False,True,
+case_076_balanced_14d_seed1917794518,4,cpsat,balanced,14,54,0.850000,24EC44,5,E,0.007143,0.007220,2,0.092900,0,False,True,
+case_077_tight_14d_seed147264960,2,local,tight,14,48,1.000000,25ME20,7,M,25.012282,26.012195,1,0.007704,6,True,True,left day 7 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_077_tight_14d_seed147264960,1,cpsat,tight,14,48,1.000000,24EC25,4,M,25.012282,26.012282,3,0.080319,6,False,True,left day 5 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_077_tight_14d_seed147264960,3,local,tight,14,48,1.000000,25ME11,4,E,25.012282,28.012369,1,0.006408,6,True,True,left day 4 E unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_077_tight_14d_seed147264960,0,cpsat,tight,14,48,1.000000,24CB39,7,N,25.012282,28.012282,1,0.143608,6,True,True,"left day 7 N, day 8 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_077_tight_14d_seed147264960,2,cpsat,tight,14,48,1.000000,25ME20,7,M,25.012282,26.012195,1,0.082928,6,True,True,"left day 7 M, day 8 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_077_tight_14d_seed147264960,4,local,tight,14,48,1.000000,24CB03,9,E,25.012282,26.013262,1,0.004809,6,True,True,left day 9 E unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_077_tight_14d_seed147264960,3,cpsat,tight,14,48,1.000000,25ME11,4,E,25.012282,26.012369,3,0.062214,6,False,True,left day 5 E unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_078_balanced_20d_seed483831954,0,local,balanced,20,72,0.851000,23ME38,10,E,0.038598,0.038521,2,0.037680,0,False,True,
+case_077_tight_14d_seed147264960,4,cpsat,tight,14,48,1.000000,24CB03,9,E,25.012282,26.013262,1,0.046574,6,True,True,left day 9 E unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_078_balanced_20d_seed483831954,1,local,balanced,20,72,0.851000,25ME14,12,M,0.038598,0.038521,2,0.034828,0,False,True,
+case_075_overloaded_7d_seed40087281,4,cpsat,overloaded,7,75,1.148000,23ME21,5,M,108.044024,109.043890,1,5.003991,1,True,True,left day 5 M unfilled for CND: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_078_balanced_20d_seed483831954,2,local,balanced,20,72,0.851000,24ME24,5,E,0.038598,0.038598,2,0.043009,0,False,True,
+case_078_balanced_20d_seed483831954,3,local,balanced,20,72,0.851000,24ME24,3,N,0.038598,0.038598,2,0.035429,0,False,True,
+case_078_balanced_20d_seed483831954,1,cpsat,balanced,20,72,0.851000,25ME14,12,M,0.038598,0.038521,2,0.156530,0,False,True,
+case_078_balanced_20d_seed483831954,4,local,balanced,20,72,0.851000,24EE27,9,M,0.038598,0.038637,2,0.039242,0,False,True,
+case_078_balanced_20d_seed483831954,0,cpsat,balanced,20,72,0.851000,23ME38,10,E,0.038598,0.038521,2,0.265134,0,False,True,
+case_079_tight_28d_seed1679562472,0,local,tight,28,79,1.000000,22EE31,7,M,153.052157,156.052109,1,0.054809,38,True,True,left day 7 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_078_balanced_20d_seed483831954,2,cpsat,balanced,20,72,0.851000,24ME24,5,E,0.038598,0.038598,2,0.267952,0,False,True,
+case_078_balanced_20d_seed483831954,3,cpsat,balanced,20,72,0.851000,24ME24,3,N,0.038598,0.038598,2,0.230680,0,False,True,
+case_079_tight_28d_seed1679562472,1,local,tight,28,79,1.000000,22CE33,14,E,153.052157,156.052182,1,0.049909,38,True,True,left day 14 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_078_balanced_20d_seed483831954,4,cpsat,balanced,20,72,0.851000,24EE27,9,M,0.038598,0.038637,2,0.255203,0,False,True,
+case_079_tight_28d_seed1679562472,2,local,tight,28,79,1.000000,23CS59,14,M,153.052157,154.052133,1,0.075596,38,True,True,left day 14 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_079_tight_28d_seed1679562472,3,local,tight,28,79,1.000000,25CB70,18,E,153.052157,156.052133,1,0.054637,38,True,True,left day 18 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_079_tight_28d_seed1679562472,0,cpsat,tight,28,79,1.000000,22EE31,7,M,153.052157,154.052555,3,0.355974,38,True,True,left day 7 M unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_079_tight_28d_seed1679562472,4,local,tight,28,79,1.000000,23CS59,27,M,153.052157,156.052182,1,0.027635,38,True,True,left day 27 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_079_tight_28d_seed1679562472,3,cpsat,tight,28,79,1.000000,25CB70,18,E,153.052157,156.052133,1,0.368412,38,True,True,left day 18 E unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_080_balanced_14d_seed1612979003,0,local,balanced,14,54,0.851000,22CB14,12,M,0.011682,0.011759,2,0.007469,0,False,True,
+case_080_balanced_14d_seed1612979003,0,cpsat,balanced,14,54,0.851000,22CB14,12,M,0.011682,0.011759,2,0.054757,0,False,True,
+case_080_balanced_14d_seed1612979003,1,local,balanced,14,54,0.851000,24EE30,7,M,0.011682,0.012575,2,0.018634,0,False,True,
+case_079_tight_28d_seed1679562472,4,cpsat,tight,28,79,1.000000,23CS59,27,M,153.052157,156.052182,1,0.316303,38,True,True,"left day 27 M, day 27 E unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_080_balanced_14d_seed1612979003,2,local,balanced,14,54,0.851000,23CE28,11,M,0.011682,0.011759,2,0.019807,0,False,True,
+case_080_balanced_14d_seed1612979003,1,cpsat,balanced,14,54,0.851000,24EE30,7,M,0.011682,0.012575,2,0.163767,0,False,True,
+case_080_balanced_14d_seed1612979003,3,local,balanced,14,54,0.851000,24CE38,7,E,0.011682,0.012641,2,0.019198,0,False,True,
+case_080_balanced_14d_seed1612979003,2,cpsat,balanced,14,54,0.851000,23CE28,11,M,0.011682,0.011759,2,0.162094,0,False,True,
+case_080_balanced_14d_seed1612979003,4,local,balanced,14,54,0.851000,25CB50,7,N,0.011682,0.012652,2,0.019927,0,False,True,
+case_080_balanced_14d_seed1612979003,3,cpsat,balanced,14,54,0.851000,24CE38,7,E,0.011682,0.012641,2,0.182204,0,False,True,
+case_081_balanced_20d_seed364521524,0,local,balanced,20,72,0.850000,25CB60,8,N,0.039268,0.039307,2,0.023479,0,False,True,
+case_080_balanced_14d_seed1612979003,4,cpsat,balanced,14,54,0.851000,25CB50,7,N,0.011682,0.012652,2,0.183908,0,False,True,
+case_081_balanced_20d_seed364521524,1,local,balanced,20,72,0.850000,23CE17,9,M,0.039268,2.039307,2,0.050420,0,False,True,
+case_081_balanced_20d_seed364521524,0,cpsat,balanced,20,72,0.850000,25CB60,8,N,0.039268,0.039307,2,0.147087,0,False,True,
+case_081_balanced_20d_seed364521524,2,local,balanced,20,72,0.850000,23EE06,5,N,0.039268,0.039191,2,0.051995,0,False,True,
+case_079_tight_28d_seed1679562472,2,cpsat,tight,28,79,1.000000,23CS59,14,M,153.052157,154.052133,1,1.191317,38,True,True,"left day 14 M, day 14 E, day 14 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_081_balanced_20d_seed364521524,3,local,balanced,20,72,0.850000,22EE33,12,E,0.039268,0.039229,2,0.043239,0,False,True,
+case_081_balanced_20d_seed364521524,1,cpsat,balanced,20,72,0.850000,23CE17,9,M,0.039268,0.039307,3,0.322539,0,False,True,
+case_081_balanced_20d_seed364521524,4,local,balanced,20,72,0.850000,22EE33,13,M,0.039268,0.039307,2,0.027073,0,False,True,
+case_081_balanced_20d_seed364521524,3,cpsat,balanced,20,72,0.850000,22EE33,12,E,0.039268,0.039229,2,0.191779,0,False,True,
+case_082_tight_14d_seed1744073742,0,local,tight,14,72,1.000000,23EC52,5,N,48.043340,51.043340,1,0.021959,17,True,True,left day 5 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_081_balanced_20d_seed364521524,2,cpsat,balanced,20,72,0.850000,23EE06,5,N,0.039268,0.039191,2,0.314196,0,False,True,
+case_082_tight_14d_seed1744073742,1,local,tight,14,72,1.000000,23ME14,11,E,48.043340,48.044349,2,0.011954,16,False,True,
+case_081_balanced_20d_seed364521524,4,cpsat,balanced,20,72,0.850000,22EE33,13,M,0.039268,0.039307,2,0.211371,0,False,True,
+case_082_tight_14d_seed1744073742,1,cpsat,tight,14,72,1.000000,23ME14,11,E,48.043340,48.044349,2,0.094904,16,False,True,
+case_082_tight_14d_seed1744073742,2,local,tight,14,72,1.000000,22CE25,2,E,48.043340,50.043398,2,0.022443,16,False,True,
+case_082_tight_14d_seed1744073742,3,local,tight,14,72,1.000000,23EE53,5,N,48.043340,51.043225,1,0.022697,17,True,True,left day 5 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_082_tight_14d_seed1744073742,0,cpsat,tight,14,72,1.000000,23EC52,5,N,48.043340,51.043340,1,0.214481,17,True,True,left day 5 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_082_tight_14d_seed1744073742,4,local,tight,14,72,1.000000,24EC10,4,M,48.043340,51.043398,1,0.015277,17,True,True,left day 4 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_082_tight_14d_seed1744073742,2,cpsat,tight,14,72,1.000000,22CE25,2,E,48.043340,50.043398,2,0.143063,16,False,True,
+case_083_balanced_20d_seed875348873,0,local,balanced,20,74,0.850000,24EC68,16,N,0.038155,0.039367,2,0.023882,0,False,True,
+case_082_tight_14d_seed1744073742,4,cpsat,tight,14,72,1.000000,24EC10,4,M,48.043340,51.043398,1,0.118855,17,True,True,left day 4 M unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_082_tight_14d_seed1744073742,3,cpsat,tight,14,72,1.000000,23EE53,5,N,48.043340,48.043109,4,0.176298,16,False,True,
+case_083_balanced_20d_seed875348873,1,local,balanced,20,74,0.850000,23CS18,9,M,0.038155,0.038117,2,0.044012,0,False,True,
+case_083_balanced_20d_seed875348873,0,cpsat,balanced,20,74,0.850000,24EC68,16,N,0.038155,0.039367,2,0.108135,0,False,True,
+case_083_balanced_20d_seed875348873,2,local,balanced,20,74,0.850000,23ME41,9,E,0.038155,0.038155,2,0.043304,0,False,True,
+case_083_balanced_20d_seed875348873,3,local,balanced,20,74,0.850000,23CB74,15,E,0.038155,2.038742,2,0.018883,0,False,True,
+case_079_tight_28d_seed1679562472,1,cpsat,tight,28,79,1.000000,22CE33,14,E,153.052157,156.052182,1,2.089506,38,True,True,"left day 14 E, day 14 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_083_balanced_20d_seed875348873,4,local,balanced,20,74,0.850000,22CB47,13,M,0.038155,0.038742,2,0.044442,0,False,True,
+case_083_balanced_20d_seed875348873,3,cpsat,balanced,20,74,0.850000,23CB74,15,E,0.038155,0.038155,4,0.110322,0,False,True,
+case_083_balanced_20d_seed875348873,1,cpsat,balanced,20,74,0.850000,23CS18,9,M,0.038155,0.038117,2,0.244320,0,False,True,
+case_084_tight_20d_seed840134068,0,local,tight,20,77,1.001000,25EC50,16,M,88.043454,89.043490,1,0.050531,21,True,True,left day 16 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_084_tight_20d_seed840134068,1,local,tight,20,77,1.001000,23EC72,17,M,88.043454,91.043418,1,0.011548,21,True,True,left day 17 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_083_balanced_20d_seed875348873,2,cpsat,balanced,20,74,0.850000,23ME41,9,E,0.038155,0.038155,2,0.278532,0,False,True,
+case_084_tight_20d_seed840134068,2,local,tight,20,77,1.001000,22CB01,19,M,88.043454,91.044043,1,0.021544,21,True,True,left day 19 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_083_balanced_20d_seed875348873,4,cpsat,balanced,20,74,0.850000,22CB47,13,M,0.038155,0.038742,2,0.224018,0,False,True,
+case_084_tight_20d_seed840134068,3,local,tight,20,77,1.001000,23CE36,1,M,88.043454,88.043454,2,0.018782,20,False,True,
+case_084_tight_20d_seed840134068,1,cpsat,tight,20,77,1.001000,23EC72,17,M,88.043454,88.043454,4,0.123737,20,True,True,left day 17 M unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_084_tight_20d_seed840134068,4,local,tight,20,77,1.001000,25EC42,17,M,88.043454,91.043418,1,0.034626,21,True,True,left day 17 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_084_tight_20d_seed840134068,3,cpsat,tight,20,77,1.001000,23CE36,1,M,88.043454,88.043454,2,0.102337,20,False,True,
+case_085_tight_7d_seed664028155,0,local,tight,7,74,1.000000,24EC17,4,N,0.013691,2.015992,2,0.005447,0,False,True,
+case_085_tight_7d_seed664028155,0,cpsat,tight,7,74,1.000000,24EC17,4,N,0.013691,2.015992,2,0.117425,0,False,True,
+case_085_tight_7d_seed664028155,1,local,tight,7,74,1.000000,22ME73,7,E,0.013691,2.013691,2,0.004302,0,False,True,
+case_085_tight_7d_seed664028155,1,cpsat,tight,7,74,1.000000,22ME73,7,E,0.013691,2.013691,2,0.028787,0,False,True,
+case_085_tight_7d_seed664028155,2,local,tight,7,74,1.000000,23EE44,6,N,0.013691,2.013826,2,0.009782,0,False,True,
+case_085_tight_7d_seed664028155,2,cpsat,tight,7,74,1.000000,23EE44,6,N,0.013691,0.013961,4,0.098970,0,False,True,
+case_085_tight_7d_seed664028155,3,local,tight,7,74,1.000000,22ME73,1,M,0.013691,2.014316,2,0.004452,0,False,True,
+case_085_tight_7d_seed664028155,3,cpsat,tight,7,74,1.000000,22ME73,1,M,0.013691,2.014316,2,0.036772,0,False,True,
+case_085_tight_7d_seed664028155,4,local,tight,7,74,1.000000,23CS71,5,E,0.013691,2.015747,2,0.004084,0,False,True,
+case_085_tight_7d_seed664028155,4,cpsat,tight,7,74,1.000000,23CS71,5,E,0.013691,2.015747,2,0.039400,0,False,True,
+case_086_tight_20d_seed731496842,0,local,tight,20,82,1.000000,25EC19,5,N,117.046730,120.046764,1,0.072291,34,True,True,left day 5 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_086_tight_20d_seed731496842,0,cpsat,tight,20,82,1.000000,25EC19,5,N,117.046730,120.046764,1,0.535039,34,True,True,left day 5 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_086_tight_20d_seed731496842,1,local,tight,20,82,1.000000,23CE32,3,M,117.046730,120.046697,1,0.011562,34,True,True,left day 3 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_084_tight_20d_seed840134068,0,cpsat,tight,20,77,1.001000,25EC50,16,M,88.043454,87.044081,3,1.363633,21,True,True,"left day 16 M, day 16 E, day 16 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_086_tight_20d_seed731496842,2,local,tight,20,82,1.000000,25CE34,11,E,117.046730,120.046697,1,0.008000,34,True,True,left day 11 E unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_086_tight_20d_seed731496842,1,cpsat,tight,20,82,1.000000,23CE32,3,M,117.046730,120.046697,1,0.066429,34,True,True,left day 3 M unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_086_tight_20d_seed731496842,2,cpsat,tight,20,82,1.000000,25CE34,11,E,117.046730,120.046697,1,0.062243,34,True,True,"left day 11 M, day 11 E unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_086_tight_20d_seed731496842,3,local,tight,20,82,1.000000,22CB70,13,M,117.046730,120.046730,1,0.045329,34,True,True,left day 13 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_086_tight_20d_seed731496842,4,local,tight,20,82,1.000000,25CS08,20,N,117.046730,117.047751,2,0.046696,33,False,True,
+case_086_tight_20d_seed731496842,4,cpsat,tight,20,82,1.000000,25CS08,20,N,117.046730,117.047751,2,0.209272,33,False,True,
+case_087_balanced_14d_seed587204369,0,local,balanced,14,94,0.850000,22ME60,5,M,0.009970,0.009970,2,0.035757,0,False,True,
+case_087_balanced_14d_seed587204369,0,cpsat,balanced,14,94,0.850000,22ME60,5,M,0.009970,0.009970,2,0.149296,0,False,True,
+case_087_balanced_14d_seed587204369,1,local,balanced,14,94,0.850000,25EE51,12,M,0.009970,0.010014,2,0.035055,0,False,True,
+case_087_balanced_14d_seed587204369,1,cpsat,balanced,14,94,0.850000,25EE51,12,M,0.009970,0.010014,2,0.140075,0,False,True,
+case_087_balanced_14d_seed587204369,2,local,balanced,14,94,0.850000,23CB28,1,M,0.009970,0.010863,2,0.026355,0,False,True,
+case_087_balanced_14d_seed587204369,2,cpsat,balanced,14,94,0.850000,23CB28,1,M,0.009970,0.010863,2,0.105243,0,False,True,
+case_087_balanced_14d_seed587204369,3,local,balanced,14,94,0.850000,24CB63,8,N,0.009970,0.010014,2,0.030737,0,False,True,
+case_084_tight_20d_seed840134068,2,cpsat,tight,20,77,1.001000,22CB01,19,M,88.043454,91.044043,1,2.224890,21,True,True,"left day 19 M, day 19 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_087_balanced_14d_seed587204369,4,local,balanced,14,94,0.850000,25EC03,9,N,0.009970,0.010059,2,0.024905,0,False,True,
+case_086_tight_20d_seed731496842,3,cpsat,tight,20,82,1.000000,22CB70,13,M,117.046730,120.046730,1,0.919025,34,True,True,"left day 13 M, day 13 E, day 14 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_088_tight_14d_seed1099772739,0,local,tight,14,95,1.000000,22CB22,11,E,66.044472,69.044516,1,0.041471,19,True,True,left day 11 E unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_087_balanced_14d_seed587204369,3,cpsat,balanced,14,94,0.850000,24CB63,8,N,0.009970,0.010014,2,0.160976,0,False,True,
+case_088_tight_14d_seed1099772739,1,local,tight,14,95,1.000000,24EC75,9,M,66.044472,69.044385,1,0.040000,19,True,True,left day 9 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_087_balanced_14d_seed587204369,4,cpsat,balanced,14,94,0.850000,25EC03,9,N,0.009970,0.010059,2,0.154617,0,False,True,
+case_088_tight_14d_seed1099772739,2,local,tight,14,95,1.000000,23EE25,10,N,66.044472,67.044516,1,0.042789,19,True,True,left day 10 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_088_tight_14d_seed1099772739,2,cpsat,tight,14,95,1.000000,23EE25,10,N,66.044472,65.044155,5,0.393438,19,True,True,left day 10 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_088_tight_14d_seed1099772739,3,local,tight,14,95,1.000000,24CS20,14,E,66.044472,66.044111,2,0.023576,18,False,True,
+case_088_tight_14d_seed1099772739,3,cpsat,tight,14,95,1.000000,24CS20,14,E,66.044472,66.044111,2,0.114751,18,False,True,
+case_088_tight_14d_seed1099772739,4,local,tight,14,95,1.000000,22EC62,7,E,66.044472,69.044472,1,0.043500,19,True,True,left day 7 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_088_tight_14d_seed1099772739,0,cpsat,tight,14,95,1.000000,22CB22,11,E,66.044472,69.044516,1,0.839443,19,True,True,left day 11 E unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_089_balanced_14d_seed1966702770,0,local,balanced,14,70,0.850000,24CE59,2,N,0.009140,0.009140,2,0.022580,0,False,True,
+case_089_balanced_14d_seed1966702770,0,cpsat,balanced,14,70,0.850000,24CE59,2,N,0.009140,0.009140,2,0.132242,0,False,True,
+case_089_balanced_14d_seed1966702770,1,local,balanced,14,70,0.850000,22CS27,14,E,0.009140,0.010033,2,0.027106,0,False,True,
+case_089_balanced_14d_seed1966702770,1,cpsat,balanced,14,70,0.850000,22CS27,14,E,0.009140,0.010033,2,0.128713,0,False,True,
+case_089_balanced_14d_seed1966702770,2,local,balanced,14,70,0.850000,22ME17,7,E,0.009140,2.010498,2,0.008292,0,False,True,
+case_088_tight_14d_seed1099772739,4,cpsat,tight,14,95,1.000000,22EC62,7,E,66.044472,66.044560,2,0.461969,18,True,True,"left day 7 E, day 8 M, day 8 E, day 8 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_089_balanced_14d_seed1966702770,2,cpsat,balanced,14,70,0.850000,22ME17,7,E,0.009140,2.010498,2,0.060251,0,False,True,
+case_089_balanced_14d_seed1966702770,3,local,balanced,14,70,0.850000,22EC36,14,E,0.009140,0.009140,2,0.025730,0,False,True,
+case_089_balanced_14d_seed1966702770,4,local,balanced,14,70,0.850000,25EC60,7,E,0.009140,0.009199,2,0.025493,0,False,True,
+case_089_balanced_14d_seed1966702770,3,cpsat,balanced,14,70,0.850000,22EC36,14,E,0.009140,0.009140,2,0.138245,0,False,True,
+case_090_balanced_28d_seed812192909,0,local,balanced,28,87,0.849000,23CB13,8,E,0.044153,2.044109,2,0.052069,0,False,True,
+case_089_balanced_14d_seed1966702770,4,cpsat,balanced,14,70,0.850000,25EC60,7,E,0.009140,0.009199,2,0.169401,0,False,True,
+case_088_tight_14d_seed1099772739,1,cpsat,tight,14,95,1.000000,24EC75,9,M,66.044472,66.044385,4,1.418676,18,False,True,
+case_084_tight_20d_seed840134068,4,cpsat,tight,20,77,1.001000,25EC42,17,M,88.043454,91.043418,1,3.731771,21,True,True,"left day 17 M, day 17 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_090_balanced_28d_seed812192909,1,local,balanced,28,87,0.849000,23CS06,11,N,0.044153,0.044131,2,0.063213,0,False,True,
+case_090_balanced_28d_seed812192909,2,local,balanced,28,87,0.849000,25CS59,5,M,0.044153,0.044109,2,0.063177,0,False,True,
+case_090_balanced_28d_seed812192909,3,local,balanced,28,87,0.849000,24ME85,2,N,0.044153,0.044131,2,0.056532,0,False,True,
+case_090_balanced_28d_seed812192909,0,cpsat,balanced,28,87,0.849000,23CB13,8,E,0.044153,0.044153,4,0.273433,0,False,True,
+case_090_balanced_28d_seed812192909,1,cpsat,balanced,28,87,0.849000,23CS06,11,N,0.044153,0.044131,2,0.272623,0,False,True,
+case_090_balanced_28d_seed812192909,4,local,balanced,28,87,0.849000,24ME46,13,M,0.044153,0.044153,2,0.079284,0,False,True,
+case_090_balanced_28d_seed812192909,2,cpsat,balanced,28,87,0.849000,25CS59,5,M,0.044153,0.044109,2,0.322786,0,False,True,
+case_091_tight_20d_seed58189562,0,local,tight,20,73,1.000000,25ME05,20,E,85.043927,85.043927,2,0.045223,23,False,True,
+case_090_balanced_28d_seed812192909,3,cpsat,balanced,28,87,0.849000,24ME85,2,N,0.044153,0.044131,2,0.259118,0,False,True,
+case_091_tight_20d_seed58189562,1,local,tight,20,73,1.000000,22EE18,13,N,85.043927,88.043888,1,0.038371,24,True,True,left day 13 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_091_tight_20d_seed58189562,2,local,tight,20,73,1.000000,24ME14,12,M,85.043927,88.043850,1,0.030378,24,True,True,left day 12 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_091_tight_20d_seed58189562,0,cpsat,tight,20,73,1.000000,25ME05,20,E,85.043927,85.043927,2,0.214574,23,False,True,
+case_091_tight_20d_seed58189562,3,local,tight,20,73,1.000000,25EE64,9,M,85.043927,88.043888,1,0.018762,24,True,True,left day 9 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_090_balanced_28d_seed812192909,4,cpsat,balanced,28,87,0.849000,24ME46,13,M,0.044153,0.044153,2,0.329834,0,False,True,
+case_091_tight_20d_seed58189562,4,local,tight,20,73,1.000000,24ME04,2,N,85.043927,87.043965,2,0.038228,23,False,True,
+case_091_tight_20d_seed58189562,3,cpsat,tight,20,73,1.000000,25EE64,9,M,85.043927,88.043888,1,0.101286,24,True,True,left day 9 M unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_092_overloaded_28d_seed1171896583,0,local,overloaded,28,77,1.150000,24EE52,12,M,742.050931,745.051378,1,0.041778,215,True,True,left day 12 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_091_tight_20d_seed58189562,4,cpsat,tight,20,73,1.000000,24ME04,2,N,85.043927,87.043965,2,0.321070,23,False,True,
+case_092_overloaded_28d_seed1171896583,1,local,overloaded,28,77,1.150000,22CS27,28,N,742.050931,745.050931,1,0.005338,215,True,True,left day 28 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_091_tight_20d_seed58189562,2,cpsat,tight,20,73,1.000000,24ME14,12,M,85.043927,88.043850,1,0.603152,24,True,True,left day 12 M unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_092_overloaded_28d_seed1171896583,2,local,overloaded,28,77,1.150000,25EE74,25,N,742.050931,745.050956,1,0.032060,215,True,True,left day 25 N unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_092_overloaded_28d_seed1171896583,1,cpsat,overloaded,28,77,1.150000,22CS27,28,N,742.050931,745.050931,1,0.167971,215,True,True,left day 28 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_092_overloaded_28d_seed1171896583,3,local,overloaded,28,77,1.150000,23CB06,17,N,742.050931,745.051353,1,0.032150,215,True,True,left day 17 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_092_overloaded_28d_seed1171896583,3,cpsat,overloaded,28,77,1.150000,23CB06,17,N,742.050931,744.050906,2,0.252211,214,True,True,left day 17 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_091_tight_20d_seed58189562,1,cpsat,tight,20,73,1.000000,22EE18,13,N,85.043927,88.043888,1,1.106775,24,True,True,left day 13 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_092_overloaded_28d_seed1171896583,4,local,overloaded,28,77,1.150000,23ME28,6,N,742.050931,745.050906,1,0.042663,215,True,True,left day 6 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_093_tight_14d_seed938267983,0,local,tight,14,83,1.000000,24CE71,1,N,35.048903,37.048853,2,0.019585,5,False,True,
+case_093_tight_14d_seed938267983,0,cpsat,tight,14,83,1.000000,24CE71,1,N,35.048903,35.048853,3,0.106567,5,False,True,
+case_093_tight_14d_seed938267983,1,local,tight,14,83,1.000000,24CS41,10,N,35.048903,38.048953,1,0.025234,6,True,True,left day 10 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_092_overloaded_28d_seed1171896583,4,cpsat,overloaded,28,77,1.150000,23ME28,6,N,742.050931,742.050931,4,0.250344,214,True,True,"left day 6 M, day 6 N, day 7 M, day 7 E, day 7 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_093_tight_14d_seed938267983,2,local,tight,14,83,1.000000,25ME64,7,N,35.048903,38.048953,1,0.020838,6,True,True,left day 7 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_092_overloaded_28d_seed1171896583,0,cpsat,overloaded,28,77,1.150000,24EE52,12,M,742.050931,744.050981,2,1.163406,214,True,True,"left day 12 M, day 12 N, day 13 M, day 13 E, day 13 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_093_tight_14d_seed938267983,3,local,tight,14,83,1.000000,24CE60,11,N,35.048903,38.048853,1,0.018752,6,True,True,left day 11 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_093_tight_14d_seed938267983,2,cpsat,tight,14,83,1.000000,25ME64,7,N,35.048903,38.048953,1,0.160908,6,True,True,left day 7 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_093_tight_14d_seed938267983,4,local,tight,14,83,1.000000,25CS15,14,N,35.048903,37.049796,2,0.008710,5,False,True,
+case_093_tight_14d_seed938267983,4,cpsat,tight,14,83,1.000000,25CS15,14,N,35.048903,37.049796,2,0.096140,5,False,True,
+case_094_overloaded_14d_seed454756230,0,local,overloaded,14,50,1.149000,25CS43,3,N,194.043840,195.043756,1,0.005058,51,True,True,left day 3 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_093_tight_14d_seed938267983,3,cpsat,tight,14,83,1.000000,24CE60,11,N,35.048903,38.048853,1,0.139195,6,True,True,left day 11 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_094_overloaded_14d_seed454756230,1,local,overloaded,14,50,1.149000,22EC44,14,M,194.043840,197.043840,1,0.007391,51,True,True,left day 14 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_094_overloaded_14d_seed454756230,1,cpsat,overloaded,14,50,1.149000,22EC44,14,M,194.043840,197.043840,1,0.062632,51,True,True,left day 14 M unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_094_overloaded_14d_seed454756230,2,local,overloaded,14,50,1.149000,23EC27,2,M,194.043840,197.043840,1,0.007285,51,True,True,left day 2 M unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_094_overloaded_14d_seed454756230,0,cpsat,overloaded,14,50,1.149000,25CS43,3,N,194.043840,195.043756,1,0.167927,51,True,True,"left day 3 N, day 4 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_094_overloaded_14d_seed454756230,3,local,overloaded,14,50,1.149000,24CB22,14,M,194.043840,196.043840,2,0.009564,50,False,True,
+case_094_overloaded_14d_seed454756230,3,cpsat,overloaded,14,50,1.149000,24CB22,14,M,194.043840,196.043840,2,0.060284,50,False,True,
+case_094_overloaded_14d_seed454756230,2,cpsat,overloaded,14,50,1.149000,23EC27,2,M,194.043840,197.043840,1,0.149953,51,True,True,left day 2 M unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_094_overloaded_14d_seed454756230,4,local,overloaded,14,50,1.149000,25CS41,12,N,194.043840,197.044816,1,0.004877,51,True,True,left day 12 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_095_overloaded_20d_seed617758197,0,local,overloaded,20,59,1.151000,25ME07,19,N,370.019078,370.020297,2,0.017615,112,False,True,
+case_094_overloaded_14d_seed454756230,4,cpsat,overloaded,14,50,1.149000,25CS41,12,N,194.043840,197.044816,1,0.078351,51,True,True,left day 12 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_095_overloaded_20d_seed617758197,1,local,overloaded,20,59,1.151000,25CE32,13,E,370.019078,370.019703,2,0.022683,112,False,True,
+case_095_overloaded_20d_seed617758197,0,cpsat,overloaded,20,59,1.151000,25ME07,19,N,370.019078,370.020297,2,0.124468,112,False,True,
+case_095_overloaded_20d_seed617758197,2,local,overloaded,20,59,1.151000,24ME33,1,N,370.019078,370.020360,2,0.021745,112,False,True,
+case_095_overloaded_20d_seed617758197,2,cpsat,overloaded,20,59,1.151000,24ME33,1,N,370.019078,368.019078,4,0.229770,112,False,True,
+case_095_overloaded_20d_seed617758197,3,local,overloaded,20,59,1.151000,22CE24,9,N,370.019078,373.019750,1,0.008502,113,True,True,left day 9 N unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_095_overloaded_20d_seed617758197,3,cpsat,overloaded,20,59,1.151000,22CE24,9,N,370.019078,373.019750,1,0.079486,113,True,True,left day 9 N unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_095_overloaded_20d_seed617758197,4,local,overloaded,20,59,1.151000,25CS28,5,E,370.019078,373.019750,1,0.009636,113,True,True,left day 5 E unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_095_overloaded_20d_seed617758197,4,cpsat,overloaded,20,59,1.151000,25CS28,5,E,370.019078,369.019656,3,0.103018,115,True,True,"left day 5 M, day 5 E, day 6 E unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_096_tight_7d_seed1213488276,0,local,tight,7,93,1.000000,23CB52,2,M,0.010541,2.011451,2,0.006926,0,False,True,
+case_096_tight_7d_seed1213488276,0,cpsat,tight,7,93,1.000000,23CB52,2,M,0.010541,2.011451,2,0.135112,0,False,True,
+case_096_tight_7d_seed1213488276,1,local,tight,7,93,1.000000,25ME02,3,M,0.010541,2.010649,2,0.015504,0,False,True,
+case_096_tight_7d_seed1213488276,1,cpsat,tight,7,93,1.000000,25ME02,3,M,0.010541,2.010649,2,0.104031,0,False,True,
+case_096_tight_7d_seed1213488276,2,local,tight,7,93,1.000000,23CB30,2,N,0.010541,2.011559,2,0.007428,0,False,True,
+case_095_overloaded_20d_seed617758197,1,cpsat,overloaded,20,59,1.151000,25CE32,13,E,370.019078,366.020954,4,0.913190,110,False,True,"left day 13 M, day 13 N, day 14 E, day 14 N unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_096_tight_7d_seed1213488276,3,local,tight,7,93,1.000000,24EE16,7,M,0.010541,2.012435,2,0.012091,0,False,True,
+case_092_overloaded_28d_seed1171896583,2,cpsat,overloaded,28,77,1.150000,25EE74,25,N,742.050931,745.050956,1,2.322584,215,True,True,"left day 25 N, day 26 E unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"
+case_096_tight_7d_seed1213488276,2,cpsat,tight,7,93,1.000000,23CB30,2,N,0.010541,2.011559,2,0.122793,0,False,True,
+case_096_tight_7d_seed1213488276,4,local,tight,7,93,1.000000,24EC38,5,M,0.010541,2.012542,2,0.015541,0,False,True,
+case_096_tight_7d_seed1213488276,3,cpsat,tight,7,93,1.000000,24EE16,7,M,0.010541,2.012435,2,0.062490,0,False,True,
+case_097_tight_28d_seed577394801,0,local,tight,28,69,1.000000,24CB45,25,M,133.048987,136.049015,1,0.035088,32,True,True,left day 25 M unfilled for Hospitality: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_097_tight_28d_seed577394801,1,local,tight,28,69,1.000000,25ME12,13,M,133.048987,136.049433,1,0.029795,32,True,True,left day 13 M unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_096_tight_7d_seed1213488276,4,cpsat,tight,7,93,1.000000,24EC38,5,M,0.010541,2.012542,2,0.122889,0,False,True,
+case_097_tight_28d_seed577394801,2,local,tight,28,69,1.000000,24CB34,4,N,133.048987,136.049015,1,0.033161,32,True,True,left day 4 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_097_tight_28d_seed577394801,1,cpsat,tight,28,69,1.000000,25ME12,13,M,133.048987,133.049043,5,0.196315,31,False,True,
+case_097_tight_28d_seed577394801,3,local,tight,28,69,1.000000,24EE11,16,N,133.048987,136.048959,1,0.036874,32,True,True,left day 16 N unfilled for MPR: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_097_tight_28d_seed577394801,0,cpsat,tight,28,69,1.000000,24CB45,25,M,133.048987,136.049015,1,0.315266,32,True,True,left day 25 M unfilled for Hospitality: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_097_tight_28d_seed577394801,4,local,tight,28,69,1.000000,24CB37,6,N,133.048987,136.048959,1,0.045763,32,True,True,left day 6 N unfilled for CND: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_097_tight_28d_seed577394801,2,cpsat,tight,28,69,1.000000,24CB34,4,N,133.048987,136.049015,1,0.274514,32,True,True,left day 4 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_098_tight_20d_seed165667922,0,local,tight,20,92,1.000000,22CS92,11,M,108.046504,111.046474,1,0.046122,25,True,True,left day 11 M unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_097_tight_28d_seed577394801,3,cpsat,tight,28,69,1.000000,24EE11,16,N,133.048987,136.048959,1,0.316159,32,True,True,left day 16 N unfilled for MPR: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_097_tight_28d_seed577394801,4,cpsat,tight,28,69,1.000000,24CB37,6,N,133.048987,136.048959,1,0.295482,32,True,True,left day 6 N unfilled for CND: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_098_tight_20d_seed165667922,1,local,tight,20,92,1.000000,24CE76,6,N,108.046504,111.046474,1,0.048900,25,True,True,left day 6 N unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_098_tight_20d_seed165667922,2,local,tight,20,92,1.000000,24CS69,4,E,108.046504,111.046534,1,0.048935,25,True,True,left day 4 E unfilled for SPONS: no free same-group replacement or chain of at most 2 changes beat the unfilled penalty (3 per slot) once the 0.5 cost per changed assignment is added
+case_098_tight_20d_seed165667922,1,cpsat,tight,20,92,1.000000,24CE76,6,N,108.046504,108.046444,4,0.338932,24,False,True,
+case_098_tight_20d_seed165667922,3,local,tight,20,92,1.000000,24EE35,2,E,108.046504,108.046444,2,0.050103,24,False,True,
+case_098_tight_20d_seed165667922,2,cpsat,tight,20,92,1.000000,24CS69,4,E,108.046504,111.046534,1,0.416676,25,True,True,left day 4 E unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_098_tight_20d_seed165667922,4,local,tight,20,92,1.000000,23EE42,1,N,108.046504,108.046504,2,0.049368,24,False,True,
+case_098_tight_20d_seed165667922,3,cpsat,tight,20,92,1.000000,24EE35,2,E,108.046504,108.046444,2,0.248191,24,False,True,
+case_099_balanced_28d_seed1578575716,0,local,balanced,28,84,0.850000,24EE79,9,E,0.044200,0.044223,2,0.052006,0,False,True,
+case_098_tight_20d_seed165667922,4,cpsat,tight,20,92,1.000000,23EE42,1,N,108.046504,108.046504,2,0.220600,24,False,True,
+case_098_tight_20d_seed165667922,0,cpsat,tight,20,92,1.000000,22CS92,11,M,108.046504,111.046474,1,1.043746,25,True,True,left day 11 M unfilled for SPONS: CP-SAT status OPTIMAL; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment
+case_099_balanced_28d_seed1578575716,1,local,balanced,28,84,0.850000,22CB75,16,M,0.044200,0.044154,2,0.057456,0,False,True,
+case_099_balanced_28d_seed1578575716,2,local,balanced,28,84,0.850000,24CB39,7,M,0.044200,0.044177,2,0.067271,0,False,True,
+case_099_balanced_28d_seed1578575716,0,cpsat,balanced,28,84,0.850000,24EE79,9,E,0.044200,0.044223,2,0.236854,0,False,True,
+case_099_balanced_28d_seed1578575716,3,local,balanced,28,84,0.850000,25CS42,12,N,0.044200,0.044177,2,0.066004,0,False,True,
+case_099_balanced_28d_seed1578575716,1,cpsat,balanced,28,84,0.850000,22CB75,16,M,0.044200,0.044154,2,0.248689,0,False,True,
+case_099_balanced_28d_seed1578575716,4,local,balanced,28,84,0.850000,22CB14,9,N,0.044200,0.044647,2,0.036248,0,False,True,
+case_099_balanced_28d_seed1578575716,2,cpsat,balanced,28,84,0.850000,24CB39,7,M,0.044200,0.044177,2,0.361487,0,False,True,
+case_099_balanced_28d_seed1578575716,4,cpsat,balanced,28,84,0.850000,22CB14,9,N,0.044200,0.044647,2,0.185365,0,False,True,
+case_099_balanced_28d_seed1578575716,3,cpsat,balanced,28,84,0.850000,25CS42,12,N,0.044200,0.044177,2,0.351820,0,False,True,
+case_093_tight_14d_seed938267983,1,cpsat,tight,14,83,1.000000,24CS41,10,N,35.048903,38.048953,1,5.004387,6,True,True,"left day 10 N, day 11 M unfilled for CND: CP-SAT status FEASIBLE; the best available repair includes the unfilled penalty (3 per slot) and 0.5 per changed assignment"

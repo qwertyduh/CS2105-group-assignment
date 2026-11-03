@@ -1,0 +1,13 @@
+{
+  "sampling_seed": 1,
+  "time_limit_s": 5.0,
+  "repair_time_s": 2.0,
+  "repair_events": 5,
+  "cpsat_num_workers": 1,
+  "solvers": [
+    "greedy",
+    "local",
+    "cpsat_cold",
+    "cpsat_warm"
+  ]
+}

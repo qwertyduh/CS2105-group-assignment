@@ -70,6 +70,41 @@ python3 -m roster.run local test/case_01_balanced_20d --seed 1 --time 60
 python3 -m unittest -v tests.test_local_search
 ```
 
+### Solver comparison — C1
+
+- Added `roster/compare.py`: runs greedy, local search, CP-SAT cold start and CP-SAT with the greedy warm start on every case folder in `test/`, using the same seed and time limit.
+- Every row is scored with `evaluator.evaluate`; CP-SAT's proven gap is the only solver-reported number and is recorded separately.
+- `results/compare.csv` has one row per (case, solver) with total cost, all seven components, unfilled count, hard pass, preference satisfaction, per-group workload spread, runtime, under-90-s flag and CP-SAT gap/status.
+- `results/compare.md` has a table per case with the best cost in bold, the read-out paragraph, and every ordering warning with its investigation.
+- Added `warm_start` to `cpsat.solve` (default `True`, behaviour unchanged) so the cold run uses the same B2 time/worker split with no hint.
+- Added 8 tests in `tests/test_compare.py` (CSV schema, case discovery, warning detection, Markdown sections, and same-seed rerun reproduction except runtime); the full suite passes 107 tests.
+- Matplotlib is not installed, so no chart is written; CSV and Markdown are produced.
+
+```sh
+python3 -m roster.compare --time 60 --seed 1
+python3 -m unittest -v tests.test_compare
+```
+
+### Stress benchmark — D1
+
+- Added `roster/stress.py`: samples cases with `generate_case.py` (scenario 50/30/20, days 7/14/20/28 at 15/25/40/20, group sizes 6-30, preference fraction 0.2-0.9) and writes a reproducible `manifest.csv`.
+- Runs greedy, local search, CP-SAT cold and CP-SAT warm per case with a shared seed and time limit. Cases run in parallel processes; CP-SAT is forced to `num_workers=1` per group so timings are comparable, recorded in the manifest.
+- Results append per (case, solver) as each future finishes, so an interrupted run resumes without repeating completed pairs. The same applies to repair pairs.
+- After solving, five deterministic sick events per case are repaired with both local and CP-SAT repair; `repairs.csv` records cost, changes, runtime and whether the sick slot stayed unfilled.
+- `python -m roster.stress report` writes `results/stress/summary.md` with win rate (ties split), cost gaps by scenario and days, hard-pass/90-s misses, median runtime, the load ratio where local falls >10% behind CP-SAT, repair comparison and a recommendation with thin-evidence flags.
+- Added 6 tests in `tests/test_stress.py`: sampling spec and reproducibility, generated CSV determinism, parallel run outputs, resume after a simulated interruption, and the report sections. Full suite passes 113 tests.
+- Fixed an OR-Tools `repair_hint` assertion seen with `num_workers=1` and very short limits by only enabling hint repair when more than one search worker is used.
+- Small run (`--n 6 --time 5`) interrupted after 11 of 24 solver pairs, then resumed to 24/24 solver pairs and 60/60 repairs without duplicates; `results/stress_smoke/summary.md` was generated from it.
+- 100-case benchmark (`--n 100 --time 60 --workers 4 --repair-time 5 --seed 1`): 400 solver rows and 1000 repair rows, zero hard-rule failures, zero missed 90 s. Win rate: local 52.3%, CP-SAT cold 23.8%, CP-SAT warm 23.8%, greedy 0%.
+- Best mean cost by scenario: local on balanced (0.0371 over 53 cases) and tight (88.7498 over 27), CP-SAT cold on overloaded (426.5189 over 20). All groups have at least 10 cases.
+- Local search is first more than 10% behind CP-SAT at load 0.847, but the earliest violations are near-zero balanced costs; the first material gap (>=1 cost unit) is at load 1.000.
+- Repair: local made 1.68 changes on average and left the sick slot unfilled in 32.6% of events; CP-SAT made 2.08 changes, left 28.6% unfilled and had a slightly lower mean post-repair cost (107.7422 vs 108.2302).
+
+```sh
+python3 -m roster.stress run --n 100 --time 60 --workers 4
+python3 -m roster.stress report
+```
+
 ## Validation follow-ups
 
 - Reject invalid numeric inputs consistently: negative weekly caps and rolling-window lengths currently pass validation, as do `NaN` shift hours.
