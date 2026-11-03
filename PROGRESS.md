@@ -105,6 +105,19 @@ python3 -m roster.stress run --n 100 --time 60 --workers 4
 python3 -m roster.stress report
 ```
 
+### Review fixes for C1 and D1
+
+- CP-SAT used to split `time_limit_s` across the four groups even though they run in parallel, so it stopped after about 21 s of a 60 s budget (median in the stress run). When every group has its own pool process, each group now runs for the whole budget left after the warm start, less a 5% merge reserve. The split is kept only when there are fewer CPUs than groups.
+- If the process pool breaks, the thread fallback now re-runs only the unfinished groups and gives them only the time left.
+- A cold CP-SAT group that finds no solution in time contributes no assignments. `side["no_solution_groups"]` lists these groups, and both `compare.csv` and the stress `results.csv` now have a `cpsat_no_solution_groups` column. The stress report counts them under Reliability, and the comparison report notes them under the case table.
+- `sick_slot_unfilled` now compares the cell after repair with the cell before the sick event (capped at demand). Before, a repair on a cell that was already short counted as a failure: 44 of the 306 flagged events in the 100-case run were in that situation. `repairs.csv` also records `sick_cell_required`, `sick_cell_before`, `sick_cell_after` and `source_solver`.
+- Repairs are keyed on the roster they used (`source_solver`), and the report counts only repairs on each case's current best roster. Resuming after a failed solver job no longer mixes events from different rosters.
+- `roster.stress run` exits with status 1 when any job fails. It also refuses to append to a CSV written with older columns, and it rebuilds missing case folders from the manifest seeds.
+- The read-out no longer crashes when every solver ties. Recorded warning explanations are shown only while the run reproduces the costs they were written for. The stress report's low-cost note is now computed from the data instead of fixed text.
+- Generated stress case folders and rosters are no longer tracked in git.
+- Added 7 tests; the full suite passes 120 tests with OR-Tools installed.
+- **The C1 and D1 numbers above predate these fixes.** The CP-SAT costs, the win rates and the repair unfilled percentages need a rerun before they are quoted.
+
 ## Validation follow-ups
 
 - Reject invalid numeric inputs consistently: negative weekly caps and rolling-window lengths currently pass validation, as do `NaN` shift hours.

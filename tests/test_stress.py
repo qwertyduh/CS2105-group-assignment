@@ -1,4 +1,5 @@
 import csv
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -7,7 +8,9 @@ from pathlib import Path
 
 from roster.stress import (
     DAY_CHOICES,
+    RESULT_COLUMNS,
     SCENARIOS,
+    _Appender,
     build_report,
     draw_case_params,
     ensure_cases,
@@ -84,6 +87,26 @@ class SamplingTests(unittest.TestCase):
                 self.assertEqual(row["cpsat_num_workers"], "1")
 
 
+    def test_missing_case_folder_is_regenerated(self):
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp)
+            rows = ensure_cases(base, 1, 11, 5.0, 1)
+            folder = base / "cases" / rows[0]["case_id"]
+            original = (folder / "demand.csv").read_bytes()
+            shutil.rmtree(folder)
+            self.assertEqual(ensure_cases(base, 1, 11, 5.0, 1), rows)
+            self.assertEqual((folder / "demand.csv").read_bytes(), original)
+
+
+class AppenderTests(unittest.TestCase):
+    def test_refuses_to_append_under_an_old_header(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "results.csv"
+            path.write_text("case_id,solver\nx,greedy\n", encoding="utf-8")
+            with self.assertRaises(SystemExit):
+                _Appender(path, RESULT_COLUMNS)
+
+
 class StressRunTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -112,6 +135,13 @@ class StressRunTests(unittest.TestCase):
         for row in manifest:
             self.assertEqual(row["cpsat_num_workers"], "1")
             self.assertTrue(Path(row["case_id"]).name)
+        best_solvers = {row["solver"] for row in results}
+        for row in repairs:
+            self.assertIn(row["source_solver"], best_solvers)
+            before = int(row["sick_cell_before"])
+            after = int(row["sick_cell_after"])
+            required = int(row["sick_cell_required"])
+            self.assertEqual(row["sick_slot_unfilled"] == "True", after < min(required, before))
         for row in results:
             self.assertIn(row["hard_pass"], {"True", "False"})
             self.assertTrue(row["total_cost"])

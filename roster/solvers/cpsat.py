@@ -18,11 +18,13 @@ prices every rule exactly as ``roster.evaluator.evaluate`` charges it, so
 Costs are multiplied by SCALE and rounded to integers.
 
 In B2, ``solve(case, time_limit_s, seed)`` builds the greedy roster first as a warm-start
-hint, splits ``time_limit_s`` across the four groups by their share of model variables
-(minimum 10% each), divides CPU workers across the four groups so the total never exceeds
+hint, divides CPU workers across the four groups so the total never exceeds
 ``os.cpu_count()``, solves the four groups in parallel with ``ProcessPoolExecutor``, and
-merges the four group rosters into one ``Roster``. Pass ``warm_start=False`` to skip the
-greedy hint and start cold; the time/worker split is unchanged.
+merges the four group rosters into one ``Roster``. When every group gets its own pool
+process, each group runs for the whole budget left after the warm start (less a small
+merge reserve). With fewer CPUs than groups, that budget is split by share of model
+variables (minimum 10% each). Pass ``warm_start=False`` to skip the greedy hint and start
+cold; the time/worker split is unchanged.
 """
 
 from __future__ import annotations
@@ -48,6 +50,8 @@ from . import greedy as greedy_solver
 
 SCALE = 1_000_000
 MIN_GROUP_TIME_SHARE = 0.10
+# Fraction of the remaining budget kept back for merging and evaluating group rosters.
+MERGE_RESERVE_SHARE = 0.05
 
 # Side dict from the most recent solve() call.
 LAST_INFO: dict[str, Any] = {}
@@ -464,7 +468,9 @@ def solve(
 
     With ``warm_start=True`` (the default) a greedy roster is built first and passed
     to each group as a hint. With ``warm_start=False`` no hint is supplied and the
-    solver starts cold; the split of time and workers is otherwise identical.
+    solver starts cold; the time and worker allocation is otherwise identical. A cold
+    group that finds no solution in time contributes no assignments and is named in
+    ``side["no_solution_groups"]``.
 
     ``num_workers`` forces the CP-SAT search thread count for every group. The
     default ``None`` keeps B2's CPU-share split; stress runs pass ``1`` so timings
@@ -494,21 +500,33 @@ def solve(
             members = set(case.by_group.get(g, []))
             hints[g] = {(r, d): sh for (r, d), sh in greedy_roster.items() if r in members}
 
-    # 2. Split time_limit_s by share of variables (min 10% each) and divide CPU workers.
+    # 2. Give each group its time limit and divide CPU workers.
     var_counts = count_group_variables(case, rules, groups)
-    group_times = split_time_limits(var_counts, time_limit_s, min_share=MIN_GROUP_TIME_SHARE)
     total_cpus = max(1, os.cpu_count() or 1)
+    max_pool_workers = min(len(groups), total_cpus)
+    concurrent = max_pool_workers >= len(groups)
+
+    def _group_times() -> dict[str, float]:
+        # Groups that run side by side each get the whole remaining budget; splitting
+        # it would leave most of the wall-clock limit unused.
+        remaining = max(0.0, float(time_limit_s) - (time.perf_counter() - started))
+        budget = remaining * (1.0 - MERGE_RESERVE_SHARE)
+        if concurrent:
+            return {g: budget for g in groups}
+        return split_time_limits(var_counts, budget, min_share=MIN_GROUP_TIME_SHARE)
+
+    group_times = _group_times()
     if num_workers is not None:
         group_workers = {g: max(1, int(num_workers)) for g in groups}
     else:
         group_workers = split_workers(var_counts, cpu_count=total_cpus)
 
     # 3. Run the four group models in parallel with ProcessPoolExecutor.
-    max_pool_workers = min(len(groups), total_cpus)
     results: dict[str, GroupResult] = {}
     wall_times: dict[str, float] = {}
 
-    def _run_with_executor(executor_cls):
+    def _run_with_executor(executor_cls, times: dict[str, float]):
+        pending = [g for g in groups if g not in results]
         with executor_cls(max_workers=max_pool_workers) as pool:
             futures = {
                 pool.submit(
@@ -516,12 +534,12 @@ def solve(
                     case,
                     rules,
                     g,
-                    group_times[g],
+                    times[g],
                     int(seed),
                     hints[g],
                     group_workers[g],
                 ): g
-                for g in groups
+                for g in pending
             }
             for fut in futures:
                 g, res, elapsed = fut.result()
@@ -529,15 +547,25 @@ def solve(
                 wall_times[g] = elapsed
 
     try:
-        _run_with_executor(ProcessPoolExecutor)
+        _run_with_executor(ProcessPoolExecutor, group_times)
     except (PermissionError, NotImplementedError, OSError, BrokenProcessPool):
-        _run_with_executor(ThreadPoolExecutor)
+        # Keep the groups that already finished and give the rest only the time left,
+        # so a broken pool does not double the wall-clock time.
+        group_times.update(
+            {g: t for g, t in _group_times().items() if g not in results}
+        )
+        _run_with_executor(ThreadPoolExecutor, group_times)
 
     # 4. Merge group rosters, keeping the best per-group roster found (never worse than hint).
+    # A cold group that found no solution adds nothing to the merged roster, so it is
+    # listed in ``no_solution_groups`` for callers to flag.
     merged: Roster = {}
     per_group_info: dict[str, dict[str, Any]] = {}
+    no_solution_groups: list[str] = []
     for g in groups:
         res = results[g]
+        if res.objective is None and not hints[g]:
+            no_solution_groups.append(g)
         chosen_roster = res.roster
         if hints[g]:
             if not chosen_roster:
@@ -597,6 +625,7 @@ def solve(
         "best_bound": total_bound,
         "gap": total_gap,
         "rel_gap": total_rel_gap,
+        "no_solution_groups": no_solution_groups,
         "wall_time_s": total_wall,
         "total_workers": sum(group_workers.values()),
     }
