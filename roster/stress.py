@@ -101,10 +101,12 @@ RESULT_COLUMNS = (
     "runtime_under_90s",
     "cpsat_gap",
     "cpsat_rel_gap_pct",
+    "cpsat_no_solution_groups",
 )
 
 REPAIR_COLUMNS = (
     "case_id",
+    "source_solver",
     "event_index",
     "method",
     "scenario",
@@ -119,6 +121,9 @@ REPAIR_COLUMNS = (
     "changes",
     "runtime_s",
     "unfilled_total",
+    "sick_cell_required",
+    "sick_cell_before",
+    "sick_cell_after",
     "sick_slot_unfilled",
     "hard_pass",
     "reason",
@@ -242,6 +247,14 @@ class _Appender:
         self.path = path
         self.columns = list(columns)
         self.path.parent.mkdir(parents=True, exist_ok=True)
+        if self.path.exists() and self.path.stat().st_size > 0:
+            with self.path.open(newline="", encoding="utf-8") as handle:
+                header = next(csv.reader(handle), [])
+            if header != self.columns:
+                raise SystemExit(
+                    f"{self.path} was written with different columns than this version "
+                    "of roster.stress writes. Use a fresh --stress-dir to start a new run."
+                )
 
     def append(self, row: dict[str, Any]) -> None:
         new_file = not self.path.exists() or self.path.stat().st_size == 0
@@ -272,6 +285,16 @@ def ensure_cases(
     rows: list[dict[str, str]] = []
     for index in range(target_count):
         row = existing.get(index)
+        if row is not None and not (case_folder(base_dir, row["case_id"]) / "config.csv").is_file():
+            # Case folders are not committed; rebuild them from the same seeds.
+            params = draw_case_params(sampling_seed, index)
+            if case_id_for(params) != row["case_id"]:
+                raise SystemExit(
+                    f"manifest row {index} is {row['case_id']}, but sampling seed "
+                    f"{sampling_seed} draws {case_id_for(params)}; cannot rebuild it."
+                )
+            generate_case_folder(base_dir, params, sampling_seed)
+            print(f"regenerated missing case folder {row['case_id']}")
         if row is None:
             params = draw_case_params(sampling_seed, index)
             generated = generate_case_folder(base_dir, params, sampling_seed)
@@ -350,6 +373,7 @@ def _solve_task(payload: dict[str, Any]) -> dict[str, Any]:
         "runtime_under_90s": bool(runtime < RUNTIME_BUDGET_S),
         "cpsat_gap": None if gap is None else float(gap),
         "cpsat_rel_gap_pct": None if rel_gap is None else float(rel_gap) * 100.0,
+        "cpsat_no_solution_groups": ";".join(side.get("no_solution_groups") or []),
     }
     for name in ("unfilled", "overwork", "streak", "rest", "preference", "fairness", "isolated"):
         row[f"cost_{name}"] = float(report.cost_components.get(name, 0.0))
@@ -396,15 +420,21 @@ def _repair_task(payload: dict[str, Any]) -> dict[str, Any]:
     group = case.students[payload["roll_no"]].group
     cell = (payload["sick_day"], payload["shift_id"], group)
     required = int(case.demand.get(cell, 0))
-    assigned = sum(
-        1
-        for (roll_no, day), shift_id in result.roster.items()
-        if day == payload["sick_day"]
-        and shift_id == payload["shift_id"]
-        and case.students[roll_no].group == group
-    )
+
+    def cell_count(r: Roster) -> int:
+        return sum(
+            1
+            for (roll_no, day), shift_id in r.items()
+            if day == payload["sick_day"]
+            and shift_id == payload["shift_id"]
+            and case.students[roll_no].group == group
+        )
+
+    before_assigned = cell_count(roster)
+    assigned = cell_count(result.roster)
     return {
         "case_id": payload["case_id"],
+        "source_solver": payload["source_solver"],
         "event_index": payload["event_index"],
         "method": method,
         "scenario": payload["scenario"],
@@ -419,7 +449,12 @@ def _repair_task(payload: dict[str, Any]) -> dict[str, Any]:
         "changes": len(result.diff),
         "runtime_s": float(runtime),
         "unfilled_total": int(report.unfilled_total),
-        "sick_slot_unfilled": bool(assigned < required),
+        "sick_cell_required": required,
+        "sick_cell_before": before_assigned,
+        "sick_cell_after": assigned,
+        # Judged against the cell before the sick event: a cell that was already short
+        # does not count as a repair failure if the sick student's place was refilled.
+        "sick_slot_unfilled": bool(assigned < min(required, before_assigned)),
         "hard_pass": bool(report.hard_pass),
         "reason": result.reason or "",
     }
@@ -501,7 +536,7 @@ def run_stress(
         (row["case_id"], row["solver"]) for row in _read_csv(results_path)
     }
     done_repairs = {
-        (row["case_id"], row["event_index"], row["method"])
+        (row["case_id"], row.get("source_solver", ""), row["event_index"], row["method"])
         for row in _read_csv(repairs_path)
     }
 
@@ -593,11 +628,14 @@ def run_stress(
         events = _sick_events(roster, int(row["case_seed"]), repair_events)
         for event_index, (roll_no, day, shift_id) in enumerate(events):
             for method in REPAIR_METHODS:
-                if (case_id, str(event_index), method) in done_repairs:
+                # The best roster can change when a failed solver job succeeds on
+                # resume; keying on it keeps every event tied to the roster it used.
+                if (case_id, best["solver"], str(event_index), method) in done_repairs:
                     continue
                 repair_jobs.append(
                     {
                         "case_id": case_id,
+                        "source_solver": best["solver"],
                         "case_dir": str(case_folder(base, case_id)),
                         "roster_path": str(roster_path),
                         "event_index": event_index,
@@ -704,6 +742,21 @@ def build_report(base_dir: str | Path = "results/stress") -> Path:
     for row in result_rows:
         by_case.setdefault(row["case_id"], []).append(row)
     case_count = len(by_case)
+
+    # Only report repairs made on each case's current best roster; older rows from a
+    # roster that has since been beaten are left in repairs.csv but not counted.
+    # Files written before source_solver was recorded are reported as they are.
+    if repair_rows and "source_solver" in repair_rows[0]:
+        best_source = {
+            case_id: best["solver"]
+            for case_id, rows in by_case.items()
+            if (best := _best_row(rows)) is not None
+        }
+        repair_rows = [
+            row
+            for row in repair_rows
+            if row["source_solver"] == best_source.get(row["case_id"])
+        ]
     solvers = [solver for solver in SOLVERS if any(row["solver"] == solver for row in result_rows)]
 
     lines = [
@@ -776,17 +829,28 @@ def build_report(base_dir: str | Path = "results/stress") -> Path:
         [
             "## Reliability",
             "",
-            "| Solver | Runs | hard_pass False | Missed 90 s |",
-            "| --- | ---: | ---: | ---: |",
+            "A CP-SAT run with no solution has at least one group that found no "
+            "solution in time and was left without assignments; its cost is counted "
+            "as is in every table below.",
+            "",
+            "| Solver | Runs | hard_pass False | Missed 90 s | No CP-SAT solution |",
+            "| --- | ---: | ---: | ---: | ---: |",
         ]
     )
     for solver in solvers:
         rows = [row for row in result_rows if row["solver"] == solver]
         hard_false = sum(1 for row in rows if not row["_hard"])
         missed = sum(1 for row in rows if not row["_under90"])
+        no_solution = sum(1 for row in rows if row.get("cpsat_no_solution_groups"))
+        if not solver.startswith("cpsat"):
+            no_solution_text = "-"
+        elif "cpsat_no_solution_groups" not in rows[0]:
+            no_solution_text = "n/a"  # results.csv predates this column
+        else:
+            no_solution_text = f"{no_solution} ({_pct(no_solution, len(rows))})"
         lines.append(
             f"| {solver} | {len(rows)} | {hard_false} ({_pct(hard_false, len(rows))}) | "
-            f"{missed} ({_pct(missed, len(rows))}) |"
+            f"{missed} ({_pct(missed, len(rows))}) | {no_solution_text} |"
         )
     lines.append("")
 
@@ -870,11 +934,22 @@ def build_report(base_dir: str | Path = "results/stress") -> Path:
             ]
             if material:
                 first_material = min(material, key=lambda item: item["load"])
+                earlier = [
+                    item
+                    for item in violations
+                    if item["load"] < first_material["load"] - EPS
+                ]
                 lines.append("")
+                if earlier:
+                    largest = max(item["local_cost"] for item in earlier)
+                    lines.append(
+                        f"{_plural(len(earlier), 'violation')} at lower load "
+                        f"{'has' if len(earlier) == 1 else 'have'} an absolute gap below "
+                        f"1.0 cost unit (local cost at most {largest:.4f}), so the 10% "
+                        "band there is small in absolute terms."
+                    )
                 lines.append(
-                    "Some of the earliest violations are balanced cases whose total cost "
-                    "is below 0.05 units, where a 10% band is only a few hundredths of a "
-                    "unit. The first material violation (an absolute gap of at least 1.0 "
+                    "The first material violation (an absolute gap of at least 1.0 "
                     f"cost unit) is at load ratio **{first_material['load']:.3f}** "
                     f"({first_material['case_id']}, local {first_material['local_cost']:.4f} "
                     f"vs CP-SAT {first_material['cpsat_cost']:.4f})."
@@ -900,6 +975,10 @@ def build_report(base_dir: str | Path = "results/stress") -> Path:
     lines.extend(
         [
             "## Sick-leave repair",
+            "",
+            "Each event is repaired on the case's best solver roster. 'Sick slot "
+            "unfilled' means the sick student's cell has fewer people after the repair "
+            "than it had before the sick event (capped at demand).",
             "",
             "| Method | Runs | Mean changes | Median changes | Mean cost | Median cost | "
             "Median runtime (s) | Sick slot unfilled | hard_pass False |",
@@ -1041,7 +1120,7 @@ def main(argv: list[str] | None = None) -> int:
             print("--n must be at least 1", file=sys.stderr)
             return 2
         try:
-            run_stress(
+            result = run_stress(
                 n=args.n,
                 time_limit_s=args.time_limit_s,
                 workers=args.workers,
@@ -1055,7 +1134,7 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         except KeyboardInterrupt:
             return 130
-        return 0
+        return 1 if result["failures"] else 0
 
     try:
         path = build_report(args.stress_dir)

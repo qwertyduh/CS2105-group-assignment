@@ -60,11 +60,16 @@ CSV_COLUMNS = (
     "cpsat_gap",
     "cpsat_rel_gap_pct",
     "cpsat_status",
+    "cpsat_no_solution_groups",
 )
 
-# Filled in after a warning has been investigated. Key is "<case>|<relation>".
-WARNING_EXPLANATIONS: dict[str, str] = {
-    "case_02_tight_28d|warm-vs-cold": (
+# Filled in after a warning has been investigated. Key is "<case>|<relation>". Each
+# entry records the costs it was written for; it is only shown while the current run
+# reproduces those costs, so a stale explanation never sits under new numbers.
+WARNING_EXPLANATIONS: dict[str, dict[str, Any]] = {
+    "case_02_tight_28d|warm-vs-cold": {
+        "costs": {"cpsat_warm": 62.016512, "cpsat_cold": 62.014478},
+        "text": (
         "The two CP-SAT runs differ by only 0.0020 units (0.003%). Both "
         "have exactly the same hard-rule outcome and rule-breach components "
         "(unfilled=54, overwork=8, streak=0, rest=0); the difference is entirely in the "
@@ -74,8 +79,23 @@ WARNING_EXPLANATIONS: dict[str, str] = {
         "greedy hint can steer the multi-threaded search onto a slightly worse "
         "near-optimal incumbent on a tight case; it is not a correctness or hard-rule "
         "problem, and on the other four cases warm is better than or tied with cold."
-    ),
+        ),
+    },
 }
+EXPLANATION_COST_TOLERANCE = 1e-4
+
+
+def warning_explanation(warning: dict[str, Any]) -> str | None:
+    """The recorded investigation for ``warning``, if it was written for these costs."""
+    entry = WARNING_EXPLANATIONS.get(warning["key"])
+    if entry is None:
+        return None
+    costs = warning.get("costs", {})
+    for solver, expected in entry["costs"].items():
+        actual = costs.get(solver)
+        if actual is None or abs(actual - expected) > EXPLANATION_COST_TOLERANCE:
+            return None
+    return entry["text"]
 
 
 def _run_solver(
@@ -130,10 +150,12 @@ def collect_row(
     gap = side.get("gap") if solver.startswith("cpsat") else None
     rel_gap = side.get("rel_gap") if solver.startswith("cpsat") else None
     status = None
+    no_solution = None
     if solver.startswith("cpsat"):
         statuses = side.get("status") or {}
         if statuses:
             status = ",".join(f"{group}:{status}" for group, status in statuses.items())
+        no_solution = ";".join(side.get("no_solution_groups") or [])
 
     row: dict[str, Any] = {
         "case": case_name,
@@ -149,6 +171,7 @@ def collect_row(
         "cpsat_gap": None if gap is None else float(gap),
         "cpsat_rel_gap_pct": None if rel_gap is None else float(rel_gap) * 100.0,
         "cpsat_status": status,
+        "cpsat_no_solution_groups": no_solution,
     }
     for name in COMPONENTS:
         row[f"cost_{name}"] = float(report.cost_components.get(name, 0.0))
@@ -169,7 +192,7 @@ def discover_cases(root: str | Path = "test") -> list[Path]:
     )
 
 
-def sanity_warnings(rows: Iterable[dict[str, Any]]) -> list[dict[str, str]]:
+def sanity_warnings(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
     """Return every broken cost-ordering expectation as a warning record."""
     by_case: dict[str, dict[str, dict[str, Any]]] = {}
     for row in rows:
@@ -192,6 +215,11 @@ def sanity_warnings(rows: Iterable[dict[str, Any]]) -> list[dict[str, str]]:
                 {
                     "key": f"{case_name}|{relation}",
                     "text": f"WARNING: {case_name}: {detail}; {summary}",
+                    "costs": {
+                        solver: costs[solver]["total_cost"]
+                        for solver in SOLVERS
+                        if solver in costs
+                    },
                 }
             )
 
@@ -226,7 +254,7 @@ def _csv_row(row: dict[str, Any]) -> dict[str, str]:
     out: dict[str, str] = {}
     for column in CSV_COLUMNS:
         value = row.get(column)
-        if column == "case" or column == "solver" or column == "cpsat_status":
+        if column in ("case", "solver", "cpsat_status", "cpsat_no_solution_groups"):
             out[column] = "" if value is None else str(value)
         elif column in ("seed",):
             out[column] = str(value)
@@ -252,6 +280,25 @@ def write_csv(rows: list[dict[str, Any]], path: Path) -> None:
             writer.writerow(_csv_row(row))
 
 
+def _winner_text(
+    case_name: str,
+    winner_text: str,
+    tied_count: int,
+    best_cost: float,
+    runner_up: dict[str, Any],
+) -> str:
+    gap_pct = (
+        (runner_up["total_cost"] - best_cost) / runner_up["total_cost"] * 100.0
+        if runner_up["total_cost"] > EPS
+        else 0.0
+    )
+    verb = "tied" if tied_count > 1 else "won"
+    return (
+        f"{case_name}: {winner_text} {verb} at {best_cost:.4f}, "
+        f"{gap_pct:.1f}% below {runner_up['solver']} ({runner_up['total_cost']:.4f})"
+    )
+
+
 def _readout(rows: list[dict[str, Any]]) -> str:
     by_case: dict[str, list[dict[str, Any]]] = {}
     for row in rows:
@@ -273,23 +320,12 @@ def _readout(rows: list[dict[str, Any]]) -> str:
             parts.append(f"{case_name}: only {winner_text} ran, at {best_cost:.4f}")
             continue
         runner_up = next(
-            row for row in ranked if row["total_cost"] > best_cost + EPS
+            (row for row in ranked if row["total_cost"] > best_cost + EPS), None
         )
-        gap_pct = (
-            (runner_up["total_cost"] - best_cost) / runner_up["total_cost"] * 100.0
-            if runner_up["total_cost"] > EPS
-            else 0.0
-        )
-        if len(tied) > 1:
-            parts.append(
-                f"{case_name}: {winner_text} tied at {best_cost:.4f}, "
-                f"{gap_pct:.1f}% below {runner_up['solver']} ({runner_up['total_cost']:.4f})"
-            )
+        if runner_up is None:
+            parts.append(f"{case_name}: {winner_text} all tied at {best_cost:.4f}")
         else:
-            parts.append(
-                f"{case_name}: {winner_text} won at {best_cost:.4f}, "
-                f"{gap_pct:.1f}% below {runner_up['solver']} ({runner_up['total_cost']:.4f})"
-            )
+            parts.append(_winner_text(case_name, winner_text, len(tied), best_cost, runner_up))
 
         local = next((row for row in case_rows if row["solver"] == "local"), None)
         cpsat_costs = [
@@ -318,7 +354,7 @@ def _readout(rows: list[dict[str, Any]]) -> str:
 
 def write_markdown(
     rows: list[dict[str, Any]],
-    warnings: list[dict[str, str]],
+    warnings: list[dict[str, Any]],
     path: Path,
     seed: int,
     time_limit_s: float,
@@ -370,6 +406,14 @@ def write_markdown(
                 f"{gap_text} | {'yes' if row['runtime_under_90s'] else 'NO'} |"
             )
         lines.append("")
+        for row in case_rows:
+            if row.get("cpsat_no_solution_groups"):
+                lines.append(
+                    f"{row['solver']} found no solution in time for "
+                    f"{row['cpsat_no_solution_groups'].replace(';', ', ')}; those groups "
+                    "have no assignments, so its cost is not a like-for-like result."
+                )
+                lines.append("")
 
     lines.append("## Read-out")
     lines.append("")
@@ -380,7 +424,7 @@ def write_markdown(
     if warnings:
         for warning in warnings:
             lines.append(f"- {warning['text']}")
-            explanation = WARNING_EXPLANATIONS.get(warning["key"])
+            explanation = warning_explanation(warning)
             if explanation:
                 lines.append(f"  - Investigation: {explanation}")
             else:
@@ -437,7 +481,7 @@ def run_comparison(
     out_dir: str | Path = "results",
     runner: Runner | None = None,
     progress: bool = True,
-) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Run every solver on every case, write CSV/Markdown, and return the rows."""
     out = Path(out_dir)
     rows: list[dict[str, Any]] = []

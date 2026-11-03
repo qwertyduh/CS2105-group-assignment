@@ -141,6 +141,28 @@ class TestCpSatSolver(unittest.TestCase):
         self.assertIsNone(side["gap"])
         self.assertIsNone(side["rel_gap"])
 
+    def test_concurrent_groups_get_the_whole_budget(self) -> None:
+        """Groups solved side by side each get the remaining budget, not a share of it."""
+        if (os.cpu_count() or 1) < len(GROUPS):
+            self.skipTest("fewer CPUs than groups; the budget is split")
+        case = load_case("test/case_04_small_7d")
+        side: dict = {}
+        cpsat.solve(case, time_limit_s=4.0, seed=1, side=side)
+        for g in GROUPS:
+            self.assertGreater(side["groups"][g]["time_limit_s"], 3.0)
+            self.assertLessEqual(side["groups"][g]["time_limit_s"], 4.0)
+
+    def test_cold_groups_without_solution_are_flagged(self) -> None:
+        """A cold group with no solution is listed and contributes no assignments."""
+        case = load_case("test/case_01_balanced_20d")
+        side: dict = {}
+        roster = cpsat.solve(case, time_limit_s=0.001, seed=1, side=side, warm_start=False)
+        expected = [g for g in GROUPS if side["groups"][g]["objective"] is None]
+        self.assertEqual(side["no_solution_groups"], expected)
+        for g in side["no_solution_groups"]:
+            members = set(case.by_group[g])
+            self.assertFalse([key for key in roster if key[0] in members])
+
     def test_write_baseline_survives_timeout(self) -> None:
         """Baseline writer renders missing objectives/bounds as n/a instead of raising."""
         with tempfile.TemporaryDirectory() as tmp:

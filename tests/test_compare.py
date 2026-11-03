@@ -5,9 +5,12 @@ from pathlib import Path
 
 from roster.compare import (
     CSV_COLUMNS,
+    WARNING_EXPLANATIONS,
+    _readout,
     discover_cases,
     run_comparison,
     sanity_warnings,
+    warning_explanation,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,6 +61,32 @@ class SanityWarningTests(unittest.TestCase):
             fake_row("case_x", "cpsat_warm", 60.0),
         ]
         self.assertEqual(sanity_warnings(rows), [])
+
+
+class ReadoutTests(unittest.TestCase):
+    def test_all_solvers_tied_does_not_crash(self):
+        rows = [fake_row("case_x", solver, 5.0) for solver in ("greedy", "local", "cpsat_cold", "cpsat_warm")]
+        self.assertIn("all tied at 5.0000", _readout(rows))
+
+
+class WarningExplanationTests(unittest.TestCase):
+    KEY = "case_02_tight_28d|warm-vs-cold"
+
+    def warning_with(self, warm, cold):
+        rows = [
+            fake_row("case_02_tight_28d", "cpsat_cold", cold),
+            fake_row("case_02_tight_28d", "cpsat_warm", warm),
+        ]
+        return next(w for w in sanity_warnings(rows) if w["key"] == self.KEY)
+
+    def test_explanation_shown_for_the_costs_it_was_written_for(self):
+        costs = WARNING_EXPLANATIONS[self.KEY]["costs"]
+        warning = self.warning_with(costs["cpsat_warm"], costs["cpsat_cold"])
+        self.assertIsNotNone(warning_explanation(warning))
+
+    def test_explanation_hidden_when_costs_change(self):
+        warning = self.warning_with(70.0, 65.0)
+        self.assertIsNone(warning_explanation(warning))
 
 
 class CaseDiscoveryTests(unittest.TestCase):
@@ -125,6 +154,7 @@ class CompareReproducibilityTests(unittest.TestCase):
             "runtime_s",
             "runtime_under_90s",
             "cpsat_gap",
+            "cpsat_no_solution_groups",
         ):
             self.assertIn(column, header)
 
